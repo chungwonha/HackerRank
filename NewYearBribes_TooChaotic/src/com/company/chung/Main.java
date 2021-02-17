@@ -3,7 +3,7 @@ package com.company.chung;
 import java.util.Scanner;
 
 public class Main {
-
+//test test
     static void minimumBribes(int[] q){
 //1. find diff between index+1 and value
 //2. if diff > 2 then chaos

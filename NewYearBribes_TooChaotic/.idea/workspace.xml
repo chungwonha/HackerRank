@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a65a6b4b-0232-468a-ab95-20ff55a2cfb9" name="Default Changelist" comment="">
+    <list default="true" id="a65a6b4b-0232-468a-ab95-20ff55a2cfb9" name="Default Changelist" comment="solved">
       <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
@@ -36,19 +36,8 @@
       <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/project-template.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/MinimumSwaps2.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/out/production/MinimumSwaps2/com/company/Main.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/src/com/company/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/description.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/project-template.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NewYearBribes_TooChaotic.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/NewYearBribes_TooChaotic/com/company/chung/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/chung/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../PrintInReverse/demo/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../PrintInReverse/demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../PrintInReverse/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
@@ -58,8 +47,7 @@
       <change afterPath="$PROJECT_DIR$/../SparseArray/demo/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SparseArray/demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SparseArray/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RotateArray/demo/src/main/java/com/chung/hackerrank/solution/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RotateArray/demo/src/main/java/com/chung/hackerrank/solution/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RotateArray/demo/src/test/java/com/chung/hackerrank/solution/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RotateArray/demo/src/test/java/com/chung/hackerrank/solution/demo/DemoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/chung/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/chung/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +151,19 @@
       <option name="presentableId" value="Default" />
       <updated>1612886357242</updated>
     </task>
+    <task id="LOCAL-00001" summary="solved">
+      <created>1613535415559</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1613535415559</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="solved" />
+    <option name="LAST_COMMIT_MESSAGE" value="solved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
