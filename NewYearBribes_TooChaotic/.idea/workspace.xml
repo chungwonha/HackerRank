@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a65a6b4b-0232-468a-ab95-20ff55a2cfb9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/src/main/java/com/chung/hackerrank/solution/demo/DemoApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2DArrayDS/demo/src/test/java/com/chung/hackerrank/solution/demo/DemoApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/src/main/java/com/chung/hackerrank/solution/demo/DemoApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AppendAndDelete/demo/src/test/java/com/chung/hackerrank/solution/demo/DemoApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DynamicArray/demo/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DynamicArray/demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DynamicArray/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ForTheFirstStar/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ForTheFirstStar/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ForTheFirstStar/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JavaIntToString/JavaIntToString.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/description.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/project-template.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/MinimumSwaps2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/out/production/MinimumSwaps2/com/company/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MinimumSwaps2/src/com/company/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/description.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/project-template.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewYearBribes_TooChaotic.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/NewYearBribes_TooChaotic/com/company/chung/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/chung/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PrintInReverse/demo/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PrintInReverse/demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PrintInReverse/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RotateArray/demo/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RotateArray/demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RotateArray/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SparseArray/demo/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SparseArray/demo/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SparseArray/demo/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RotateArray/demo/src/main/java/com/chung/hackerrank/solution/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RotateArray/demo/src/main/java/com/chung/hackerrank/solution/demo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RotateArray/demo/src/test/java/com/chung/hackerrank/solution/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RotateArray/demo/src/test/java/com/chung/hackerrank/solution/demo/DemoApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1oFdczmgAQQABgZfJX5Oe0eRWPX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="company" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.chung.Main" />
+      <module name="NewYearBribes_TooChaotic" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a65a6b4b-0232-468a-ab95-20ff55a2cfb9" name="Default Changelist" comment="" />
+      <created>1612886357242</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612886357242</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/chung/Main.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
