@@ -540,4 +540,12 @@ class SolutionApplicationTests {
 		SolutionApplication.isAnagram2("Hello","hello");
 		SolutionApplication.isAnagram2("java","java");
 	}
+
+	@Test
+	void testGetSmallestAndLargest(){
+		SolutionApplication.getSmallestAndLargest("welcometojava",3);
+		SolutionApplication.getSmallestAndLargest("ASDFHDSFHsdlfhsdlfLDFHSDLFHsdlfhsdlhkfsdlfLHDFLSDKFHsdfhsdlkfhsdlfhsLFDLSFHSDLFHsdkfhsdkfhsdkfhsdfhsdfjeaDFHSDLFHDFlajfsdlfhsdlfhDSLFHSDLFHdlfhs",144);
+		SolutionApplication.getSmallestAndLargest("ASDFHDSFHsdlfhsdlfLDFHSDLFHsdlfhsdlhkfsdlfLHDFLSDKFHsdfhsdlkfhsdlfhsLFDLSFHSDLFHsdkfhsdkfhsdkfhsdfhsdfjeaDFHSDLFHDFlajfsdlfhsdlfhDSLFHSDLFHdlfhs",30);
+
+	}
 }

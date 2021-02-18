@@ -1262,6 +1262,59 @@ Returns
 			}
 		}
 	}
+
+	static void getSmallestAndLargest(String s, int k){
+
+		String smallest="";
+		String largest="";
+		java.util.ArrayList<String> s_arr = new ArrayList<>();
+		for(int i=0;i<s.length();i++) {
+			if(i+k>s.length()){
+				break;
+			}
+			s_arr.add(s.substring(i,i+k));
+		}
+
+		if(s.length()==k){
+		  smallest=s;
+		  largest=s;
+		}else {
+			for (int j = 0; j < s_arr.size(); j++) {
+				char[] each_c = s_arr.get(j).toCharArray();
+
+				if (smallest.equals("")) {
+					smallest = s_arr.get(j);
+				} else {
+					char[] minS_c = smallest.toCharArray();
+					for (int p = 0; p < minS_c.length; p++) {
+						if (minS_c[p] < each_c[p]) {
+							break;
+						} else if (minS_c[p] > each_c[p]) {
+							smallest = s_arr.get(j);
+							break;
+						}
+					}
+				}
+
+				if (largest.equals("")) {
+					largest = s_arr.get(j);
+				} else {
+					char[] maxS_c = largest.toCharArray();
+					for (int p = 0; p < maxS_c.length; p++) {
+						if (maxS_c[p] > each_c[p]) {
+							break;
+						} else if (maxS_c[p] < each_c[p]) {
+							largest = s_arr.get(j);
+							break;
+						}
+					}
+				}
+
+			}
+		}
+
+		System.out.println("smallest: "+smallest+" largest:"+largest);
+	}
 }
 
 
