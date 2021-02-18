@@ -526,4 +526,11 @@ class SolutionApplicationTests {
 		SolutionApplication.SinglyLinkedListNode head2 = SolutionApplication.buildLinkedList(inputs2);
 		SolutionApplication.reversePrint(head2);
 	}
+
+	@Test
+	void testJavaString(){
+		SolutionApplication.javaString("hello","world");
+		SolutionApplication.javaString("hello","java");
+		SolutionApplication.javaString("java","java");
+	}
 }

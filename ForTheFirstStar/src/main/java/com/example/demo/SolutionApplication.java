@@ -1187,5 +1187,33 @@ Returns
 //
 // }
 
+	static void javaString(String A, String B){
+		int sumLengh = A.length()+B.length();
+		System.out.println(sumLengh);
+		char[] A_chars = A.toCharArray();
+		char[] B_chars = B.toCharArray();
 
+		int equal_counter=0;
+		for(int i=0;i<Math.min(A.length(),B.length());i++){
+			if(A_chars[i]>B_chars[i]){
+				System.out.println("Yes");
+				break;
+			}else if(A_chars[i]<B_chars[i]){
+				System.out.println("No");
+				break;
+			}else{
+				equal_counter++;
+			}
+		}
+		if(equal_counter==Math.min(A.length(),B.length())){
+			if(A.length()>B.length()){
+				System.out.println("Yes");
+			}else if(A.length()<=B.length()){
+				System.out.println("No");
+			}
+		}
+		String newA = A.substring(0,1).toUpperCase()+A.substring(1,A.length());
+		String newB = B.substring(0,1).toUpperCase()+B.substring(1,B.length());
+		System.out.println(newA+" "+newB);
+	}
 }
