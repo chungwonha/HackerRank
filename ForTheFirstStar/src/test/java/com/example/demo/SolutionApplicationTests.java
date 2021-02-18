@@ -546,6 +546,20 @@ class SolutionApplicationTests {
 		SolutionApplication.getSmallestAndLargest("welcometojava",3);
 		SolutionApplication.getSmallestAndLargest("ASDFHDSFHsdlfhsdlfLDFHSDLFHsdlfhsdlhkfsdlfLHDFLSDKFHsdfhsdlkfhsdlfhsLFDLSFHSDLFHsdkfhsdkfhsdkfhsdfhsdfjeaDFHSDLFHDFlajfsdlfhsdlfhDSLFHSDLFHdlfhs",144);
 		SolutionApplication.getSmallestAndLargest("ASDFHDSFHsdlfhsdlfLDFHSDLFHsdlfhsdlhkfsdlfLHDFLSDKFHsdfhsdlkfhsdlfhsLFDLSFHSDLFHsdkfhsdkfhsdkfhsdfhsdfjeaDFHSDLFHDFlajfsdlfhsdlfhDSLFHSDLFHdlfhs",30);
+		String s ="qwert";
+		int a = 5/2;
+		System.out.println(a);
+	}
+
+	@Test
+	void testRepeatedString(){
+		SolutionApplication.repeatedString("abc",10);
+		SolutionApplication.repeatedString("abcac",10);
+		SolutionApplication.repeatedString("a",100000000);
+		long a = 685118368975L;
+
+		SolutionApplication.repeatedString("ojowrdcpavatfacuunxycyrmpbkvaxyrsgquwehhurnicgicmrpmgegftjszgvsgqavcrvdtsxlkxjpqtlnkjuyraknwxmnthfpt",a);
+
 
 	}
 }

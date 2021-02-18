@@ -1315,6 +1315,32 @@ Returns
 
 		System.out.println("smallest: "+smallest+" largest:"+largest);
 	}
+	static long repeatedString(String s, long n) {
+		String ss = s.replaceAll("[a]","");
+		long numOfA = 0;
+		if(ss.equals("")) {
+			numOfA = n;
+		}else{
+			System.out.println("replaced ss: " + ss);
+			String[] s_arr = s.split("");
+			long numOfRepeats = n / s.length();
+			long afterRepeats = numOfRepeats * s.length();
+			long diff = n - afterRepeats;
+			numOfA = Arrays.stream(s_arr).filter(each_s -> each_s.equals("a")).count() * numOfRepeats;
+			System.out.println("numOfRepeats: " + numOfRepeats);
+			System.out.println("afterRepeats: " + afterRepeats);
+			System.out.println("numOfA before diff: " + numOfA);
+			System.out.println("diff: " + diff);
+			for (int i = 0; i < diff; i++) {
+				if (s_arr[i].equals("a")) {
+					numOfA = numOfA + 1;
+				}
+			}
+		}
+		System.out.println("numOfA after diff: "+numOfA);
+
+		return numOfA;
+	}
 }
 
 
