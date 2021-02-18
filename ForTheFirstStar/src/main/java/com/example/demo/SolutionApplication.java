@@ -1216,4 +1216,92 @@ Returns
 		String newB = B.substring(0,1).toUpperCase()+B.substring(1,B.length());
 		System.out.println(newA+" "+newB);
 	}
+
+	static void isAnagram(String a, String b){
+		HashMap<String,Integer> a_counter_map = new HashMap<>();
+		HashMap<String,Integer> b_counter_map = new HashMap<>();
+
+		String[] a_str = a.toLowerCase().split("");
+		String[] b_str = b.toLowerCase().split("");
+
+		if(a.length()!=b.length()){
+			System.out.println("Not Anagrams");
+		}else {
+			Arrays.stream(a_str).forEach(each_a -> a_counter_map.merge(each_a, 1, (oldValue, newValue) -> newValue = oldValue + 1));
+			Arrays.stream(b_str).forEach(each_b -> b_counter_map.merge(each_b, 1, (oldValue, newValue) -> newValue = oldValue + 1));
+			boolean isAnagram=true;
+			Object[] key_arr =a_counter_map.keySet().toArray();
+			for(Object key:key_arr){
+				if(a_counter_map.get(key)!=b_counter_map.get(key)){
+					isAnagram = false;
+					break;
+				}
+			}
+
+			System.out.println(isAnagram?"Anagrams":"Not Anagrams");
+
+		}
+
+
+	}
+
+	static void isAnagram2(String a, String b){
+
+		if(a.length()!=b.length()){
+			System.out.println("Not Anagrams");
+		}else {
+			char[] a_sorted = a.toLowerCase().toCharArray();
+			char[] b_sorted = b.toLowerCase().toCharArray();
+			java.util.Arrays.sort(a_sorted);
+			Arrays.sort(b_sorted);
+
+			if(String.copyValueOf(a_sorted).toString().equals(String.copyValueOf(b_sorted).toString())){
+				System.out.println("Anagrams");
+			}else{
+				System.out.println("Not Anagrams");
+			}
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

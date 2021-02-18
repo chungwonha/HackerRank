@@ -533,4 +533,11 @@ class SolutionApplicationTests {
 		SolutionApplication.javaString("hello","java");
 		SolutionApplication.javaString("java","java");
 	}
+
+	@Test
+	void testIsAnagrams(){
+		SolutionApplication.isAnagram2("anagramm","marganaa");
+		SolutionApplication.isAnagram2("Hello","hello");
+		SolutionApplication.isAnagram2("java","java");
+	}
 }
