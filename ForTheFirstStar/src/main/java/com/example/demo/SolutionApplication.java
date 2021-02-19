@@ -1341,6 +1341,56 @@ Returns
 
 		return numOfA;
 	}
+
+	static int libraryFine(int d1, int m1, int y1, int d2, int m2, int y2) {
+
+		if(y2 < y1){
+			return 10000;
+		}
+
+		if(y2 == y1 && m2 < m1){
+			return (m1-m2) * 500;
+		}
+
+		if(y2==y1 && m2==m1 && d2<d1){
+			return (d1-d2)*15;
+		}
+		return 0;
+	}
+
+	// Complete the cutTheSticks function below.
+	static int[] cutTheSticks(int[] arr) {
+        /*
+            sort
+            pick the shortest
+            substract
+            count items > 0 and put in a basket
+        */
+		ArrayList<Long> outputList = new ArrayList();
+
+		for(int i=0;i<arr.length;i++) {
+			long nonzeroCount = Arrays.stream(arr).filter(a->a>0).count();
+			if(nonzeroCount!=0) {
+				outputList.add(nonzeroCount);
+				int minNum = Arrays.stream(arr).filter(a -> a > 0).reduce(Integer::min).getAsInt();
+				for (int j = 0; j < arr.length; j++) {
+					arr[j] = arr[j] - minNum < 0 ? 0 : arr[j] - minNum;
+					System.out.print("arr[" + j + "]: " + arr[j] + "-" + minNum + " ");
+				}
+				System.out.println("");
+			}else{
+				break;
+			}
+		}
+
+		int[] finalOutput = new int[outputList.size()];
+		int counter=0;
+		for(Long each:outputList){
+			finalOutput[counter]=each.intValue();
+			counter++;
+		}
+		return finalOutput;
+	}
 }
 
 

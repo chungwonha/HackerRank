@@ -562,4 +562,16 @@ class SolutionApplicationTests {
 
 
 	}
+
+	@Test
+	void testLibraryFine(){
+
+	}
+
+
+	@Test
+	void testCutTheSticks(){
+		int[] output = SolutionApplication.cutTheSticks(new int[]{1, 2, 3, 4, 3, 3 ,2 ,1});
+		Arrays.stream(output).forEach(System.out::println);
+	}
 }
