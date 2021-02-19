@@ -1391,6 +1391,25 @@ Returns
 		}
 		return finalOutput;
 	}
+
+	public static int countingValleys(int steps, String path) {
+		// Write your code here
+		String[] pathArr = path.split("");
+		int stepTracker=0;
+		int valleyCounter=0;
+		for(String step:pathArr){
+			int preValue=stepTracker;
+			if(step.equals("U")){
+				stepTracker++;
+				if(preValue<0&&stepTracker==0){
+					valleyCounter++;
+				}
+			}else if(step.equals("D")){
+				stepTracker--;
+			}
+		}
+		return valleyCounter;
+	}
 }
 
 
