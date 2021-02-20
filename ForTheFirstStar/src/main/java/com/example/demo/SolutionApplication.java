@@ -1517,6 +1517,32 @@ Returns
 
 	}
 
+	static int java2dArray(int[][] inputArr){
+
+		int maxSum = 0;
+		for(int i=0;i<inputArr.length-2;i++) {
+
+			for(int j=0;j<inputArr[i].length-2;j++) {
+				int topLeft = inputArr[i][j];
+				int topMiddle =inputArr[i][j+1];
+				int topRight = inputArr[i][j+2];
+
+				int secRowMiddle=inputArr[i+1][j+1];
+
+				int leftBottom=inputArr[i+2][j];
+				int midlleBottom=inputArr[i+2][j+1];
+				int rightBottom=inputArr[i+2][j+2];
+				int sum = topLeft+topMiddle+topRight+secRowMiddle+leftBottom+midlleBottom+rightBottom;
+				if((i==0&&j==0)||(maxSum<sum)){
+					maxSum = sum;
+				}
+			}
+
+		}
+		return maxSum;
+
+	}
+
 }
 
 
