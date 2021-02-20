@@ -1481,6 +1481,42 @@ Returns
 
 		System.out.println(big_a instanceof BigInteger ? ((BigInteger) big_a) : null);
 	}
+
+	static void javaStringToken(String ss){
+
+		System.out.println(ss.length());
+
+//		String ss1="apple";
+//		StringTokenizer st = new StringTokenizer(ss);
+//		String s_arr=ss.replace("[A-Za-z !,?._'@]+","a");
+//		System.out.println(ss1.matches("apple")?"matched":"unmatched");
+//		System.out.println(s_arr);
+//		String s_arr2=ss.replaceAll("[A-Za-z!]","a");
+//		System.out.println(s_arr2);
+
+		ss =ss.trim();
+
+		if(ss.length()>0 && ss.length()<=40000) {
+//			System.out.println("--->" + ss);
+//
+//			System.out.println("--->" + ss);
+
+			String[] newArr = ss.split("[, '?_@!.\\s\\w]+");
+			System.out.println(newArr[0]);
+			System.out.println(newArr.length);
+			Arrays.stream(newArr).filter(each -> !each.equals(" ")).collect(Collectors.toList()).stream().forEach(System.out::println);
+
+		}
+
+	}
+
+	//Java Regex for IP validation
+	static void pattern(String s,String pattern){
+
+		System.out.println(s.matches(pattern));
+
+	}
+
 }
 
 
