@@ -574,4 +574,33 @@ class SolutionApplicationTests {
 		int[] output = SolutionApplication.cutTheSticks(new int[]{1, 2, 3, 4, 3, 3 ,2 ,1});
 		Arrays.stream(output).forEach(System.out::println);
 	}
+
+	@Test
+	void testpatternSyntaxChecker(){
+		SolutionApplication.patternSyntaxChecker("([A-Z])(.+)");
+		SolutionApplication.patternSyntaxChecker("[AZ[a-z](a-z)");
+		SolutionApplication.patternSyntaxChecker("batcatpat(nat");
+	}
+
+	@Test
+	void TestPrimalityTest(){
+		SolutionApplication.primalityTest("13");
+		SolutionApplication.primalityTest("12");
+	}
+
+	@Test
+	void testTestBigDecimal(){
+		String[] sArr = {"00.002","123.456","0.002","4.5555555"};
+		SolutionApplication.testBigDecimal(sArr);
+		System.out.println("----------------");
+		String[] sArr2 = {"-100","50","0","56.6","90","0.12",".12","02.34","000.000"};
+		SolutionApplication.testBigDecimal(sArr2);
+
+	}
+
+	@Test
+	void testTestBigInteger(){
+		SolutionApplication.testBigInteger("12345","99999");
+
+	}
 }

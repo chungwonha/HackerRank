@@ -11,6 +11,8 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
@@ -1409,6 +1411,75 @@ Returns
 			}
 		}
 		return valleyCounter;
+	}
+
+	static void patternSyntaxChecker(String s){
+		try {
+			Pattern p = Pattern.compile(s);
+			System.out.println("Valid");
+		}catch(PatternSyntaxException pe){
+			System.out.println("Invalid");
+		}
+	}
+
+	static void primalityTest(String s){
+		BigInteger bi = new BigInteger(s);
+		System.out.println(bi.isProbablePrime(1)?"prime":"not prime");
+
+	}
+
+	static void testBigDecimal(String[] strings){
+		for(String s:strings){
+			System.out.println(s);
+		}
+		System.out.println("----------------");
+		Arrays.sort(strings, new Comparator<String>() {
+			@Override
+			public int compare(String o1, String o2) {
+				BigDecimal o1_bigDecimal = new BigDecimal(o1);
+				BigDecimal o2_bigDecimal = new BigDecimal(o2);
+				if(o2_bigDecimal.compareTo(o1_bigDecimal)==0){
+					return 1;
+				}
+				return o2_bigDecimal.compareTo(o1_bigDecimal);
+			}
+		});
+
+		Arrays.stream(strings).forEach(System.out::println);
+	}
+
+	static void testBigDecimal2(String[] strings){
+		for(String s:strings){
+			System.out.println(s);
+		}
+		System.out.println("----------------");
+		ArrayList<BigDecimal> bigDecimalArrayList = new ArrayList<>();
+		ArrayList<BigDecimal> sortedList =new ArrayList<>();
+		Arrays.stream(strings).forEach(s->bigDecimalArrayList.add(new BigDecimal(s)));
+
+		bigDecimalArrayList.stream().sorted().forEach(bd->sortedList.add(bd));
+		Collections.reverse(sortedList);
+
+		for(int i=0;i<strings.length;i++){
+			strings[i]=sortedList.get(i).toString();
+		}
+
+		for(String s:strings){
+			System.out.println(s);
+		}
+	}
+
+	static void testBigInteger(String a, String b){
+		BigInteger big_a = new BigInteger(a);
+		BigInteger big_b = new BigInteger(b);
+
+		BigInteger mulAns = big_a.multiply(big_b);
+		BigInteger addAns = big_a.add(big_b);
+
+		System.out.println(mulAns.toString());
+		System.out.println(addAns.toString());
+
+		System.out.println(big_a instanceof BigInteger ? ((BigInteger) big_a) : null);
 	}
 }
 
