@@ -1543,6 +1543,176 @@ Returns
 
 	}
 
+	//JAVA 1D Array Part 2
+	static boolean canWin(int leap, int[] game){
+
+
+
+
+
+		//leap = 3,  length=5, 0 0 0 0 0
+		//0 ,1 ,2 ,3 ,4 ,5
+
+		//leap = 5,  length=6, 0 0 0 1 1 1
+		//0, 1, 2
+		//5+2 = 7
+
+		//leap = 3,  length=6, 0 0 1 1 1 0
+		//0,1,6
+
+		//leap=4  length=11, 0, 1, 1, 1, 0, 1 ,1, 1, 0, 1, 0
+		//0,4,8,10
+
+		//Collect index of zero values
+		//loop through the the zeor index list
+		//if the gap between each indices of each zero == leap
+		//then check if the index + leap can be > game.length
+		//if not, then check the gap is 1 then go to next index of zero
+
+//		for(int i=1;i<zeroIndexList.size();i++) {
+//		int i=1;
+//		while(i<zeroIndexList.size()-1){
+//			if (zeroIndexList.get(i) - zeroIndexList.get(i - 1) == leap) {
+//				if(leap+zeroIndexList.get(i) >= game.length-1){
+//					return true;
+//				}
+//			} else {
+//				if(zeroIndexList.get(i) - zeroIndexList.get(i - 1) == 1) {
+//					i++;
+//				}else{
+//					return false;
+//				}
+//			}
+//		}
+		//all zeros
+		//leapable -> zeros located in index % leap ==0
+		//last 0 must be index located where +1 or +leap >= game.length
+			// game.length-leap
+
+		//0,1,1,1,1,0,1,1,1,0,1
+		//0,1,1,1,0,0,1,1,1,0,1
+		//0,0,0,0,0 leap=3
+        //find index of 1st zero from the last
+		//and see if the index can be rechable
+		//1. last index - leap should be 0
+
+		ArrayList<Integer> zeroIndexList = new ArrayList<>();
+		for(int i=0;i<game.length;i++){
+			if(game[i]==0) {
+				zeroIndexList.add(i);
+			}
+		}
+
+ 		int i=0;
+
+		while(i<=game.length-1) {
+			if (game[i] == 0) {
+				if (i + 1 > game.length - 1 || i + leap > game.length - 1) {
+						return true;
+				} else {
+					game[i]=1;
+					if (game[i+leap] == 0) {
+						i = i + leap;
+					}else if(game[i+1] == 0){
+						i++;
+					}else if(i>0&&game[i-1]==0) {
+						i--;
+					}else {
+							return false;
+					}
+				}
+			} else if (game[i] == 1) {
+				return false;
+			}
+		}
+		return false;
+	}
+
+
+
+	public static boolean canWin2(int leap, int[] game) {
+		class ZeroNode{
+			public int myIndex;
+			public boolean visited;
+		}
+
+		ArrayList<Integer> zeroIndexList = new ArrayList<>();
+		HashMap<Integer,ZeroNode> zeroIndexMap = new HashMap<>();
+		for(int i=0;i<game.length;i++){
+			if(game[i]==0) {
+				ZeroNode zeroNode = new ZeroNode();
+				zeroNode.myIndex=i;
+				zeroIndexMap.put(i,zeroNode);
+			}
+		}
+
+		int i=0;
+
+		while(i<=game.length-1) {
+			if (game[i] == 0) {
+				if (i + 1 > game.length - 1 || i + leap > game.length - 1) {
+					return true;
+				} else {
+//					game[i]=1;
+					zeroIndexMap.get(i).visited=true;
+					if (game[i+leap] == 0) {
+						i = i + leap;
+					}else if(game[i+1] == 0){
+						i++;
+					}else if(i>0&&game[i-1]==0) {
+						i--;
+					}else {
+						return false;
+					}
+				}
+			} else if (game[i] == 1) {
+				return false;
+			}
+		}
+		return false;
+	}
+
+	//Java Subarray
+	static void findNegativeSums(int[] nums){
+
+		/*0
+		//01
+		//02
+		...
+0,0	    0
+0,1		0,1
+0,2		0,1,2
+0,3		0,1,2,3
+		0,1,2,3,4
+
+1,1		1,1
+1,2		1,2,
+1,3		1,2,3
+1,4		1,2,3,4
+		1,4
+		....
+		2,0
+		2,1
+		*/
+		int count = 0;
+			for(int i=0;i<nums.length;i++){
+
+				for(int j=i;j<nums.length;j++){
+					int size = j-i+1;
+					int[] sub = new int[size];
+					System.arraycopy(nums,i,sub,0,size);
+					int sum = Arrays.stream(sub).sum();
+					if(sum<0){
+						count++;
+					}
+					Arrays.stream(sub).forEach(a->System.out.print(a+","));
+					System.out.println("");
+				}
+
+			}
+			System.out.println("count: "+count);
+
+	}
 }
 
 

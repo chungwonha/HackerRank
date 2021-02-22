@@ -646,4 +646,76 @@ class SolutionApplicationTests {
 		System.out.println(maxSum);
 
 	}
+
+	@Test
+	void testCanWin(){
+//		int[] game = {0,0,0,0,0};
+//		boolean b = SolutionApplication.canWin(3,game);
+//		assertTrue(b);
+//
+//		int[] game1 = {0,0,0,1,1,1};
+//		b = SolutionApplication.canWin(5,game1);
+//		assertTrue(b);
+//
+//		int[] game2 = {0,0,1,1,1,0};
+//		b = SolutionApplication.canWin(3,game2);
+//		assertTrue(!b);
+//
+//		int[] game4 = {0,1,0};
+//		b = SolutionApplication.canWin(1,game4);
+//		assertTrue(!b);
+//
+//		int[] game5 = {0,0,0,0,1};
+//		b = SolutionApplication.canWin(3,game5);
+//		assertTrue(b);
+//
+//		int[] game6 = {0 ,0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1,0 ,0 ,1 ,1 ,1 ,1 ,0 ,1 ,0 ,1 ,1 ,1 ,1 ,1, 0, 0, 1, 0, 1, 0};
+//		b = SolutionApplication.canWin(39,game6);
+//		assertTrue(b);
+//
+//		int[] game7 = {0, 1, 1, 1, 0, 1 ,1, 1, 0, 1, 0};
+//		b = SolutionApplication.canWin(4,game7);
+//		assertTrue(b);
+//
+//		int[] game8 = {0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,0,1,0,0,0,0,1,1,0,1,0,0,1,1,0};
+//		boolean b = SolutionApplication.canWin(15,game8);
+//		assertTrue(!b);
+
+//		int[] game9 = {0,1,1,1,0,0,0,0,0,0,1};
+//		b = SolutionApplication.canWin(5,game9);
+//		assertTrue(b);
+//
+//		int[] game10 = {0,1,1,1,0,0,1,1,1,0,1};
+//		b = SolutionApplication.canWin(5,game10);
+//		assertTrue(b);
+//
+//		int[] game11 = {0,1,1,1,1,0,1,1,1,0,1};
+//		b = SolutionApplication.canWin(5,game11);
+//		assertTrue(!b);
+//
+//		int[] game12 = {0,1,1,1,1,0,0,0,1,1,1,1,0,1,1};
+//		b = SolutionApplication.canWin(7,game12);
+//		assertTrue(b);
+//
+//		int[] game13 = {0,1,1,1,1,0,1,0,1,1,1,1,0,1,1};
+//		b = SolutionApplication.canWin(7,game13);
+//		assertTrue(!b);
+
+//		int[] game14={0,1,1,1,1,1,1,1,0,1,0,0,1,0,0,1,1,0,1,0,1,0,0,1,1,0,1,1,1,1,1,1,0,0,0,0,1,1,1,1,0,1,0,1,0,0,1,1,1,0,0,1,1,1,0,1,1,1,1,1,0,1,0,1,1,1,1,0,1,1,1,0,1,1,0};
+//		boolean b= SolutionApplication.canWin(34,game14);
+//		assertTrue(b);
+
+		int[] games15 ={0,0,1,1,1,0,1,0,1,0,0,0,1,1,1,1,1,1,0,0,1,0,0,1,1,0,1,1,0,0,1,1,1,1,1};
+		boolean b= SolutionApplication.canWin(10,games15);
+		assertTrue(b);
+
+
+
+		}
+
+		@Test
+		void testFindNegativeSums() {
+		int[] a = {1,-2,4,-5,1};
+			SolutionApplication.findNegativeSums(a);
+		}
 }
