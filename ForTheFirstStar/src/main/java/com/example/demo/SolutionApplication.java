@@ -1713,6 +1713,85 @@ Returns
 			System.out.println("count: "+count);
 
 	}
+
+	// {()}
+	// 0123
+	//{({()})}
+	//01234567
+	//(length-currentIndex)-1
+	//{}()({})
+	//01234567
+	//current+1 or
+	//Using 2 Stacks
+	//one for close bracket and another for open bracket
+	//only issue is that when brackets get stacked alternatively
+	//{({( )})}
+		/*  (   }
+		    {   )
+		    (   }
+			{   )
+
+			{({{}})}
+			{   }
+			{   )
+			(   }
+			{   }
+		 */
+	static boolean isBalanced(String s){
+
+		String[] inputs = s.split("");
+		if(s.length()%2!=0){
+			return false;
+		}
+
+		if((inputs[0].equals("}")||inputs[0].equals(")"))){
+			return false;
+		}
+		if((inputs[inputs.length-1].equals("{")||inputs[inputs.length-1].equals("("))){
+			return false;
+		}
+
+		ArrayList<String> closeStack = new ArrayList<>();
+		ArrayList<String> openStack=new ArrayList<>();
+
+		for(int i=0;i<inputs.length;i++){
+
+			//store open and close brackets in 2 separate buckets
+			if(inputs[i].equals("{")||inputs[i].equals("(")){
+				openStack.add(inputs[i]);
+
+			}else if(inputs[i].equals("}")||inputs[i].equals(")")){
+				closeStack.add(inputs[i]);
+			}
+
+			//when # of items in the 2 buckets are same, start comparing
+			//get an item from Open bracket bucket in normal order
+			//get an item from Close bracket bucket in reverse order
+			if(openStack.size()==closeStack.size()){
+				for(int j=0;j<openStack.size();j++) {
+					String openS = openStack.get(j);
+					String closeS = closeStack.get(openStack.size()-j-1);
+					if (openS.equals("{")){
+						if(!closeS.equals("}")){
+							return false;
+						}
+					}else if(openS.equals("(")) {
+						if(!closeS.equals(")")){
+							return false;
+						}
+					}
+				}
+				openStack.clear();
+				closeStack.clear();
+			}
+		}
+
+		if(openStack.size()!=closeStack.size()){
+			return false;
+		}
+		return true;
+	}
+
 }
 
 

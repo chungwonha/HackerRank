@@ -3,10 +3,7 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -718,4 +715,57 @@ class SolutionApplicationTests {
 		int[] a = {1,-2,4,-5,1};
 			SolutionApplication.findNegativeSums(a);
 		}
+
+		@Test
+		void testStatck(){
+			Stack<Integer> myStack = new Stack<>();
+			myStack.add(1);
+			myStack.add(2);
+			myStack.add(3);
+			myStack.stream().forEach(System.out::println);
+			myStack.clear();
+			myStack.push(1);
+			myStack.push(2);
+			myStack.push(3);
+
+			myStack.stream().peek(System.out::println);
+//			while(!myStack.empty()) {
+//				System.out.println(myStack.pop());
+//			}
+
+			Hashtable<Integer, String> ht = new Hashtable<>();
+			ht.put(1, "hi");
+			ht.put(1,"hello");
+			System.out.println(ht.get(1));
+
+			HashMap<String,Integer> a = new HashMap<>();
+			//a.values()
+
+
+		}
+
+		@Test
+		void testIsBalanced(){
+			String s ="{}()";
+			boolean b = SolutionApplication.isBalanced(s);
+			assertTrue(b);
+
+			s ="{}()()()({})";
+ 			b = SolutionApplication.isBalanced(s);
+			assertTrue(b);
+
+			s ="{}()()()({})))";
+			b = SolutionApplication.isBalanced(s);
+			assertTrue(!b);
+
+			s ="{(())}";
+			b = SolutionApplication.isBalanced(s);
+			assertTrue(b);
+
+			s ="{(({{}}))}";
+			b = SolutionApplication.isBalanced(s);
+			assertTrue(b);
+		}
+
+
 }
