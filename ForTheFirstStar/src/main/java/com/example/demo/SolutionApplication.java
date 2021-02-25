@@ -1792,6 +1792,349 @@ Returns
 		return true;
 	}
 
+	static int longestSubarray(List<Integer> arr){
+		HashMap<Integer,Integer> countBucket = new HashMap<>();
+
+		for(int i=0;i<arr.size();i++){
+			System.out.println(i);
+			countBucket.merge(arr.get(i),1,(oldValue,newvalue)->oldValue+1);
+		}
+
+		countBucket.keySet().stream().forEach(a->System.out.println(a+" : "+countBucket.get(a)));
+		Optional<Integer> startintPoint = countBucket.keySet().stream().reduce(Integer::min);
+		Optional<Integer> endPoint = countBucket.keySet().stream().reduce(Integer::max);
+		int maxSum = 0;
+		for(int i=startintPoint.get();i<endPoint.get();i++){
+			if(countBucket.get(i)!=null && countBucket.get(i+1)!=null) {
+				int sum = countBucket.get(i) + countBucket.get(i + 1);
+				if (maxSum < sum) {
+					maxSum = sum;
+				}
+			}
+		}
+
+		return maxSum;
+	}
+
+	static int sockMerchant(int n, int[] ar) {
+
+		/*
+			10, 20, 20, 10, 10, 30, 50, 10, 20
+			10          10   -> count and remove
+			    20  20  -> count and remove
+
+		 */
+		int pairCounter = 0;
+		for (int i=0;i<ar.length;i++){
+
+			if(ar[i]!=0) {
+				for (int j = i + 1; j < ar.length; j++) {
+					if (ar[i] == ar[j]) {
+						pairCounter++;
+						ar[i] = 0;
+						ar[j] = 0;
+						break;
+					}
+				}
+			}
+
+		}
+
+		return pairCounter;
+	}
+
+	static void jumpingOnClouds(int[] c){
+		/*
+				0 1 0 0 1 0
+				0->2->3->5
+				0->2->x
+				0 1 0 0 0 1 0
+				0->2->4->6
+				0->2->3->4->6
+				each node have 2 choice ->1 or 2
+				if 1 is possilbe and not tried, then try
+				if 1 is possible and tried, try 2
+				if 1 and 2 are possible and tired, out
+				initilize with plueOneNode and plusTwoNode
+				 Node0 -> +1Node = null
+				       -> +2Node = Node2 -> +1Node = Node3 -> +1Node = Node4
+				                         -> +2Node = Node4 -> +1Node = null
+
+
+		 */
+		class Node{
+			public Node(int i,int[] arr){
+				id = i;
+				myValue = arr[i];
+				if(i==arr.length-1){
+					isItTail = true;
+				}
+				if(i==0){
+					isItHead = true;
+				}
+				if(i+2<=arr.length-1) {
+					plusOneNode = new Node(i + 1, arr);
+					plusTwoNode = new Node(i + 2, arr);
+				}
+
+			}
+			public int id;
+			public int myValue;
+			public Node plusOneNode;
+			public Node plusTwoNode;
+			public boolean isItTail=false;
+			public boolean isItHead=false;
+			public boolean isVisited=false;
+		}
+
+		LinkedList<Node> linkedList = new LinkedList<>();
+		Node node = new Node(0,c);
+		Node currentNode = node;
+		String pathString="";
+		while(!currentNode.isItTail || !currentNode.isVisited){
+			if(currentNode.myValue==0 && !currentNode.isVisited){
+				pathString = pathString+Integer.toString(currentNode.id);
+				currentNode.isVisited=true;
+			}else if (currentNode.myValue==0 && currentNode.isVisited){
+				if(currentNode.plusOneNode.myValue==0 && !currentNode.plusOneNode.isVisited){
+					currentNode = currentNode.plusOneNode;
+				}else {
+					if(currentNode.plusTwoNode.myValue==0 && !currentNode.plusTwoNode.isVisited){
+						currentNode=currentNode.plusTwoNode;
+					}
+				}
+			}
+			System.out.println(pathString);
+		}
+
+
+//
+//		for(int i=0;i<c.length;i++){
+//			if(c[i]==0) {
+//				Node node = new Node(i, c[i]);
+//				linkedList.add(node);
+//			}
+//		}
+
+	}
+
+	static void jumpingOnClouds2(int[] c){
+
+		/*
+			0 1 0 0 0 1 0
+
+			check if there is 2 paths or one
+			if 2 paths availabale, need to try 2 times
+
+			if c[0]==0, take
+			if c[2]==0 take
+				c[2] has 2nd path, which is c[3] and c[4]
+			if c[3]==0 take
+			if c[4] ==0
+			if c[6]==0
+			02346
+			2pathPointBucket
+
+			minimum 2,2,2,2,2
+			2,2,2,11,2
+
+			if current==0 and visited but no choice, take
+				check
+			if c[i]==0 and visited but another choice go c[i+1],
+
+			0,2,3,4,6
+			0,2,4,6
+			0,2,3,4,6
+			2
+			  0 1 0 0 0 1 0 0 0 1 0
+			  0,2,3,4,6,7,8,10
+			  2,6
+
+			  loop
+			  	0,2,3,4,5,6,7,8,10
+			  	0,2,4,6,8,10
+			  always 2 steps fastest
+			  find any point where 2 stpes are not possible then add extra step
+
+			  0 1 0 0 0 1 0 0 1 0 1
+			  0,2,3,4,6,7,9,10
+			  0,2,4,6,7,9
+		 */
+		String pathString = "0";
+
+		int i=0;
+		int pathCounter = 1;
+		while(i<c.length-2){
+				if(c[i+2]==0){
+					pathString=pathString+Integer.toString(i+2);
+					i=i+2;
+					pathCounter++;
+				}else if(c[i+1]==0){
+					pathString=pathString+Integer.toString(i+1);
+					i=i+1;
+					pathCounter++;
+				}
+			System.out.println(pathString);
+			}
+
+		if(i==c.length-1){
+			pathCounter = pathCounter-1;
+		}
+		System.out.println("-----"+pathCounter);
+
+
+	}
+
+	/*
+		This works but this is too slow
+	 */
+	static int sherlockAndAnagrams(String s){
+
+		/*
+			cdcd
+			c:c, d:d, cd:cd, dc,cd, cd,dc
+			loop through
+			first substring for 1 char and increase one by one
+			slide to find any match
+			when pick one char which is c
+			if one char and there is anohter char, FOUND
+			pick multiple chars like cd
+			check if there is another cd and dc is there(see if anagram is there)
+
+			 how to determine if it's anagram or not
+			 	put each char from the source str and target and counts for the char in each hashmap
+
+			  	if counts match between the hashmaps, they are anagram
+			  	ex) source-> cd  -> c:1 , d:1
+			  	    target-> dc  -> d:1 , c:1
+
+				ex) ifailuhkqq
+				    source-> ifa -> i:1 f:1 a:1
+                    target-> fai -> f:! a:1 i:1
+
+                    source-> ifa -> i:1 f:1 a:1
+                    target-> ail -> a:1 i:0 l:0
+
+					kk   -> k : 2
+					kk   -> k : 2
+		 */
+
+		int stringWidth = 1;
+
+		int foundCounter=0;
+
+		while(stringWidth!=s.length()+1) {
+			System.out.println("stringWidth: "+stringWidth);
+			for(int k=0;k+stringWidth<s.length();k++) {
+				HashMap<String, Integer> sourceLetterMapping = new HashMap<>();
+				String sourceStr = s.substring(k, k+stringWidth);
+				System.out.println("sourceStr: " + sourceStr);
+				for (String each : sourceStr.split("")) {
+					sourceLetterMapping.merge(each, 1, (oldValue, newValue) -> oldValue + 1);
+				}
+
+				for (int i = 0+k; i+stringWidth <= s.length(); i++) {
+					if(k!=i) {
+						String targetStr = s.substring(i, i + sourceStr.length());
+						System.out.println("targetStr: " + targetStr);
+						HashMap<String, Integer> targetStrMap = new HashMap<>();
+						for (String each : targetStr.split("")) {
+							targetStrMap.merge(each, 1, (oldValue, newValue) -> oldValue + 1);
+						}
+
+						Optional<Integer> matchCount = sourceLetterMapping.keySet().stream().filter(a -> sourceLetterMapping.get(a) == targetStrMap.get(a)).map(a->targetStrMap.get(a)).reduce(Integer::sum);
+						if (matchCount.isPresent() && matchCount.get() == sourceStr.length()) {
+							foundCounter = foundCounter + 1;
+							System.out.println("found: " + sourceStr + " - " + targetStr+" -> ["+k+","+(k+stringWidth)+"],"+"["+i+","+(i+sourceStr.length())+"]");
+
+						}
+						targetStrMap.clear();
+					}
+				}
+
+			}
+			stringWidth++;
+
+		}
+
+		System.out.println("foundCounter: "+foundCounter);
+
+		return foundCounter;
+	}
+
+	/*
+	This works better
+	 */
+	static int sherlockAndAnagrams2(String s){
+
+		/*
+			cdcd
+			c:c, d:d, cd:cd, dc,cd, cd,dc
+			loop through
+			first substring for 1 char and increase one by one
+			slide to find any match
+			when pick one char which is c
+			if one char and there is anohter char, FOUND
+			pick multiple chars like cd
+			check if there is another cd and dc is there(see if anagram is there)
+
+			 how to determine if it's anagram or not
+			 	put each char from the source str and target and counts for the char in each hashmap
+
+			  	if counts match between the hashmaps, they are anagram
+			  	ex) source-> cd  -> c:1 , d:1
+			  	    target-> dc  -> d:1 , c:1
+
+				ex) ifailuhkqq
+				    source-> ifa -> i:1 f:1 a:1
+                    target-> fai -> f:! a:1 i:1
+
+                    source-> ifa -> i:1 f:1 a:1
+                    target-> ail -> a:1 i:0 l:0
+
+					kk   -> k : 2
+					kk   -> k : 2
+		 */
+
+		int stringWidth = 1;
+
+		int foundCounter=0;
+
+		while(stringWidth!=s.length()+1) {
+			System.out.println("stringWidth: "+stringWidth);
+			for(int k=0;k+stringWidth<s.length();k++) {
+				String sourceStr = s.substring(k, k+stringWidth);
+				char[] charArr = sourceStr.toCharArray();
+				Arrays.sort(charArr);
+				sourceStr = new String(charArr);
+				System.out.println("sourceStr: " + sourceStr);
+
+				for (int i = 0+k; i+stringWidth <= s.length(); i++) {
+					if(k!=i) {
+						String targetStr = s.substring(i, i + sourceStr.length());
+						System.out.println("targetStr: " + targetStr);
+						char[] targetCharArr = targetStr.toCharArray();
+						Arrays.sort(targetCharArr);
+						targetStr = new String(targetCharArr);
+//						targetStr = Arrays.stream(targetStr.split("")).sorted().toString();
+
+						if (sourceStr.equals(targetStr)) {
+							foundCounter = foundCounter + 1;
+							System.out.println("found: " + sourceStr + " - " + targetStr+" -> ["+k+","+(k+stringWidth)+"],"+"["+i+","+(i+sourceStr.length())+"]");
+
+						}
+					}
+				}
+
+			}
+			stringWidth++;
+
+		}
+
+		System.out.println("foundCounter: "+foundCounter);
+
+		return foundCounter;
+	}
 }
 
 

@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -165,31 +166,31 @@ class SolutionApplicationTests {
 	@Test
 	void testMigratoryBirds(){
 		int[] i = {1, 4, 4, 4, 5, 3};
-		List<Integer> arr = Arrays.stream(i).boxed().collect(Collectors.toList());
+		List<Integer> arr = Arrays.stream(i).boxed().collect(toList());
         int final1 = SolutionApplication.migratoryBirds(arr);
 		assertTrue(final1==4);
 		int[] i2 = {1, 4, 4, 4, 5, 5, 5, 3};
-		List<Integer> arr2 = Arrays.stream(i2).boxed().collect(Collectors.toList());
+		List<Integer> arr2 = Arrays.stream(i2).boxed().collect(toList());
 		int final2 = SolutionApplication.migratoryBirds(arr2);
 		assertTrue(final2==4);
 
 		int[] i3 = {1, 2,2,2, 4, 4, 4, 5, 5, 5, 3};
-		List<Integer> arr3 = Arrays.stream(i3).boxed().collect(Collectors.toList());
+		List<Integer> arr3 = Arrays.stream(i3).boxed().collect(toList());
 		int final3 = SolutionApplication.migratoryBirds(arr3);
 		assertTrue(final3==2);
 
 		int[] i4 = {1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4};
-		List<Integer> arr4 = Arrays.stream(i4).boxed().collect(Collectors.toList());
+		List<Integer> arr4 = Arrays.stream(i4).boxed().collect(toList());
 		int final4 = SolutionApplication.migratoryBirds(arr4);
 		assertTrue(final4==3);
 
 		int[] i5 = {1, 0};
-		List<Integer> arr5 = Arrays.stream(i5).boxed().collect(Collectors.toList());
+		List<Integer> arr5 = Arrays.stream(i5).boxed().collect(toList());
 		int final5 = SolutionApplication.migratoryBirds(arr5);
 		assertTrue(final5==0);
 
 		int[] i6 = {1, 1,1,1,1,1,1};
-		List<Integer> arr6 = Arrays.stream(i6).boxed().collect(Collectors.toList());
+		List<Integer> arr6 = Arrays.stream(i6).boxed().collect(toList());
 		int final6 = SolutionApplication.migratoryBirds(arr6);
 		assertTrue(final6==1);
 
@@ -199,15 +200,15 @@ class SolutionApplicationTests {
 	@Test
 	void testBonAppetit(){
 		int[] arr = {3, 10, 2, 9};
-		List<Integer> inputList = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		List<Integer> inputList = Arrays.stream(arr).boxed().collect(toList());
 		SolutionApplication.bonAppetit(inputList,1,12);
 
 		int[] arr2 = {3, 10, 2, 9};
-		List<Integer> inputList2 = Arrays.stream(arr2).boxed().collect(Collectors.toList());
+		List<Integer> inputList2 = Arrays.stream(arr2).boxed().collect(toList());
 		SolutionApplication.bonAppetit(inputList2,1,7);
 
 		int[] arr3 = {3, 10, 2, 10};
-		List<Integer> inputList3 = Arrays.stream(arr3).boxed().collect(Collectors.toList());
+		List<Integer> inputList3 = Arrays.stream(arr3).boxed().collect(toList());
 //		inputList3.stream().forEach(System.out::println);
 		SolutionApplication.bonAppetit(inputList3,1,8);
 	}
@@ -259,47 +260,47 @@ class SolutionApplicationTests {
 		String result;
 
 		int[] arr = {1, 1, 4, 1, 1};
-		List<Integer> inputs = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		List<Integer> inputs = Arrays.stream(arr).boxed().collect(toList());
 		result = SolutionApplication.balancedSums(inputs);
 		assertTrue(result.equals("YES"));
 
 		arr = new int[]{5,6,8,11};
-		inputs = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		inputs = Arrays.stream(arr).boxed().collect(toList());
 		result = SolutionApplication.balancedSums(inputs);
 		assertTrue(result.equals("YES"));
 
 		arr = new int[]{1,2,3,5,6};
-		inputs = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		inputs = Arrays.stream(arr).boxed().collect(toList());
 		result = SolutionApplication.balancedSums(inputs);
 		assertTrue(result.equals("YES"));
 
 		arr = new int[]{2,0,0,0};
-		inputs = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		inputs = Arrays.stream(arr).boxed().collect(toList());
 		result = SolutionApplication.balancedSums(inputs);
 		assertTrue(result.equals("YES"));
 
 		arr = new int[]{0,0,2,0};
-		inputs = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		inputs = Arrays.stream(arr).boxed().collect(toList());
 		result = SolutionApplication.balancedSums(inputs);
 		assertTrue(result.equals("YES"));
 
 		arr = new int[]{1,2,3};
-		inputs = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		inputs = Arrays.stream(arr).boxed().collect(toList());
 		result = SolutionApplication.balancedSums(inputs);
 		assertTrue(result.equals("NO"));
 
 		arr = new int[]{1,2,3,3};
-		inputs = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		inputs = Arrays.stream(arr).boxed().collect(toList());
 		result = SolutionApplication.balancedSums(inputs);
 		assertTrue(result.equals("YES"));
 
 		arr = new int[]{1,2,3,3,2,3,4,6,1,4};
-		inputs = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		inputs = Arrays.stream(arr).boxed().collect(toList());
 		result = SolutionApplication.balancedSums(inputs);
 		assertTrue(result.equals("NO"));
 
 		arr = new int[]{0,0,0,2};
-		inputs = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		inputs = Arrays.stream(arr).boxed().collect(toList());
 		result = SolutionApplication.balancedSums(inputs);
 		assertTrue(result.equals("YES"));
 
@@ -448,14 +449,14 @@ class SolutionApplicationTests {
 			elements.put(value,X-value);
 		}
 		elements.keySet().stream().forEach(a->System.out.println(a+ " "+elements.get(a)));
-		List<Double>e0 = elements.keySet().stream().filter(a->a==X).collect(Collectors.toList());
+		List<Double>e0 = elements.keySet().stream().filter(a->a==X).collect(toList());
 		System.out.println("-------------");
 		e0.stream().forEach(System.out::println);
 		e0.stream().forEach(elements::remove);
 		elements.keySet().stream().forEach(a->System.out.println(a+ " "+elements.get(a)));
 		System.out.println("-------------");
 
-		List<Double> e1 = elements.keySet().stream().filter(a->elements.get(elements.get(a))!=null).collect(Collectors.toList());
+		List<Double> e1 = elements.keySet().stream().filter(a->elements.get(elements.get(a))!=null).collect(toList());
 		e1.stream().forEach(System.out::println);
 		e1.stream().forEach(elements::remove);
 		elements.keySet().stream().forEach(a->System.out.println(a+ " "+elements.get(a)));
@@ -767,5 +768,49 @@ class SolutionApplicationTests {
 			assertTrue(b);
 		}
 
+	@Test
+	void testLongestSubarray(){
+//		Integer[] a = {0,1,2,1,2,3};
+//		List<Integer> inputList = Arrays.asList(a);
+//		int max = SolutionApplication.longestSubarray(inputList);
+//		System.out.println(max);
+//
+//		Integer[] a1 = {0,1,2,1,2,3};
+//		List<Integer> inputList1 = Arrays.asList(a1);
+//		int max1 = SolutionApplication.longestSubarray(inputList1);
+//		System.out.println(max1);
 
+		Integer[] a2 = {2,9,5,3,3,1,5,3,5};
+		List<Integer> inputList2 = Arrays.asList(a2);
+		int max2 = SolutionApplication.longestSubarray(inputList2);
+		System.out.println(max2);
+	}
+
+	@Test
+	void testsockMerchant() {
+		int n=9;
+		int[] ar = {10, 20, 20, 10, 10, 30, 50, 10, 20};
+		int a= SolutionApplication.sockMerchant(n,ar);
+		System.out.println(a);
+		assertTrue(a==3);
+
+	}
+
+	@Test
+	void testJumpingOnCloud(){
+
+		SolutionApplication.jumpingOnClouds2(new int[]{0, 0, 1, 0, 0, 1, 0});
+		SolutionApplication.jumpingOnClouds2(new int[]{0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1});
+		SolutionApplication.jumpingOnClouds2(new int[]{0, 0, 1, 0, 0, 1, 0});
+		SolutionApplication.jumpingOnClouds2(new int[]{0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0});
+	}
+
+	@Test
+	void testSherlockAndAnagrams(){
+		SolutionApplication.sherlockAndAnagrams2("cdcd");
+		System.out.println("---------------");
+		SolutionApplication.sherlockAndAnagrams2("ifailuhkqq");
+		System.out.println("---------------");
+		SolutionApplication.sherlockAndAnagrams2("kkkk");
+	}
 }
