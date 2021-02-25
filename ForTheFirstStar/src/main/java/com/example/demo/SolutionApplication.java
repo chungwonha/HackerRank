@@ -1987,6 +1987,7 @@ Returns
 
 	/*
 		This works but this is too slow
+		This is based on counting and putting in a bucket(hashmap)
 	 */
 	static int sherlockAndAnagrams(String s){
 
@@ -2064,6 +2065,7 @@ Returns
 
 	/*
 	This works better
+	this is based on sorting instead counting and putting in a bucket(Hashmap)
 	 */
 	static int sherlockAndAnagrams2(String s){
 
