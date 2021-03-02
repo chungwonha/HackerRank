@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.IntFunction;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
@@ -2137,6 +2138,330 @@ Returns
 
 		return foundCounter;
 	}
+
+	/*
+	Given an array of integers, determine the minimum number of elements to delete to leave only elements of equal value.
+
+Example
+
+Delete the elements and leaving . If both twos plus either the or the are deleted, it takes deletions to leave either or . The minimum number of deletions is
+
+.
+
+Function Description
+
+Complete the equalizeArray function in the editor below.
+
+equalizeArray has the following parameter(s):
+
+    int arr[n]: an array of integers
+
+Returns
+
+    int: the minimum number of deletions required
+
+	 */
+	static int equalizeArray(int[] arr) {
+
+		/*
+		  [1,2,2,3]
+		  delete 1 and 3 are minimal deletion since
+
+		  [1,2,3,3,4,4,4,4,4,5,6,7,8]
+
+			find a number that exists dominantly in the array
+				sort and count at same time for better performance
+
+			if all numbers are equally exists, then that's the minimal number
+
+		 */
+
+
+		HashMap<Integer,Integer> bucket = new HashMap<>();
+
+//		Integer[] boxedArry = Arrays.stream(arr).boxed().toArray(Integer[]::new);
+		for(int i = 0;i<arr.length;i++){
+			bucket.merge(arr[i],1,(oldValue,newValue)->oldValue+1);
+		}
+		int max=0;
+		if(bucket.size()==1) {
+			return 0;
+		}else{
+			bucket.keySet().stream().forEach(a -> System.out.println(bucket.get(a)));
+			max = bucket.keySet().stream().map(a -> bucket.get(a)).reduce(Integer::max).get();
+		}
+		System.out.println(max);
+
+//		Arrays.stream(arr).boxed().toArray(Integer[]::new);
+//
+//		Arrays.sort(boxedArry, new Comparator<Integer>(){
+//			@Override
+//			public int compare(Integer a, Integer b){
+//				System.out.println(a+" : "+b);
+//				if(a>b){
+//					return 1;
+//				}else if(a<b){
+//					return -1;
+//				}else{
+//					return 0;
+//				}
+//			}
+//		});
+//
+//		Arrays.stream(boxedArry).forEach(System.out::println);
+		return arr.length-max;
+
+
+
+	}
+
+	static int[] circularArrayRotation(int[] a, int k, int[] queries){
+
+		LinkedList myList = new LinkedList();
+		for(int each : a) {
+			myList.add(each);
+		}
+
+		myList.stream().forEach(System.out::println);
+		for(int i=k-1;i>=0;i--){
+			myList.add(0,myList.getLast());
+			myList.removeLast();
+		}
+		myList.stream().forEach(System.out::println);
+		int[] result = new int[queries.length];
+		for(int j=0;j<queries.length;j++){
+			result[0]=(Integer)myList.get(queries[j]);
+		}
+
+		return result;
+	}
+
+	static void almostSorted(int[] arr) {
+		/*
+		  2,3,5,4
+	          5,4
+
+	      2,3,8,7,6,5,4
+
+	      indexBucket ={{2,3},{3,4},{4,5},{5,6}} -> reverse
+
+	      			2,3,3,4,4,5,5,6,6,7
+	          	  2:1
+	          	  3:2
+	          	  4:2
+	          	  5:2
+	          	  6:2
+	          	  7:1
+
+		2,3,7,8,6,5,4
+		2,3,8,6,5,4,7
+	    2 5 6 7 9 10
+	    2,3,7,5,6,4,8
+	    indexBucket ={{2,3},{7,8}} -> swap
+
+	    2,3,7,6,5,4,8,9,10,11
+	    out of order index- 2 - 5
+	    and within the segment, first and last
+
+	    2,4,6,8,10,12,13
+	    2,4,12,10,8,6,13 -> reversable
+	    2,3,4,5,13,10,8,6,12 -> not reversable
+130M
+IM->data science
+1/3 wfm
+wfm ->
+drug supply chain
+obi OTF
+
+	    In order to be Sortable, need to meet the below conditions after either swap or reverse
+	    condition 1: the fist item in the segment must be less than the next item after the end of the segment
+	    condition 2: the last item in the segment must be greater than the next item before the first of the segment
+	    notes: no need to find second or third out-of-order segment.
+
+	     check if out of order start
+	     	then mark it
+	     check if out of order ends
+	     	then check if this is segment or not
+	     		if this is segment
+	     			check the 2 conditions can be met
+	     		if this is not segment and more than 2 individual items
+	     			then return false
+	     	    else
+	     	    	continue
+
+		3 2 1 4
+
+		  if 2 values adjacent in indexBucket then swap
+				then check if the swapped values are sorted with surrounding numbers
+		  if 2 values apart in indexBucket and then swap
+		  		ex)2,3,7,5,6,4,8
+	    		   indexBucket ={{2,3},{7,8}} -> swap
+		  if more than 2 values adjacent and they are decreased sequentially then reverse
+		  			2,3,8,7,6,5,4
+		  		   indexBucket ={{2,3},{3,4},{4,5},{5,6}} -> reverse
+		  else NO
+
+			indexBucket[][]
+			check if a[i] < a[i+1] then
+				nothing
+			else
+				put {i,i+1} in indexBucket
+		 */
+
+		Arrays.stream(arr).anyMatch(i->i==2);
+
+		ArrayList<Integer> indexBucket = new ArrayList<>();
+		ArrayList<Integer> valueBucket = new ArrayList<>();
+		boolean reversable = true;
+		boolean swappable = true;
+		boolean outOfOrderStart = false;
+		int lastIndexInBucket=-1;
+
+		if(arr.length==2){
+			if(arr[0]>arr[1]){
+				swappable=true;
+				reversable=false;
+				System.out.println("swap 1 2");
+			}
+		}else {
+
+			for (int i = 0; i < arr.length - 1; i++) {
+
+				if (arr[i] > arr[i + 1]) {
+
+					if (lastIndexInBucket == -1) {
+						lastIndexInBucket = i;
+					} else {
+						//This is to find if indices for out-of-ordered items are adjacent
+						if (i - lastIndexInBucket > 1) {
+							reversable = false;
+						}
+						lastIndexInBucket = i;
+					}
+
+					//if your valueBucket has more than 2 items,
+					//you need to do more than 1 swap.  So swappable is not true
+					//This is added for performance reason.
+					//so that we can return NO right away when both reversable and sortable are false.
+					if (valueBucket.size() > 2) {
+						swappable = false;
+					}
+
+					if (!reversable && !swappable) {
+						System.out.println("no");
+						return;
+					}
+
+					indexBucket.add(i);
+
+					valueBucket.add(arr[i]);
+					if (valueBucket.size() == 1) {
+						outOfOrderStart = true;
+					}
+				}
+			}
+
+			indexBucket.stream().forEach(a -> System.out.println("{" + a + "," + (a + 1) + "}"));
+
+			if (valueBucket.size() == 1) {
+				swappable = false;
+				reversable = false;
+			}
+
+			if (valueBucket.size() > 2) {
+				swappable = false;
+			}
+
+			if (!reversable && !swappable) {
+				System.out.println("no");
+				return;
+			}
+
+			if(swappable){
+				//verify swappable
+				if(indexBucket.get(0)+1==indexBucket.get(1)){
+					//swap
+					System.out.println("swap "+indexBucket.get(0)+" "+indexBucket.get(1));
+				}
+			}else if (reversable) {
+				// check if it's reversable
+				indexBucket.stream().forEach(a->System.out.print(a+" "));
+				System.out.println("");
+				//since the last item of the out-of-ordered is missing because of the items are collected in the loop above
+				//use lastIndexInBucket +1 to get the real last item in the out-of-ordered segment
+				//but need to add 1 more to lastIndexInBucket because the output req starts the arr index from 1, not 0.
+				System.out.println("reverse "+(lastIndexInBucket+2)+" "+(indexBucket.get(0)+1));
+			}
+		}
+
+
+	}
+
+	static int moves (List<Integer>arr){
+		if(arr.size()==2){
+			return arr.get(0)%2!=0&&arr.get(1)%2==0?1:0;
+		}
+		long middlePoint = arr.size()%2==0?arr.size()/2-1:arr.size()/2;
+		long oddNumCountInLeft = arr.stream().limit(middlePoint).filter(q->q%2!=0).count();
+		long evenNumCountInRight = arr.stream().skip(middlePoint+1).filter(q->q%2==0).count();
+
+		return oddNumCountInLeft>evenNumCountInRight?(int)oddNumCountInLeft:(int)evenNumCountInRight;
+	}
+
+	static int countCounterfeit(List<String> serialNumber) {
+
+
+		int totalBillWorth = 0;
+		for(String s : serialNumber){
+			if(s.length()<=12||s.length()>=10) {
+
+				boolean distincEngLetterPass = false;
+				if(s.substring(0,1).matches("[A-Z]")&&
+						s.substring(1,2).matches("[A-Z]")&&
+						s.substring(2,3).matches("[A-Z]")) {
+					String[] sArr = s.substring(0, 3).split("");
+					int i = Arrays.stream(sArr).distinct().toArray().length;
+					if(i==3){
+						distincEngLetterPass=true;
+					}
+				}
+
+				boolean yearPass = false;
+//				if (s.substring(3, 7).matches("[^0-9]")) {
+				try{
+					int year = Integer.parseInt(s.substring(3, 7));
+					if (year < 1900 || year > 2019) {
+						continue;
+					}else{
+						yearPass = true;
+					}
+				}catch(NumberFormatException e){
+					continue;
+				}
+
+				boolean denominationPass = false;
+				String denomination = s.substring(7, s.length()-8+7);
+				int[] denoArr = {10, 20, 50, 100, 200, 500, 1000};
+				for (int eachD : denoArr) {
+					if (Integer.parseInt(denomination) == eachD) {
+						denominationPass = true;
+						break;
+					}
+				}
+
+				boolean lastCharPass = s.substring(s.length() - 1).matches("[A-Z]");
+
+				if (distincEngLetterPass && yearPass && denominationPass && lastCharPass) {
+					totalBillWorth = totalBillWorth + Integer.parseInt(denomination);
+				}
+			}
+
+		}
+		return totalBillWorth;
+
+	}
+
+
 }
 
 

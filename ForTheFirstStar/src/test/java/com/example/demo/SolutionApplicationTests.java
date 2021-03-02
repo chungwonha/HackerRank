@@ -3,6 +3,7 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -812,5 +813,149 @@ class SolutionApplicationTests {
 		SolutionApplication.sherlockAndAnagrams2("ifailuhkqq");
 		System.out.println("---------------");
 		SolutionApplication.sherlockAndAnagrams2("kkkk");
+	}
+
+	@Test
+	void testequalizeArray(){
+		int[] a = {2,1,3,4,3,4,4,7,4,8,4,4,6,7,8,5};
+		int answer = SolutionApplication.equalizeArray(a);
+		System.out.println(answer);
+		int[] a1 = {3, 3, 2, 1, 3};
+		answer = SolutionApplication.equalizeArray(a1);
+		System.out.println(answer);
+		int[] a2 = {1, 1, 1, 1, 1};
+		answer = SolutionApplication.equalizeArray(a2);
+		System.out.println(answer);
+		int[] a3 = {3,3,2,1,3};
+		answer = SolutionApplication.equalizeArray(a3);
+		System.out.println(answer);
+
+	}
+
+	@Test
+	void testcircularArrayRotation(){
+		int[] a = {1,2,3};
+
+		int[] result = SolutionApplication.circularArrayRotation(a,2,new int[]{1});
+		Arrays.stream(result).forEach(System.out::println);
+
+	}
+
+	@Test
+	void testAlmostSorted() {
+//		int[] a ={2,3,8,7,6,5,4};
+//		int[] a ={3,1,2,4};
+//		SolutionApplication.almostSorted(a);
+//
+//		int[] a1 ={2,3,4,7,6,5,8}; //-> Swappable
+//		SolutionApplication.almostSorted(a1);
+//
+//		int[] a2 ={2,3,4,9,7,6,5,10,8};
+//		SolutionApplication.almostSorted(a2);
+//
+//		int[] a3 ={2,3,4,10,9,8,7,6,5};
+//		SolutionApplication.almostSorted(a3);
+//
+//		int[] a4 ={4,3,2,5,10,9,8,7,6};
+//		SolutionApplication.almostSorted(a4);
+
+		int[] a5={1, 5, 4, 3, 2, 6};
+		SolutionApplication.almostSorted(a5);
+
+//		int[] a6={4,2};
+//		SolutionApplication.almostSorted(a6);
+//
+//		int[] a7={3,1,2};
+//		SolutionApplication.almostSorted(a7);
+	}
+
+	@Test
+	void test123(){
+		int[] a2 ={2,3,4,9,7,6,5,10,8};
+
+		ArrayList<Integer> list = new ArrayList<>();
+		for(int i : a2){
+			list.add(i);
+		}
+
+		list.stream().skip(2).limit(4).forEach(j->System.out.print(j+" "));
+
+		System.out.println("");
+
+		list.stream().skip(list.size()-1).forEach(j->System.out.print(j+" "));
+		System.out.println("");
+
+
+		String[] s = {"A","v","G","1","9","0","4","2","0","T"};
+		ArrayList<String> list5 = new ArrayList<>();
+		for(String each  : s){
+			list5.add(each);
+		}
+		list5.stream().limit(3).forEach(j->System.out.print(j+" "));
+		System.out.println(list5.stream().limit(3).allMatch(each->each.matches("[A-Z]")));
+
+		System.out.println("");
+		list5.stream().skip(3).limit(4).forEach(j->System.out.print(j+" "));
+		System.out.println("");
+		list5.stream().skip(list5.size()-1).forEach(j->System.out.print(j+" "));
+		System.out.println("");
+		list5.stream().skip(7).limit(12-list5.size()).forEach(j->System.out.print(j+" "));
+		System.out.println("");
+		int ans = SolutionApplication.moves(list);
+		assertTrue(ans==3);
+
+		int[] a3 ={1,2};
+
+		ArrayList<Integer> list2 = new ArrayList<>();
+		for(int i : a3){
+			list2.add(i);
+		}
+
+		ans = SolutionApplication.moves(list2);
+		System.out.println(ans);
+		assertTrue(ans==1);
+
+
+		String ss = "AVG190420z";
+		System.out.println(ss.substring(0,3));
+		System.out.println(ss.substring(3,7));
+		System.out.println(ss.substring(7,7+12-ss.length()));
+
+		System.out.println("--->"+ss.substring(ss.length()-1));
+		if(ss.substring(ss.length()-1).matches("[A-Z]")){
+			System.out.println("one last char match");
+		}else{
+			System.out.println("one last char not match");
+		}
+
+		boolean yearPass = false;
+		if(!ss.substring(3,7).matches("[^0-9]")) {
+			System.out.println(ss.substring(3,7));
+			int year =  Integer.parseInt(ss.substring(3,7));
+			if(year>=1904 && year <=2019){
+				yearPass = true;
+				System.out.println("year: "+year+" pass");
+			}else{
+				System.out.println(" year not pass");
+			}
+		}
+
+
+	}
+
+	@Test
+	void test777(){
+		ArrayList<String> list2 = new ArrayList<>();
+		list2.add("AVG190420Z");
+//		list2.add("RED190250E");
+//		list2.add("RRED190250E");
+//		list2.add("TYU20121000E");
+//		list2.add("TYU2012100E");
+		list2.add("AbC200010E");
+		int ans = SolutionApplication.countCounterfeit(list2);
+		System.out.println(ans);
+		System.out.println("ABc".matches("[a-z]"));
+		System.out.println("ABc".matches("[A-Z]"));
+		System.out.println("A".matches("[A-Z]"));
 	}
 }
