@@ -958,4 +958,19 @@ class SolutionApplicationTests {
 		System.out.println("ABc".matches("[A-Z]"));
 		System.out.println("A".matches("[A-Z]"));
 	}
+
+	@Test
+	void testBigSortings(){
+		String[] inputs = {
+				"1",
+				"2",
+				"100",
+				"12303479849857341718340192371",
+				"3084193741082937",
+				"3084193741082938",
+				"111",
+				"200"};
+		String[] results =  SolutionApplication.bigSorting(inputs);
+		Arrays.stream(results).forEach(System.out::println);
+	}
 }

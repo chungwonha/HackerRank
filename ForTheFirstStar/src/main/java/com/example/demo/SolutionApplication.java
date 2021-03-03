@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static jdk.nashorn.internal.objects.NativeArray.reduce;
+import static jdk.nashorn.internal.objects.NativeArray.sort;
 
 @SpringBootApplication
 public class SolutionApplication {
@@ -2460,6 +2461,115 @@ obi OTF
 		return totalBillWorth;
 
 	}
+
+
+	static String[] bigSorting(String[] unsorted) {
+
+//		List<String> bigNumList = Arrays.stream(unsorted).filter(s->s.length()>10).collect(Collectors.toList());
+//		List<String> smallNumList = Arrays.stream(unsorted).filter(s->s.length()<=10).collect(Collectors.toList());
+//
+//		String[] smallNumArry = smallNumList.stream().sorted(new Comparator<String>() {
+//			@Override
+//			public int compare(String o1, String o2) {
+//				int i1 = Integer.parseInt(o1);
+//				int i2 = Integer.parseInt(o2);
+//				return Integer.compare(i1,i2);
+//
+//			}
+//		}).toArray(s->new String[smallNumList.size()]);
+//
+//	   String[] bigNumArry = bigNumList.stream().sorted(new Comparator<String>() {
+//			@Override
+//			public int compare(String o1, String o2) {
+//				if(o1.length()>o2.length()){
+//					return 1;
+//				}else if(o1.length()<o2.length()){
+//					return -1;
+//				}else{
+//					BigInteger bi1 = new BigInteger(o1);
+//					BigInteger bi2 = new BigInteger(o2);
+//					return bi1.compareTo(bi2);
+//				}
+//
+//			}
+//		}).toArray(s->new String[bigNumList.size()]);
+//
+//		Arrays.stream(bigNumArry).forEach(System.out::println);
+//		String[] finalSort = new String[unsorted.length];
+//
+//		for(int i=0;i<smallNumArry.length;i++){
+//			finalSort[i]=smallNumArry[i];
+//		}
+//
+//		for(int i=0;i<bigNumArry.length;i++){
+//			finalSort[i+smallNumArry.length]=bigNumArry[i];
+//		}
+
+//		String[] sortedArry = Arrays.stream(unsorted).sorted(new Comparator<String>() {
+//			@Override
+//			public int compare(String o1, String o2) {
+//				if(o1.length()>o2.length()){
+//					return 1;
+//				}else if(o1.length()<o2.length()){
+//					return -1;
+//				}else{
+//					if(o1.length()<10){
+//						int i1 = Integer.parseInt(o1);
+//						int i2 = Integer.parseInt(o2);
+//						return Integer.compare(i1,i2);
+//					}else {
+//						BigInteger bi1 = new BigInteger(o1);
+//						BigInteger bi2 = new BigInteger(o2);
+//
+//						return bi1.compareTo(bi2);
+//					}
+//				}
+//
+//			}
+//		}).toArray(s->new String[unsorted.length]);
+
+//		Arrays.parallelSort(unsorted,(o1, o2) -> {
+//			if(o1.length()>o2.length()){
+//				return 1;
+//			}else if(o1.length()<o2.length()){
+//				return -1;
+//			}else{
+//				if(o1.length()<10){
+//					int i1 = Integer.parseInt(o1);
+//					int i2 = Integer.parseInt(o2);
+//					return Integer.compare(i1,i2);
+//				}else {
+//					BigInteger bi1 = new BigInteger(o1);
+//					BigInteger bi2 = new BigInteger(o2);
+//
+//					return bi1.compareTo(bi2);
+//				}
+//			}
+//		});
+
+		Arrays.sort(unsorted,(o1, o2) -> {
+			if(o1.length()>o2.length()){
+				return 1;
+			}else if(o1.length()<o2.length()){
+				return -1;
+			}else{
+				if(o1.equals(o2)){
+					return 0;
+				}else {
+					BigInteger bi1 = new BigInteger(o1);
+					BigInteger bi2 = new BigInteger(o2);
+
+					return bi1.compareTo(bi2);
+				}
+			}
+		});
+		return unsorted;
+
+//		return finalSort;
+	}
+
+
+
 
 
 }
