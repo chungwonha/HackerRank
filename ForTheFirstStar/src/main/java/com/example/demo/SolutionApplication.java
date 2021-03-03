@@ -2568,6 +2568,43 @@ obi OTF
 //		return finalSort;
 	}
 
+	/*
+		Find and print all subsets of a given set! (Given as an array.)
+		[1,2,3]
+		Null
+		1
+		2
+		3
+		1,2
+		1,3,
+		2,3,
+		1,2,3
+
+		Index
+		i=0
+			j=0
+			j=1
+			j=2
+		i=1
+			j=1
+			j=2
+		i=2
+			j=2
+
+	*/
+	static void allSubsetOfASet(int[] input){
+
+		for(int i=0;i<input.length;i++){
+			for(int j=i;j<input.length;j++) {
+				for(int k = i;k<=j;k++) {
+					System.out.print(input[k] + ",");
+				}
+				System.out.println("");
+			}
+		}
+
+	}
+
 
 
 

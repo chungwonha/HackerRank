@@ -973,4 +973,10 @@ class SolutionApplicationTests {
 		String[] results =  SolutionApplication.bigSorting(inputs);
 		Arrays.stream(results).forEach(System.out::println);
 	}
+
+	@Test
+	void testAllSubsetOfASet(){
+		int[] a = {1,2,3};
+		SolutionApplication.allSubsetOfASet(a);
+	}
 }
