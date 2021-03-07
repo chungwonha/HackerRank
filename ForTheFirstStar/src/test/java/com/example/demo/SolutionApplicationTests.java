@@ -979,4 +979,17 @@ class SolutionApplicationTests {
 		int[] a = {1,2,3};
 		SolutionApplication.allSubsetOfASet(a);
 	}
+
+	@Test
+	void testactivityNotifications(){
+		int[] input = {2, 3, 4, 2, 3 ,6 ,8 ,4, 5};
+		int ans = SolutionApplication.activityNotifications(input,5);
+		System.out.println(ans);
+	}
+
+	@Test
+	void testbeautifulDays(){
+		int ans = SolutionApplication.beautifulDays(23,26,6);
+		assertTrue(ans==2);
+	}
 }

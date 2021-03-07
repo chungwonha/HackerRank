@@ -2608,8 +2608,222 @@ obi OTF
 	}
 
 
+	// Complete the activityNotifications function below.
+    /*
+    9 5 -> odd
+    2 3 4 2 3 6 8 4 5
+    2 3 4 2 3
+    2 2 3 3 4     -> 3 -> (2*3)<4 false-> no notifcation
+      2 3 3 4  -> 3 -> (2*3)<5 false->  no notifcation
+        3 3 4 4 5 -> 4 ->(2*4)<6 ->  no notifcation
+
+    2 3 4 2 3 6 8 4 5
+    2 3 4 2 3
+    2 2 3 3 4
+      2 3 3 4 6
+        3 3 4 6 8
+
+    */
+	static int activityNotifications(int[] expenditure, int d) {
+
+		int notificationCounter=0;
+		LinkedList<Integer> sortedList = new LinkedList<>();
+		LinkedList<Integer> subArryList = new LinkedList<>();
+		for(int i=0;i<expenditure.length;i++){
+
+			if(i+d==expenditure.length){
+				break;
+			}
+				if (i == 0) {
+					for(int j=0;j<d;j++){
+						subArryList.add(expenditure[i+j]);
+					}
+					subArryList.stream().sorted().forEach(a->sortedList.add(a));
+				} else {
+					int newNum = expenditure[i + d -1];
+					sortedList.removeFirstOccurrence(subArryList.getFirst());
+					subArryList.add(newNum);
+					subArryList.removeFirst();
+					if(newNum>=sortedList.getLast()){
+						sortedList.addLast(newNum);
+					}else if(newNum<=sortedList.getFirst()){
+						sortedList.addFirst(newNum);
+					}else{
+						for(int j=0;j<sortedList.size();j++){
+							if(sortedList.get(j)>newNum){
+								sortedList.add(j,newNum);
+								break;
+							}
+						}
+
+					}
+				}
+
+			System.out.println("-----------");
+			subArryList.stream().forEach(a->System.out.print(a+" "));
+			System.out.println("<--");
+			sortedList.stream().forEach(a->System.out.print(a+" "));
+			System.out.println("-----------");
 
 
+			System.out.println("");
+				double median;
+				if (d % 2 == 0) {
+					//even number
+					int num = d / 2;
+					median = (sortedList.get(num) + sortedList.get(num - 1)) / 2.0;
+				} else {
+					//odd number
+					median = sortedList.get(Math.round(d / 2));
+				}
+
+				if ((2 * median) <= expenditure[d + i]) {
+					notificationCounter++;
+				}
+
+		}
+		return notificationCounter;
+
+	}
+
+	/*
+		4 x 4
+		(1,1)(1,2)(1,3)(1,4)
+		(2,1)(2,2)(2,3)(2,4)
+		(3,1)(3,2)(3,3)(3,4)
+		(4,1)(4,2)(4,3)(4,4)
+
+		7 x 6
+		(1,1)(1,2)(1,3)(1,4)(1,5)(1,6)
+		(2,1)(2,2)(2,3)(2,4)(2,5)(2,6)
+		(3,1)(3,2)(3,3)(3,4)(3,5)(3,6)
+		(4,1)(4,2)(4,3)(4,4)(4,5)(4,6)
+		(5,1)(5,2)(5,3)(5,4)(5,5)(5,6)
+		(6,1)(6,2)(6,3)(6,4)(6,5)(6,6)
+		(7,1)(7,2)(7,3)(7,4)(7,5)(7,6)
+
+		6 x 7
+		(1,1)(1,2)(1,3)(1,4)(1,5)(1,6)(1,7)
+		(2,1)(2,2)(2,3)(2,4)(2,5)(2,6)(2,7)
+		(3,1)(3,2)(3,3)(3,4)(3,5)(3,6)(3,7)
+		(4,1)(4,2)(4,3)(4,4)(4,5)(4,6)(4,7)
+		(5,1)(5,2)(5,3)(5,4)(5,5)(5,6)(5,7)
+		(6,1)(6,2)(6,3)(6,4)(6,5)(6,6)(6,7)
+
+		(1,1)(2,1)(3,1)(4,1)(5,1)(6,1)(6,2)(6,3)(6,4)(6,5)(6,6)(6,7)(5,7)(4,7)(3,7)(2,7)(1,7)(1,6)(1,5)(1,4)(1,3)(1,2)
+		(2,2)(3,2)(4,2)(5,2)(5,3)(5,4)(5,5)(5,6)(4,6)(3,6)(2,6)(2,5)(2,4)(2,3)(2,2)
+		(3,3)(4,3)(5,3)(5,4)(5,5)(4,5)(3,5)(3,4)
+
+		Staring pt (most upper left corner) = (1,1),(2,2),(3,3)...
+
+		min(m,n)/2 -> # sets of numbers to rotate
+		Most outer =
+			starting => x=1,y=1
+			down => x+1, y
+			right => xm,y+1
+			up=> x-1,yn
+			left=>x,y-1
+		2nd inner circle =
+			starting => x=2,y=2
+			down => x+1 until (x+1) == m-1, y
+			right => xm-1,y+1 until (y+1)==n-1
+			up=> x-1 until (x-1)==starting pt x, yn
+			left=>x,y-1 until (y-1)==starting pt y
+
+		when at x1,y1
+		temp1 = (x2,y1)
+		(x2,y1)=(x1,y1)
+		temp2 = (x3,y1)
+		(x3,y1)=temp1
+		temp3 = (x4,y1)
+		(x3,y1)=temp2
+
+		int rotateCounter = min(m,n)/2;
+
+		for(int i=0;i<rotateCounter;i++){
+
+			int x =rotateCounter;
+			int y =rotateCounter;
+
+			down (x,y,oldtemp)
+				target = x+1,y
+				newtemp = target
+				target = oldtemp
+				until x==m-i
+			right (x,y,oldtemp)
+			    target = x,y+1
+				newtemp = target
+				target = oldtemp
+				until y==n-i
+			up(x,y,oldtemp)
+				target = x-1,y
+				newtemp = target
+				target = oldtemp
+				until x-1==starting pt x
+			left(x,y,oldtemp)
+				target = x,y-1
+				newtemp = target
+				target = oldtemp
+				until y-1==starting pt y
+
+		}
+
+
+
+	 */
+	static void matrixRotation(List<List<Integer>> matrix, int r) {
+
+
+
+	}
+
+	// Complete the beautifulDays function below.
+	/*
+		12
+		21
+		 9
+
+		34
+		43
+		 9
+
+		56
+		65
+		 9
+
+		12
+		21
+		 9
+
+		17
+		71
+		54
+
+		 130
+		 31
+		  99
+
+		 145
+		 541
+		 396
+
+	 */
+	static int beautifulDays(int i, int j, int k) {
+
+		int beautifulDayCounter=0;
+		while(i<=j){
+			String tempStr = Integer.toString(i);
+			StringBuffer sb = new StringBuffer(tempStr);
+			int reverseInt = Integer.parseInt(sb.reverse().toString());
+			if(Math.abs(i-reverseInt)%k==0){
+				beautifulDayCounter++;
+			}
+			i++;
+		}
+
+		return beautifulDayCounter;
+
+	}
 
 }
 
