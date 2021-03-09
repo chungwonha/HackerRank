@@ -2825,6 +2825,19 @@ obi OTF
 
 	}
 
+	static int lonelyInteger(int[] a){
+		HashMap<Integer,Integer> bucket = new HashMap<>();
+
+		for(int i=0;i<a.length;i++){
+
+			bucket.merge(a[i],1,(oldV,newV)->oldV+1);
+
+		}
+
+		int ans = bucket.keySet().stream().filter(k->bucket.get(k)==1).collect(Collectors.toList()).get(0);
+		return ans;
+	}
+
 }
 
 

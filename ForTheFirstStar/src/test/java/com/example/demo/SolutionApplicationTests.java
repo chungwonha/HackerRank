@@ -992,4 +992,11 @@ class SolutionApplicationTests {
 		int ans = SolutionApplication.beautifulDays(23,26,6);
 		assertTrue(ans==2);
 	}
+
+	@Test
+	void testlonelyInteger(){
+		int ans = SolutionApplication.lonelyInteger(new int[]{0, 0, 1, 2, 1});
+		assertTrue(ans==2);
+
+	}
 }
