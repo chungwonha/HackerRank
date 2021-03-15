@@ -2838,6 +2838,113 @@ obi OTF
 		return ans;
 	}
 
+	static void test(){
+		int[][] cases = {{1,2,3},{3,4,5}};
+		for (int i=0;i<cases.length;i++){
+
+		}
+	}
+
+	/*
+		{1,2,3,4,5,6,7}
+		loop each number and find divisible or not
+	 */
+	static void findPrime(int n){
+		int primeCounter=0;
+		for(int i=2;i<=n;i++){
+			int counter = 0;
+			for(int j=2;j<=n;j++){
+				if(i%j==0){
+					counter++;
+				}
+			}
+
+			if(counter==1){
+				primeCounter++;
+			}
+		}
+
+		System.out.println(primeCounter);
+
+	}
+	static void play(){//String playerOneShips, List<String> playerTwoGuesses){
+		HashMap<String,String[]> board = new HashMap<>();
+		String[] a = {"A","B","C","D","E","F"};
+
+		for(int i=0;i<a.length;i++){
+			board.put(a[i],new String[6]);
+		}
+
+//		String[] p1Inputs = playerOneShips.split(" ");
+		String s = "A1";
+		String s2 = "A3";
+		String key = s.split("")[0];
+		int value = Integer.parseInt(s.split("")[1]);
+		String[] aa = board.get(key);
+		aa[value] = "x";
+		board.put(key,aa);
+
+		board.keySet().stream().forEach(key1->{
+				String[] each =board.get(key1);
+				for(int j=0;j<a.length;j++) {
+					System.out.println(each[j]);
+				}
+			}
+		);
+	}
+
+	/*
+	Hash Tables: Ice Cream Parlor
+	 */
+	static void whatFlavor(int[] cost, int money){
+		/*
+                5
+                1 4 5 3 2
+                1 4 5 3 2
+                1 4
+                1 5
+                1 3
+                1 2
+                    4 5
+                    4 3
+                    4 2
+                        5 3
+                        5 2
+                            3 2
+
+
+                i=0
+                j=0
+                if i==j continue
+                if i!=j then
+                    if(cost[i]+cost[j]==money)
+                        System.out.println()
+
+                7
+                9 3 4 9 6 7 8
+                9 3 4 9 6 7 8
+                i=9 skip
+                i=3
+                    4 9 6 7 8
+            */
+
+		HashMap<Integer,Integer> bucket = new HashMap<>();
+
+		for(int i=0;i<cost.length;i++){
+			if(cost[i]<money){
+				int diff = money-cost[i];
+				if(bucket.get(diff)!=null){
+					int j = bucket.get(diff);
+					System.out.println((j+1)+" "+(i+1));
+					break;
+				}else{
+					bucket.put(cost[i],i);
+				}
+
+			}
+		}
+	}
+
 }
 
 

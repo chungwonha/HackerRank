@@ -999,4 +999,14 @@ class SolutionApplicationTests {
 		assertTrue(ans==2);
 
 	}
+
+	@Test
+	void testFindPrime(){
+		SolutionApplication.findPrime(15);
+	}
+
+	@Test
+	void testPlay(){
+		SolutionApplication.play();
+	}
 }
