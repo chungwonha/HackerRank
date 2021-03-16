@@ -1009,4 +1009,13 @@ class SolutionApplicationTests {
 	void testPlay(){
 		SolutionApplication.play();
 	}
+
+	@Test
+	void testPermutationEquation(){
+
+		int[] results = SolutionApplication.permutationEquation(new int[]{4, 3, 5, 1, 2});
+
+		assertArrayEquals(new int[]{1,3,5,4,2},results);
+
+	}
 }

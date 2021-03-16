@@ -2945,6 +2945,39 @@ obi OTF
 		}
 	}
 
+	//Sequence Equation
+	// Complete the permutationEquation function below.
+	static int[] permutationEquation(int[] p) {
+            /*
+                4 3 5 1 2
+                x=1 -> p[4]  4->p[1] ->1
+                x=2 -> p[5]  5->p[3] ->3
+
+            */
+		int[] results = new int[p.length];
+		for(int x=1;x<=p.length;x++){
+
+			for(int i=0;i<p.length;i++){
+
+				if(p[i]==x){
+
+					for(int k=0;k<p.length;k++){
+
+						if(p[k]==i+1){
+							results[x-1]=k+1;
+							break;
+						}
+					}
+					break;
+				}
+			}
+
+
+		}
+		return results;
+
+	}
+
 }
 
 
