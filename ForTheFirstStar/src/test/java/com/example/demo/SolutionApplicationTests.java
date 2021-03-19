@@ -1017,5 +1017,7 @@ class SolutionApplicationTests {
 
 		assertArrayEquals(new int[]{1,3,5,4,2},results);
 
+		String s = "a";
+		System.out.println((int)s.toCharArray()[0]);
 	}
 }

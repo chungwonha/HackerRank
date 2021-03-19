@@ -2978,6 +2978,32 @@ obi OTF
 
 	}
 
+	//Jumping on the Clouds: Revisited
+	static int jumpingOnClouds(int[] c, int k) {
+        /*
+            (i+k)%n
+            0+2%7=2
+            2+2%7=4
+            2+2%7=4
+
+            7+2%7=2
+        */
+		int e = 100;
+		int i = 0;
+		while(1==1){
+			i=(i+k)%c.length;
+			if(c[i]==0){
+				e=e-1;
+			}else if(c[i]==1){
+				e=e-3;
+			}
+			if(i==0){
+				break;
+			}
+		}
+		return e;
+	}
+
 }
 
 
