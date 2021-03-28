@@ -3004,6 +3004,49 @@ obi OTF
 		return e;
 	}
 
+	static String appendAndDelete(String s, String t, int k) {
+
+		char[] s_arr;
+		char[] t_arr = t.toCharArray();
+
+		int deleteCounter = 0;
+		if(s.length()<t.length()){
+			s_arr = new char[s.length()+(t.length()-s.length())];
+			System.arraycopy(s.toCharArray(),0,s_arr,0,s.length());
+		}else{
+			s_arr = s.toCharArray();
+		}
+
+
+		for(int i=0;i<s.length();i++){
+			if(s_arr[i]!=t_arr[i]){
+				deleteCounter = s.length()-i;
+				break;
+			}
+			if(i+1>t_arr.length-1){
+				deleteCounter = s.length()-t_arr.length;
+				break;
+			}
+		}
+
+
+		int appendNum = t_arr.length-(s_arr.length-deleteCounter);
+
+
+		return deleteCounter+appendNum!=k?"No":"Yes";
+	}
+
+	static void extraLongFactorials(int n) {
+
+		BigInteger ans = BigInteger.valueOf((long)n);
+
+		for(int i=n-1;i>=1;i--){
+			ans = ans.multiply(BigInteger.valueOf(i));
+		}
+
+		System.out.println(ans);
+	}
+
 }
 
 

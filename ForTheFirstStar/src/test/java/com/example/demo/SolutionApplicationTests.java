@@ -1020,4 +1020,25 @@ class SolutionApplicationTests {
 		String s = "a";
 		System.out.println((int)s.toCharArray()[0]);
 	}
+
+	@Test
+	void testappendAndDelete(){
+		String s = SolutionApplication.appendAndDelete("hackerhappy","hackerrank",9);
+		System.out.println(s);
+		s = SolutionApplication.appendAndDelete("aba","aba",7);
+		System.out.println(s);
+		s = SolutionApplication.appendAndDelete("zzzzz","zzzzzzz",4);
+		System.out.println(s);
+		s = SolutionApplication.appendAndDelete("ashley","ash",2);
+		System.out.println(s);
+
+
+
+
+	}
+
+	@Test
+	void testextraLongFactorials(){
+		SolutionApplication.extraLongFactorials(25);
+	}
 }
