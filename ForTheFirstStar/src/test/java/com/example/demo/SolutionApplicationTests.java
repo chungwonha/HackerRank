@@ -1041,4 +1041,36 @@ class SolutionApplicationTests {
 	void testextraLongFactorials(){
 		SolutionApplication.extraLongFactorials(25);
 	}
+
+	@Test
+	void testTimeInWords(){
+		String s = SolutionApplication.timeInWords(5,23);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(5,2);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(5,1);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(5,32);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(5,59);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(5,45);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(5,15);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(5,30);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(7,27);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(7,00);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(7,12);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(7,48);
+		System.out.println(s);
+		s = SolutionApplication.timeInWords(11,48);
+		System.out.println(s);
+
+
+	}
 }

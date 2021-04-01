@@ -3047,6 +3047,66 @@ obi OTF
 		System.out.println(ans);
 	}
 
+	static String timeInWords(int h, int m) {
+		String[] past_to={"past","to"};
+		String[] teens={"ten","twenty","half"};
+		String[] ones={"one","two","three","four","five","six","seven","eight","nine"};
+		String[] teens_3={"eleven","twelve","thirteen"};
+
+		String pastTo;
+		String return_s="";
+		if(m==0){
+			return_s = ones[h-1]+" o' clock";
+		}else if(m>=1 && m<=30 ){
+			pastTo = past_to[0];
+			String s = Integer.toString(m);
+			if(s.length()>1) {
+				String hour =h>10?teens[h-11]:ones[h-1];
+				if(m==15){
+					return_s = "quarter "+pastTo+" "+hour;
+				}else if(m==30){
+					return_s = "half "+pastTo+" "+hour;
+				}else {
+					String a = teens[Integer.parseInt(s.split("")[0]) - 1];
+					String b = ones[Integer.parseInt(s.split("")[1]) - 1];
+					if(m>=11&&m<=13){
+						return_s = teens_3[m-11]+" minutes "+pastTo+" "+hour;
+					}else {
+						return_s = a + " " + b + " minutes " + pastTo + " " + hour;
+					}
+				}
+
+			}else if(s.length()==1) {
+				String b = ones[Integer.parseInt(s.split("")[0]) - 1];
+				return_s = b+(b.equals("one")?" minute ":" minutes ")+pastTo+" "+ones[h-1];
+			}
+
+		}else if(m>30){
+			pastTo = past_to[1];
+			int newMin = 60-m;
+			String s = Integer.toString(newMin);
+			String hour =h>=10?teens_3[h-10]:ones[h];
+
+			if(s.length()>1) {
+				if(m==45) {
+					return_s = "quarter "+ pastTo + " " + hour;
+				}else if(newMin>=11&&newMin<=13){
+					return_s = teens_3[newMin-11]+" minutes "+pastTo+" "+hour;
+				}else{
+					String a = teens[Integer.parseInt(s.split("")[0]) - 1];
+					String b = ones[Integer.parseInt(s.split("")[1]) - 1];
+					return_s = a + " " + b + " minutes " + pastTo + " " + hour;
+				}
+			}else if(s.length()==1) {
+					String b = ones[Integer.parseInt(s.split("")[0]) - 1];
+					return_s = b+(b.equals("one")?" minute ":" minutes ")+pastTo+" "+hour;
+			}
+		}
+
+		return return_s;
+
+	}
+
 }
 
 
