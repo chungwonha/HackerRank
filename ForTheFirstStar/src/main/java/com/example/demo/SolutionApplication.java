@@ -3107,6 +3107,28 @@ obi OTF
 
 	}
 
+	static int[] serviceLane(int[] width, int[][] cases) {
+
+
+		int[] results = new int[cases.length];
+		int counter=0;
+		for(int i=0;i<cases.length;i++){
+
+			int startingPt = cases[i][0];
+			int endingPt = cases[i][1];
+			int min = width[startingPt];
+			for(int j = startingPt;j<=endingPt;j++){
+				if(min>width[j]){
+					min = width[j];
+				}
+			}
+			results[counter]=min;
+			counter++;
+		}
+		return results;
+
+	}
+
 }
 
 
