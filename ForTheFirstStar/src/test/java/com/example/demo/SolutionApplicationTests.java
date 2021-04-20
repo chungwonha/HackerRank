@@ -1073,4 +1073,44 @@ class SolutionApplicationTests {
 
 
 	}
+
+	@Test
+	void testorganizingContainers(){
+//		int q=3;
+//		int[][] c = {{1, 3, 1},{2, 1, 2},{3, 3, 3}};
+//		String s = SolutionApplication.organizingContainers(q,c);
+//		System.out.println(s);
+//
+//		q=2;
+//		int[][] d={{1,1},{1,1}};
+//		s = SolutionApplication.organizingContainers(q,d);
+//		System.out.println(s);
+//		q=2;
+//		int[][] e={{0,2},{1,1}};
+//		s = SolutionApplication.organizingContainers(q,e);
+//		System.out.println(s);
+//
+//		q=2;
+//		int[][] f = {{999336263, 998799923},
+//					{998799923, 999763019}};
+//		s = SolutionApplication.organizingContainers(q,f);
+//		System.out.println(s);
+
+		int q=4;
+		int[][] g = {{997612619, 934920795, 998879231, 999926463},
+					 {960369681, 997828120, 999792735, 979622676},
+					 {999013654, 998634077, 997988323, 958769423},
+					 {997409523, 999301350, 940952923, 993020546}};
+		String s = SolutionApplication.organizingContainers(q,g);
+		System.out.println(s);
+	}
+
+	@Test
+	void testTheLoverLetterMystery(){
+		int a =SolutionApplication.theLoverLetterMystery("cda");
+		System.out.println(a);
+
+		int b =SolutionApplication.theLoverLetterMystery("abcd");
+		System.out.println(b);
+	}
 }

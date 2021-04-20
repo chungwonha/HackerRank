@@ -3129,6 +3129,61 @@ obi OTF
 
 	}
 
+	static String organizingContainers(int q,int[][] container) {
+
+		long[] swapCounterMap = new long[container[0].length];
+		int max=0;
+		long sum=0;
+		int zeroCounter=0;
+		for(int i=0;i<container.length;i++){
+		max=0;
+		sum=0;
+			zeroCounter=0;
+			for(int j=0;j<container[i].length;j++){
+				System.out.print(container[i][j]+" ");
+				sum=sum+container[i][j];
+				if(max<container[i][j]){
+					max=container[i][j];
+				}
+				if(container[i][j]==0){
+					zeroCounter++;
+				}
+			}
+
+			if(zeroCounter==container[i].length-1){
+				swapCounterMap[i]=0;
+			}else{
+				swapCounterMap[i]=sum-max;
+			}
+		}
+
+		long swappable = Arrays.stream(swapCounterMap).filter(each->each!=0).count();
+		if(swappable==1){
+			return "Impossible";
+		}
+		long a = 0;
+		for(int k=0;k<swapCounterMap.length;k++){
+			if(k==0) {
+				a = swapCounterMap[k];
+			}else{
+				a = a-swapCounterMap[k];
+			}
+		}
+
+		return Math.abs(a)>q?"Impossible":"Possible";
+	}
+
+	static int theLoverLetterMystery(String s){
+		char[] chars = s.toCharArray();
+		int sum = 0;
+		double d = chars.length%2!=0?chars.length/2-0.5:chars.length/2-1;
+		for(int i=0;i<=(int)d;i++){
+			sum = sum + Math.abs(chars[i]-chars[chars.length-i-1]);
+			System.out.println(chars[i]+" "+chars[chars.length-i-1]+" "+sum);
+		}
+		return sum;
+	}
+
 }
 
 
