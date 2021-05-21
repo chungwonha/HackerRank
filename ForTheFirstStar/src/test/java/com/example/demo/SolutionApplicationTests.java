@@ -1113,4 +1113,41 @@ class SolutionApplicationTests {
 		int b =SolutionApplication.theLoverLetterMystery("abcd");
 		System.out.println(b);
 	}
+
+	@Test
+	void testAnagram(){
+		int ans = SolutionApplication.anagram("aaabbb");
+		System.out.println(ans);
+	}
+
+	@Test
+	void testStones(){
+		List<Integer> list1 = SolutionApplication.stones(7,9,11);
+		list1.stream().forEach(System.out::println);
+//		System.out.println("---------------");
+//		list1 = SolutionApplication.stones(2,2,3);
+//		list1.stream().forEach(System.out::println);
+		System.out.println("---------------");
+		list1=SolutionApplication.stones(3,1,2);
+		list1.stream().forEach(System.out::println);
+		System.out.println("---------------");
+		list1=SolutionApplication.stones(4,10,100);
+		list1.stream().forEach(System.out::println);
+		System.out.println("---------------");
+		list1=SolutionApplication.stones(58,69,24);
+		list1.stream().forEach(System.out::println);
+		System.out.println("---------------");
+		list1=SolutionApplication.stones(5,3,23);
+		list1.stream().forEach(System.out::println);
+		System.out.println("---------------");
+		list1=SolutionApplication.stones(12,73,82);
+		list1.stream().forEach(System.out::println);
+		System.out.println("---------------");
+		list1=SolutionApplication.stones(83,86,81);
+		list1.stream().forEach(System.out::println);
+		System.out.println("---------------");
+		list1=SolutionApplication.stones(73,25,25);
+		list1.stream().forEach(System.out::println);
+	}
+
 }

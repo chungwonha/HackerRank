@@ -3184,6 +3184,120 @@ obi OTF
 		return sum;
 	}
 
+	public static int anagram(String s) {
+
+		if(s.length()%2!=0){
+			return -1;
+		}
+
+		HashMap<String, Integer> bucket1=new HashMap<>();
+		HashMap<String, Integer> bucket2=new HashMap<>();
+		String[] strings = s.split("");
+		int middleStart = strings.length/2;
+		Integer diff = 0;
+		for(int i=0;i<middleStart;i++){
+			bucket1.merge(strings[i],1,(oldValue, newValue)->oldValue+1);
+			bucket2.merge(strings[middleStart+i],1,(oldValue, newValue)->oldValue+1);
+		}
+
+		Iterator<String> bk = bucket1.keySet().iterator();
+		while(bk.hasNext()){
+			String k = bk.next();
+			int b1 = bucket1.get(k);
+			int b2 = bucket2.containsKey(k)?bucket2.get(k):0;
+			diff = diff + Math.abs(b1-b2);
+		}
+
+		return diff;
+		/*
+		xaxbbbxx
+		x 2 a 1 b 1
+		b 2 x 2
+
+
+		mvdalvk iopaufl
+		m 1 v 2 d 1 k 1 	   a 1 l 1
+		i 1 o 1 p 1 u 1 f 1    a 1 l 1
+
+		m 1
+		v 2
+
+
+		 */
+	}
+
+	/*
+		n=2
+		x, y
+		|x-y| = 2 or 3
+
+		n=3
+		a=1
+		b=2
+		p=[1,1],[1,2][2,1],[2,2]
+		   2      3    3     4
+		   n-3=0
+		|x-y|=1 or 2
+		0,1,2
+		0,1,3
+		0,2,3
+		0,2,4
+
+		n=4
+		a=10
+		b=100
+		0,10,20,30 ->10,10     ->20
+		0,10,20,120 -> 10,100   ->110
+		0,10,110,120-> 100,10   ->110
+		0,10,110.210 -> 100,100  -> 110
+		0,100,110,120->10,10     -> 20
+		0,100,110,210->10,100     ->110
+		0,100,200,210->100,10     ->110
+		0,100,200,300->100,100     ->200
+		30,120,210,300
+
+		n-3 =1
+		p = [[10,10],[10,100],[100,10],[100,100]]
+				20+10   110+10   110+100   200+100
+				4-3
+		 n=4
+		 arr[10,100]
+		 k=8=2^(n-1)
+		 for i=0;i<2;i++
+		 	a= arr[i]
+			 loop j=0;j<k;j++
+				x=p(j,1);
+				y=p(j,2);
+				f_num=a+x;
+				s_num=f_num+y;
+				hashset.put(s_num);
+
+		n=7
+		a=9
+		b=11
+
+		(9,9,9,9,9,9) 54
+		(9,9,9,9,9,11) 45+11 = 56
+		(9,9,9,9,11,11) 36+22 = 58
+
+		0,9,18,27,36,45,54
+		0,9,
+
+	 */
+	static public List<Integer> stones(int n, int a, int b){
+			ArrayList<Integer> answers = new ArrayList<>();
+			int numOfNoneZero = n;//>4?n-1:n;
+			for (int j = 0; j <= numOfNoneZero; j++) {
+				int ans=a * (numOfNoneZero - j) + b * (numOfNoneZero - (numOfNoneZero - j));
+				if((numOfNoneZero-j)>(numOfNoneZero-(numOfNoneZero-j))) {
+					ans = ans - a;
+				}else{
+					ans = ans-b;
+				}
+				answers.add(ans);
+			}
+			return answers.stream().distinct().sorted().collect(toList());
+	}
 }
 
 
