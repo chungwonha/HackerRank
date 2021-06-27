@@ -1150,4 +1150,34 @@ class SolutionApplicationTests {
 		list1.stream().forEach(System.out::println);
 	}
 
+
+	@Test
+	public void testResult(){
+		SolutionApplication.Result r = new SolutionApplication.Result();
+		r.stepPerms(3);
+		System.out.println(r.counter);
+
+	}
+
+	@Test
+	public void testResult2(){
+		SolutionApplication.Result2 r = new SolutionApplication.Result2();
+		r.stepPerms(3);
+		System.out.println(r.counter);
+
+	}
+
+
+	@Test
+	public void testResult3(){
+		SolutionApplication.Result3 r = new SolutionApplication.Result3();
+		r.stepPerms(3);
+		System.out.println(r.counter);
+		r.stepPerms(5);
+		System.out.println(r.counter);
+		r.stepPerms(7);
+		System.out.println(r.counter);
+		r.stepPerms(35);
+		System.out.println(r.counter);
+	}
 }

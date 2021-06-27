@@ -3298,6 +3298,183 @@ obi OTF
 			}
 			return answers.stream().distinct().sorted().collect(toList());
 	}
+
+	/*
+	 *n=1
+	 * 1
+	 *n=3
+	 * r={1,2,3}
+	 * 1
+	 * 2
+	 * 3 *
+	 * 1,1
+	 * 1,2*
+	 * 1,3
+	 * 2,1*
+	 * 2,2
+	 * 2,3
+	 * 3,1
+	 * 3,2
+	 * 3,3
+	 * 1,1,1
+	 * 1,1,2
+	 * 1,1,3
+	 * 1,2,1
+	 * 1,2,2
+	 * 1,2,3
+	 * 1,3,1
+	 * 1,3,2
+	 * 1,3,3
+	 * 2,1,1
+	 * 2,1,2
+	 * 2,1,3
+	 * .........
+	 *1,1,1
+	 *1,2
+	 *2,1
+	 *3
+	 *n=7
+	 *1,1,1,1,1,1,1
+	 *1,1,1,1,1,2
+	 *1,1,1,1,3
+	 *....
+	 *Min=1 and max=3
+	 *add and check if the sum == target # then stop & print
+	 *if < target # then continue add next number
+	 *else if > target # then exit
+	 *
+	 *for int i=1 to 3{
+	 * 	   a=a+i;
+	 * 	   if a==target then
+	 * 			counter increment
+	 * 			exit
+	 *     else if a > target then
+	 * 			exit
+	 *     else if a < target then
+	 * 			addNext (a)
+	 *
+	 * }
+	 *
+	 *n=3
+	 *
+	 *R=1
+	 *a=1
+	 * i=1
+	 * a=1+1=2
+	 * if a<target then
+	 * 		addNext(2)
+	 *R=2
+	 * a=2
+	 * i=1
+	 * a=2+1=3
+	 * if a==target then
+	 * 		counter
+	 * 		exit R=2
+	 *
+	 *R=1
+	 * a=2
+	 *  i=1
+	 *  a=2+1=3
+	 *   if a==target then
+	 * 		counter
+	 * 		exit
+	 */
+	static class Result {
+		int counter = 0;
+		int a = 0;
+		String s ="";
+		public void stepPerms(int n) {
+
+			for (int i = 1; i <= 3; i++) {
+
+				if(a==n){
+					counter++;
+//					a=a-(i-1);
+//					break;
+				}else if (a<n){
+					a = a + i;
+					stepPerms(n);
+				}else if (a>n){
+					break;
+				}
+
+			}
+		}
+
+
+	}
+
+	static class Result2 {
+		int counter = 0;
+		String s ="";
+		public void stepPerms(int n) {
+
+			//for (int i = 1; i <= 3; i++) {
+
+				addNext(0,n);
+
+			//}
+		}
+
+		public void addNext(int addedSoFar, int n){
+			int localAdd = addedSoFar;
+			if(addedSoFar==n){
+				counter++;
+				System.out.println("");
+
+			}
+			for (int i = 1; i <= 3; i++) {
+				System.out.print(i+" ");
+//				if(localAdd==n){
+//					counter++;
+//					System.out.println("");
+//					break;
+//				}else
+				if (localAdd<n){
+					localAdd = localAdd + i;
+					addNext(localAdd,n);
+				}
+//				else if (localAdd>n){
+//					break;
+//				}
+			}
+		}
+
+	}
+
+	static class Result3 {
+		int counter = 0;
+		String s ="";
+		public void stepPerms(int n) {
+
+			//for (int i = 1; i <= 3; i++) {
+			counter=0;
+			addNext(0,n);
+
+			//}
+		}
+
+		public void addNext(int addedSoFar, int n){
+			int localAdd = 0;
+			for (int i = 1; i <= 3; i++) {
+				//System.out.print(i+" ");
+				localAdd = addedSoFar + i;
+
+				if(localAdd==n){
+					counter++;
+					//System.out.println("");
+				}else if (localAdd<n){
+					addNext(localAdd,n);
+				}
+				else if (localAdd>n){
+					break;
+				}
+			}
+		}
+
+	}
+
+
 }
 
 
