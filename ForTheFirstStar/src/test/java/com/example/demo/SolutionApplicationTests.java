@@ -1180,4 +1180,37 @@ class SolutionApplicationTests {
 		r.stepPerms(35);
 		System.out.println(r.counter);
 	}
+
+	@Test
+	public void testResultForIceCreamParlor(){
+		ArrayList al = new ArrayList();
+		al.add(1);
+		al.add(4);
+		al.add(5);
+		al.add(3);
+		al.add(2);
+		List<Integer> result = SolutionApplication.ResultForIceCreamParlor.icecreamParlor(4,al);
+		result.stream().forEach(System.out::println);
+
+	}
+
+	@Test
+	void testMyDfsGraph(){
+		SolutionApplication s = new SolutionApplication();
+		SolutionApplication.MyDfsGraph myDfsGraph = s.getMyDfsGraph(10);
+
+		myDfsGraph.addEdge(0,1);
+		myDfsGraph.addEdge(1,2);
+		myDfsGraph.addEdge(1,3);
+		myDfsGraph.addEdge(2,4);
+		myDfsGraph.addEdge(2,3);
+		myDfsGraph.addEdge(3,4);
+		myDfsGraph.addEdge(2,3);
+		myDfsGraph.addEdge(3,5);
+		myDfsGraph.addEdge(5,6);
+		myDfsGraph.addEdge(5,7);
+		myDfsGraph.addEdge(6,8);
+
+		myDfsGraph.dfs(0);
+	}
 }

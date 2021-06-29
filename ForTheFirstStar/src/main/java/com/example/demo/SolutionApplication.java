@@ -3474,6 +3474,110 @@ obi OTF
 
 	}
 
+	static class ResultForIceCreamParlor {
+
+		/*
+		 * Complete the 'icecreamParlor' function below.
+		 *
+		 * The function is expected to return an INTEGER_ARRAY.
+		 * The function accepts following parameters:
+		 *  1. INTEGER m
+		 *  2. INTEGER_ARRAY arr
+		 */
+        /*
+           1.  pick the first number and go through
+           2. as going through each number, remove any number that is greater than the total money so that next iteration it loops through a smaller number of numbers
+
+        */
+		public static List<Integer> icecreamParlor(int m, List<Integer> arr) {
+			// Write your code here
+			ArrayList<Integer> result = new ArrayList<>();
+
+			List<Integer> indexList = new ArrayList<>();//arr.stream().filter(a -> a < m).distinct().collect(toList());
+
+			for(int each =0;each<arr.size();each++){
+				if(arr.get(each)<m) {
+					indexList.add(each);
+				}
+			}
+
+//			List<Integer> newList = arr.stream().filter(a -> a < m).distinct().collect(toList());
+
+
+			for (int i = 0; i < indexList.size(); i++) {
+				int a = arr.get(indexList.get(i));
+				for (int j = i + 1; j < indexList.size(); j++) {
+					if ((a + arr.get(indexList.get(j))) == m) {
+
+						result.add(indexList.get(i)+1);
+						result.add(indexList.get(j)+1);
+						return result;
+					}
+				}
+			}
+			return result;
+		}
+	}
+
+	public class MyDfsGraph{
+
+		class Node{
+			int data;
+			LinkedList<Node> adjacents;
+			boolean marked;
+			Node(int data){
+				this.data=data;
+				this.marked=false;
+				this.adjacents = new LinkedList<>();
+			}
+		}
+
+		Node[] nodes;
+
+		MyDfsGraph(int size){
+			nodes = new Node[size];
+			for(int i=0;i<size;i++){
+				nodes[i]=new Node(i);
+			}
+		}
+
+		void addEdge(int a, int b){
+			Node n1 = nodes[a];
+			Node n2 = nodes[b];
+			n1.adjacents.add(n2);
+			n2.adjacents.add(n1);
+
+		}
+
+		void dfs(int index){
+			Node root = nodes[index];
+			Stack<Node> stack = new Stack<>();
+			stack.push(root);
+			root.marked=true;
+			while(!stack.empty()){
+				Node n = stack.pop();
+				for(Node each_n:n.adjacents){
+					if(!each_n.marked){
+						each_n.marked=true;
+						stack.push(each_n);
+					}
+				}
+				print(n);
+			}
+		}
+
+		void print(Node node){
+			System.out.println(node.data);
+		}
+
+
+	}
+
+	public MyDfsGraph getMyDfsGraph(int size){
+		return new MyDfsGraph(size);
+	}
+
+
 
 }
 
