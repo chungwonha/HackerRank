@@ -3,23 +3,16 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 
-import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
-import static jdk.nashorn.internal.objects.NativeArray.reduce;
-import static jdk.nashorn.internal.objects.NativeArray.sort;
 
 @SpringBootApplication
 public class SolutionApplication {
@@ -3578,7 +3571,128 @@ obi OTF
 	}
 
 
+	class MyBinaryTreeLevel{
 
+		class Node{
+			int data;
+			int level;
+
+			Node rightNode;
+			Node leftNode;
+
+			Node(int data){
+				this.data = data;
+			}
+
+		}
+
+		int size;
+		MyBinaryTreeLevel(int size){
+			this.size = size;
+		}
+
+		void createTree(){
+
+			LinkedList<Node> linkedList = new LinkedList<>();
+
+			for(int i=0;i<this.size;i++){
+//				Node node = new Node()
+			}
+		}
+	}
+
+
+	public class MyQuickSort{
+			/*
+			Reference: https://www.youtube.com/watch?v=7BDzle2n47c
+
+				1. pick any number / pivot
+				2. Set a partition range based on the pivot
+				3. Swap:
+					go through numbers and move to left if a number is smaller than pivot
+			 		or move to right if a number is larger than pivot
+				4. In a partition, pick any number / pivot
+				5. Set a partition range in the partition
+				6. go through numbers and move to left if a number is smaller than pivot
+					or move to right if a number is larger than pivot
+
+				6 3 4 5 2 1 7
+				p: 5
+				swap 6 and 2
+				hold 3
+				hold 4
+				swap 5 and 1
+				hold 7
+				2 3 4 1 6 5 7
+
+
+
+			 */
+
+		void quickSort(int[] arr){
+
+			int start = 0;
+			int end = arr.length-1;
+			Arrays.stream(arr).forEach(num->System.out.print(num+" "));
+			System.out.println("");
+			quickSort(arr,start,end);
+
+
+//			start = quicksort(arr, start, end, pivotIndex);
+		}
+		void quickSort(int[] arr, int start, int end){
+			int partitionIndex = sortAndPartition(arr, start, end);
+			if(start<partitionIndex-1) {
+				quickSort(arr, start, partitionIndex-1);
+			}
+			if(partitionIndex<end){
+				quickSort(arr,partitionIndex,end);
+			}
+		}
+
+		int sortAndPartition(int[] arr, int start, int end) {
+			int pivotNum = arr[(start+end)/2];
+			while(start<=end) {
+
+				while(arr[start]<pivotNum) start++;
+				while(arr[end]>pivotNum) end--;
+
+				if(start<=end) {
+					swap(arr, start, end);
+					start++;
+					end--;
+				}
+			}
+
+//			if(pivotIndex>=1) {
+//				System.out.print("Left: ");
+//				Arrays.stream(arr).forEach(num->System.out.print(num+" "));
+//				System.out.println("");
+//				start = quicksort(arr, 0, start, start / 2);
+//			}
+//			end = start+1;
+//			if(end<=arr.length-1) {
+//				System.out.print("Right: ");
+//				Arrays.stream(arr).forEach(num->System.out.print(num+" "));
+//				System.out.println("");
+//				start = quicksort(arr, end, arr.length-1, (arr.length-1-end) / 2);
+//			}
+
+
+			return start;
+		}
+
+		void swap(int[] arr,int leftIndex, int rightIndex){
+			int temp = arr[leftIndex];
+			arr[leftIndex]=arr[rightIndex];
+			arr[rightIndex]=temp;
+		}
+
+	}
+
+	MyQuickSort getMyQuickSort(){
+		return new MyQuickSort();
+	}
 }
 
 

@@ -3,9 +3,7 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -1212,5 +1210,14 @@ class SolutionApplicationTests {
 		myDfsGraph.addEdge(6,8);
 
 		myDfsGraph.dfs(0);
+	}
+
+	@Test
+	void testMyQuickSort(){
+		SolutionApplication solutionApplication = new SolutionApplication();
+		SolutionApplication.MyQuickSort myQuickSort = solutionApplication.getMyQuickSort();
+		int[] a ={5,3,7,1,4,9,2,6,8};
+		myQuickSort.quickSort(a);
+		Arrays.stream(a).forEach(num->System.out.print(num+" "));
 	}
 }
