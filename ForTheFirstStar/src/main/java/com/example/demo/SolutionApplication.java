@@ -3,11 +3,14 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.awt.*;
+import java.awt.datatransfer.SystemFlavorMap;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
@@ -2842,7 +2845,7 @@ obi OTF
 		{1,2,3,4,5,6,7}
 		loop each number and find divisible or not
 	 */
-	static void findPrime(int n){
+	static void findPrime1(int n){
 		int primeCounter=0;
 		for(int i=2;i<=n;i++){
 			int counter = 0;
@@ -3692,6 +3695,984 @@ obi OTF
 
 	MyQuickSort getMyQuickSort(){
 		return new MyQuickSort();
+	}
+
+
+	static void findPrime(int size){
+
+		for(int i=size;i>=2;i--){
+			int counter=0;
+			for(int j=2;j<size;j++){
+				if(i!=j && i%j==0){
+					counter++;
+				}
+			}
+			if(counter==0){
+				System.out.print(i+" ");
+			}
+		}
+
+	}
+
+	static void fibonaci(){
+		ArrayList<Integer> list = new ArrayList<>();
+		list.add(1);
+		for(int i=1;i<10;i++){
+			if(list.size()==1){
+				list.add(1);
+			}else{
+				int a = list.get(i-1)+list.get(i-2);
+				list.add(a);
+			}
+		}
+		list.stream().forEach(num->System.out.print(num+" "));
+	}
+
+
+	static int findFibonacci2(int n){
+		if (n==1 || n==2) return 1;
+		else return findFibonacci2(n-1)+findFibonacci2(n-2);
+	}
+
+	static int findFibonacci(int n, int[] arr){
+		int result;
+
+		if (arr[n] != 0) return arr[n];
+		else if (n==0) result = 0;
+		else if(n==1) result = 1;
+		else result = findFibonacci(n - 1, arr) + findFibonacci(n - 2, arr);
+
+		arr[n]=result;
+		return result;
+	}
+
+
+
+	static int findFibonacciBottomUp(int n){
+		int result=0;
+		if(n==1||n==2){
+			return 1;
+		}else{
+			int[] a = new int[n];
+			a[0]=1;
+			a[1]=1;
+			for(int i=2;i<n;i++){
+				result = a[i-1]+a[i-2];
+				a[i]=result;
+			}
+		}
+		return result;
+	}
+
+
+	class MinimumCostToClimbStair{
+
+		class Node{
+			int value;
+			Node[] adjacents = new Node[2];
+			boolean marked = false;
+			int sum;
+
+			Node(int i){
+				value = i;
+			}
+
+			Node getLeftNode(){
+				return this.adjacents[0];
+			}
+
+			Node getRightNode(){
+				return this.adjacents[1];
+			}
+
+			void addAdjacents(Node left, Node right){
+				adjacents[0]=left;
+				adjacents[1]=right;
+			}
+
+
+		}
+
+		ArrayList<Node> nodeGraph;
+
+		MinimumCostToClimbStair(int[] arr){
+			 this.nodeGraph = new ArrayList<>();
+			for(int i=0;i<arr.length;i++) {
+
+				Node node = new Node(arr[i]);
+				this.nodeGraph.add(node);
+
+			}
+			this.buildGraph();
+		}
+
+		void buildGraph(){
+			for(int i = 0; i< nodeGraph.size(); i++){
+				Node each = nodeGraph.get(i);
+				each.addAdjacents(i+1<=(nodeGraph.size()-1)? nodeGraph.get(i+1):null,
+								  i+2<=(nodeGraph.size()-1)? nodeGraph.get(i+2):null);
+			}
+		}
+
+
+		int[] findMinimumCost(){
+			Stack<Node> nodeStack = new Stack<>();
+			nodeGraph.get(0).marked=true;
+			nodeStack.push(nodeGraph.get(0));
+
+			int sum=0;
+			ArrayList<Integer> temp = new ArrayList<>();
+			while(!nodeStack.empty()) {
+				Node n = nodeStack.pop();
+				System.out.println(n.value +" popped");
+				temp.add(n.value);
+				n.sum  = n.sum + n.value;
+
+
+				if(n.adjacents[0]==null&&n.adjacents[1]==null) {
+					System.out.println(n.value+" has no adjacent "+": sum so far: "+n.sum);
+					n.sum = n.sum-n.value;
+				}
+
+				for(int i=0;i<2;i++) {
+					Node each = n.adjacents[i];
+					if(each!=null) {
+						each.marked = true;
+						nodeStack.push(each);
+
+					}
+				}
+
+			}
+			return new int[]{0,1};
+		}
+
+	}
+
+	public MinimumCostToClimbStair getMinimumCostToClimbStair(int[] arr){
+		return new MinimumCostToClimbStair(arr);
+	}
+
+
+	public int findMinimum(int[] arr, int i){
+			int nextIndex=0;
+			if(i+1<=arr.length-1 && i+2 > arr.length-1) {
+				nextIndex=i+1;
+			}else if(i+1<=arr.length-1 && i+2 <= arr.length-1) {
+				if (arr[i + 1] < arr[i + 2]) {
+					nextIndex = i + 1;
+				} else if (arr[i + 1] > arr[i + 2]) {
+					nextIndex = i + 2;
+				} else {
+					nextIndex = i + 2;
+				}
+			}else if(i+1>arr.length-1){
+				System.out.println("Done");
+				return arr[i];
+			}
+
+
+		return arr[i]+findMinimum(arr,nextIndex);
+
+	}
+
+	class myFib {
+		int counter =2;
+
+		public BigDecimal fibonacciModified(BigDecimal t1, BigDecimal t2, int n) {
+
+			BigDecimal t3 = t1.add(t2.pow(2));
+
+			System.out.println(t1 + " " + t2 + "->" + t3);
+			counter++;
+			if (n == counter) {
+				return t3;
+			} else {
+				return fibonacciModified(t2, t3, n);
+			}
+
+		}
+	}
+
+	myFib getMyFib(){
+		return new myFib();
+	}
+
+	class MyBfsPractice{
+
+		Node startingNode;
+
+		class Node{
+
+			int value;
+			boolean mark;
+			ArrayList<Node> adjacents;
+
+			Node(int value){
+				this.value = value;
+				mark = false;
+				adjacents = new ArrayList<>();
+			}
+
+			void addAdjacents(Node node){
+				this.adjacents.add(node);
+			}
+
+		}
+
+		MyBfsPractice(){
+		/*
+			1
+		2      3
+	 4    5   6
+   7       8 9
+		 */
+			Node node1 = new Node(1);
+			Node node2 = new Node(2);
+			Node node3 = new Node(3);
+			Node node4 = new Node(4);
+			Node node5 = new Node(5);
+			Node node6 = new Node(6);
+			Node node7 = new Node(7);
+			Node node8 = new Node(8);
+			Node node9 = new Node(9);
+
+			node1.addAdjacents(node2);
+			node1.addAdjacents(node3);
+			node2.addAdjacents(node4);
+			node2.addAdjacents(node5);
+			node3.addAdjacents(node6);
+			node4.addAdjacents(node7);
+			node5.addAdjacents(node8);
+			node6.addAdjacents(node9);
+
+			startingNode = node1;
+
+		}
+
+		void bfs(){
+			Queue<Node> q = new LinkedList<>();
+			q.add(startingNode);
+
+			while(!q.isEmpty()){
+				Node node = q.poll();
+				node.mark=true;
+				System.out.println(node.value);
+				for(Node n : node.adjacents) {
+					if(!n.mark) {
+						q.add(n);
+					}
+				}
+			}
+		}
+
+	}
+
+	public MyBfsPractice getMyBfsPractice(){
+		return new MyBfsPractice();
+	}
+
+
+	class MyDfsPractice{
+
+		Node startingNode;
+
+		class Node{
+
+			int value;
+			boolean mark;
+			ArrayList<Node> adjacents;
+
+			Node(int value){
+				this.value = value;
+				mark = false;
+				adjacents = new ArrayList<>();
+			}
+
+			void addAdjacents(Node node){
+				this.adjacents.add(node);
+			}
+
+		}
+
+		MyDfsPractice(){
+
+			Node node1 = new Node(1);
+			Node node2 = new Node(2);
+			Node node3 = new Node(3);
+			Node node4 = new Node(4);
+			Node node5 = new Node(5);
+			Node node6 = new Node(6);
+			Node node7 = new Node(7);
+			Node node8 = new Node(8);
+			Node node9 = new Node(9);
+
+			node1.addAdjacents(node2);
+			node1.addAdjacents(node3);
+			node2.addAdjacents(node4);
+			node2.addAdjacents(node5);
+			node3.addAdjacents(node6);
+			node3.addAdjacents(node7);
+//			node4.addAdjacents(node7);
+			node5.addAdjacents(node8);
+			node6.addAdjacents(node9);
+//			node1.addAdjacents(node3);
+//			node1.addAdjacents(node2);
+//			node1.addAdjacents(node3);
+//			node2.addAdjacents(node1);
+//			node2.addAdjacents(node3);
+//			node2.addAdjacents(node4);
+//			node3.addAdjacents(node1);
+//			node3.addAdjacents(node2);
+//			node3.addAdjacents(node4);
+//			node3.addAdjacents(node5);
+//			node4.addAdjacents(node2);
+//			node4.addAdjacents(node3);
+//			node5.addAdjacents(node3);
+//			node5.addAdjacents(node6);
+//			node5.addAdjacents(node7);
+//			node6.addAdjacents(node5);
+//			node6.addAdjacents(node8);
+//			node8.addAdjacents(node6);
+
+			startingNode = node1;
+
+		}
+
+		void dfs(){
+			Stack<Node> stack = new Stack<>();
+//			System.out.println(startingNode.value+ " pushed ");
+			stack.push(startingNode);
+			startingNode.mark=true;
+			while(!stack.isEmpty()){
+				Node node = stack.pop();
+//				System.out.println(node.value+ " popped ");
+				System.out.println(node.value+" popped");
+				if(node.adjacents.size()>0){
+					for(Node n : node.adjacents) {
+						if(!n.mark) {
+	//						System.out.println(n.value+ " pushed ");
+							stack.push(n);
+							n.mark=true;
+						}
+					}
+				}else{
+					System.out.println(node.value+" is last child");
+				}
+			}
+		}
+
+	}
+/*
+		1
+ 	2      3
+ 4    5   6   7
+     8   9
+ */
+	public MyDfsPractice getMyDfsPractice(){
+		return new MyDfsPractice();
+	}
+
+//
+//	public void aa(){
+//
+//		int[] results = new int[5];
+//
+//		Arrays.stream(r).forEach(a->a=-1);
+//		Arrays.stream(r).forEach(System.out::println);
+//		List<Integer> list = Arrays.stream(results).collect(toList());
+//	}
+
+
+	class BfsLevelResult {
+
+		/*
+		 * Complete the 'bfs' function below.
+		 *
+		 * The function is expected to return an INTEGER_ARRAY.
+		 * The function accepts following parameters:
+		 *  1. INTEGER n
+		 *  2. INTEGER m
+		 *  3. 2D_INTEGER_ARRAY edges
+		 *  4. INTEGER s
+
+		 */
+
+
+
+		List<Integer> buildBfsGraph(int n, int m, List<List<Integer>> edges, int s){
+
+			class Node{
+				public int value;
+				public List<Node> adjacents;
+				public Node parentNode;
+				public boolean marked;
+				public int level=0;
+				Node(int i){
+					value = i;
+					adjacents = new ArrayList<>();
+					marked = false;
+
+				}
+
+				public void setAdj(Node n){
+					this.adjacents.add(n);
+					for(Node each : adjacents){
+						each.setParentNode(this);
+					}
+				}
+
+				public void setParentNode(Node parentN){
+					parentNode = parentN;
+				}
+
+			}
+
+			List<Integer> results = new ArrayList<>();
+			Node[] nodes  = new Node[n];
+
+			for(int r=0;r<n-1;r++){
+				results.add(r,-1);
+			}
+			for(int p=0;p<n;p++){
+				Node node = new Node(p);
+				nodes[p]=node;
+			}
+
+			for(List list : edges){
+				List<Integer> aaa = list;
+				// System.out.print(aaa.get(0)+" "+aaa.get(1));
+				nodes[aaa.get(0)-1].setAdj(nodes[aaa.get(1)-1]);
+
+				// System.out.println("");
+			}
+
+			// for(Node nn : nodes){
+			//     if(nn !=null){
+			//      System.out.print((nn.value+1)+" ");
+			//      if(nn.adjacents.size()>0){
+			//          System.out.println(" has adj ");
+			//         nn.adjacents.stream().forEach(b->System.out.println(b.value));
+			//         System.out.println("");
+			//      }else{
+			//         System.out.print (" doesnt have adj ");
+			//         System.out.println("");
+			//      }
+			//     }else{
+			//         System.out.println("nn is null");
+			//     }
+
+			// }
+
+			int level=6;
+			int curLevel;
+			Queue<Node> queue = new LinkedList<Node>();
+			nodes[0].level=0;
+			queue.add(nodes[0]);
+
+			while(!queue.isEmpty()){
+
+				Node polledNode = queue.poll();
+				curLevel = polledNode.level;
+				// System.out.println("polledNode: "+(polledNode.value+1)+" at level "+curLevel + " and marked: "+polledNode.marked);
+				polledNode.marked=true;
+				List<Node> adjNodes = polledNode.adjacents;
+				if(adjNodes.size()>0){
+					for(Node eachN:adjNodes){
+						if(!eachN.marked){
+							eachN.level=curLevel+6;
+							results.set(eachN.value-1,eachN.level);
+							queue.add(eachN);
+						}
+					}
+				}else{
+					// System.out.println((polledNode.value+1)+ " has no adj");
+					if(polledNode.value+1<nodes.length){
+						Node nextNode = nodes[polledNode.value+1];
+						if(nextNode != null){
+							// System.out.println("nextNode is not null: "+nextNode.value);
+							queue.add(nextNode);
+						}else{
+							// System.out.println("nextNode is null");
+						}
+						// queue.add(nextNode);
+						// results[nextNode.value-1]=level;
+					}
+				}
+
+			}
+
+			// results.stream().forEach(e->System.out.print(e+" "));
+
+			// System.out.println("");
+
+			return results;
+		}
+
+
+		/*
+
+             int n: the number of nodes
+        int m: the number of edges
+        int edges[m][2]: start and end nodes for edges
+        int s: the node to start traversals f
+        */
+		public List<Integer> bfs(int n, int m, List<List<Integer>> edges, int s) {
+			// Write your code here
+
+
+			return buildBfsGraph(n,m,edges,s);
+
+
+
+		}
+
+	}
+
+	/*
+		1,1,2,3,5,8,11,
+	 */
+	public int myFib2(int[] a,int n){
+
+		if(n<=1) return 1;
+		int n1 = myFib2(a,n-1);
+		int n2 = myFib2(a,n-2);
+		int s = n1+n2;
+		System.out.println("sum: "+s+" --> "+n1+" + "+n2);
+		return s;
+
+	}
+
+
+
+	/*
+			a{2,5,3,6}
+			a{2,5,3,6}
+			2,2,2,2,2
+			2,5,3
+			6,2,2
+			2,6,6
+			5,5
+
+	 */
+	public int[] myFib3(int[] a,int target,int n){
+
+
+		if(n==1) return new int[]{1};
+		if(n==0) return new int[]{0};
+		int[] newArr = new int[a.length+1];
+
+		newArr[newArr.length-1] = a[a.length-1]+n;
+
+		//a[n] = myFib3(myFib3(a,target,n),target,n);//+myFib3(a,target,n+1);
+
+		System.out.println("sum: "+newArr[newArr.length-1]);
+		if(newArr[newArr.length-1]==target){
+			System.out.println("found");
+		}else{
+			System.out.println("not found");
+		}
+
+		return newArr;
+	}
+
+
+	/*
+			{2,4,6,7}
+			target = 6
+			2,4
+			2,2,2
+			6
+			when the current 4, need 2
+
+			when the current 2, need 2
+
+
+	 */
+	public int findNumbersToSum(int[] a, int target){
+		return addNum(a,target,a.length-1);
+
+	}
+
+	public int addNum(int[] a,int target, int i){
+		System.out.print ("target: "+target+", i: "+i);
+		if(target ==0) {
+			System.out.println (" target is 0 return 1");
+			return 1;
+		}else if(target < 0){
+			System.out.println (" target is less than 0 return 0");
+			return 0;
+		}else if(i<0){
+			System.out.println (" i is less than 0 return 0");
+			return 0;
+		}else if (target < a[i]){
+			System.out.println (" move to "+(i-1)+" since target is less than "+a[i]);
+			return addNum(a,target,i-1);
+		}else {
+			System.out.println (" recursion: change target to "+"target-a[i]: "+target+"-"+a[i]+" | go to subset including target: "+target);
+			return addNum(a,target-a[i],i-1)+addNum(a,target,i-1);
+		}
+	}
+
+/*
+	{8,3,1,2}
+	n=3
+
+	{8,1,2}        						{8,3,1}
+	target=1    						target=3, i=2
+	when 2, 1<2 so go to i-1            when
+
+	target = 3, i=0            newTarget= 3-8 , i=0
+	                           return 0
+
+ */
+	public void coinChangeProblem(int n, List<Long> c) {
+
+			int a = findWays(c,n,c.size()-1);
+			System.out.println(a);
+	}
+
+	public int findWays(List<Long> c, long target, int i){
+
+		if (target<0) return 0;
+		else if (i<0) return 0;
+		else if (target>c.get(i)) return findWays(c,target,i-1);
+		else if(target==0) return 1;
+		else {
+			return findWays(c,target-c.get(i),i-1)+findWays(c,target,i-1);
+		}
+
+	}
+
+
+	class CoinChangeResult {
+
+		/*
+		 * Complete the 'getWays' function below.
+		 *
+		 * The function is expected to return a LONG_INTEGER.
+		 * The function accepts following parameters:
+		 *  1. INTEGER n
+		 *  2. LONG_INTEGER_ARRAY c
+		 */
+
+		long counter=0;
+		HashMap<List<Long>,Long> bucket;
+		public long getWays(int n, List<Long> c) {
+			// Write your code here
+			bucket = new HashMap<>();
+
+			ArrayList<Long> numList = new ArrayList<Long>();
+			addNextLevel(n,numList,c);
+			System.out.println("counter: "+counter);
+			// ArrayList<Long> aaa = new ArrayList();
+			// aaa.add(1L);
+			// aaa.add(1L);
+			// aaa.add(1L);
+			// aaa.add(1L);
+			// Long test111 = bucket.get(aaa);
+			// System.out.println(test111!=null?"Found: "+test111.toString():"NOT FOUND");
+
+			// bucket.keySet().stream().forEach(k->{
+			//     k.stream().forEach(p->{
+			//         System.out.print(p+ " ");
+			//     });
+			//     System.out.print("--->"+bucket.get(k));
+			//     System.out.println("");
+			// });
+
+			return bucket.values().stream().filter(v->v==n).count();
+		}
+
+		public void addNextLevel(int n, List<Long> numArr, List<Long> c){
+			long sum = 0;
+			for(Long each:c){
+				System.out.print(each+" ");
+				List<Long> sortedList = getSortedList(numArr,each);
+				Long foundNum = bucket.get(sortedList);
+
+				if(foundNum!=null){
+					sum=foundNum+each;
+				}else{
+					sum = sortedList.stream().reduce(0L,Long::sum);
+					bucket.put(sortedList,new Long(sum));
+				}
+
+				if(sum==n){
+					System.out.println("");
+					counter++;
+					continue;
+				}else if (sum>n){
+					break;
+				}else{
+					addNextLevel(n,sortedList,c);
+				}
+			}
+		}
+
+		public List<Long> getSortedList(List<Long> numArr, Long newLong){
+			ArrayList<Long> al = new ArrayList<>();
+			if(numArr.size()>0){
+				numArr.stream().forEach(al::add);
+			}
+			al.add(newLong);
+			List<Long> sortedAl = al.stream().sorted().collect(toList());
+			return sortedAl;
+		}
+
+	}
+
+	public CoinChangeResult getCoinChangeResult(){
+
+		return new CoinChangeResult();
+	}
+
+
+	class DoubleLinkedListResult{
+
+		class DoublyLinkedListNode {
+			int data;
+			DoublyLinkedListNode next;
+			DoublyLinkedListNode prev;
+
+		}
+
+		/*
+			1,3,4,6,7
+			5
+
+			n1 = 1
+				nextNode = 3
+				prevNode = null
+			n2 = 3
+				nextNode = 4
+				prevNode = 1
+			n3 = 4
+				nextNode = 6
+				prevNode = 3
+
+			 while curNode.next!=null loop
+			  	if data is between curNode.data and curNode.next.data
+			  			newNode.data = data
+			  			newNode.next = curNode.next
+			  			newNode.prev = curNode
+			  			curNode.next = newNode
+			  			curNode.next.prev=newNode
+			  			break;
+
+		 */
+		public DoublyLinkedListNode sortedInsert(DoublyLinkedListNode llist, int data)   {
+			// Write your code here
+			DoublyLinkedListNode currentNode = llist;
+			while(currentNode.next!=null) {
+
+				if (currentNode.data <= data && currentNode.next.data > data) {
+					DoublyLinkedListNode newNode = new DoublyLinkedListNode();
+					newNode.data=data;
+					newNode.next = currentNode.next;
+					newNode.prev = currentNode;
+					currentNode.next=newNode;
+					currentNode.next.prev=newNode;
+					break;
+				}
+			}
+
+			DD dd = new DD(2);
+			System.out.println(dd.data);
+
+			return llist;
+		}
+	}
+
+	static class DD{
+		public int data;
+		public DD(int a){
+			data=a;
+		}
+	}
+
+	public int practiceBinarySearchTree(int[] arr, int num){
+
+			int start = 0;
+			int end = arr.length-1;
+			int mid = (start+end)/2;
+
+			while(start<=end){
+				mid = (start+end)/2;
+				System.out.println("mid: "+mid);
+				if(arr[mid]==num){
+					return mid;
+				}else if(arr[mid]>num){
+					end=mid-1;
+					System.out.println("end: "+end);
+				}else{
+					start = mid + 1;
+					System.out.println("start: " + start);
+				}
+
+			}
+			return -1;
+	}
+
+	public int practiceBinarySearchTreeWithStack(int[] arr, int num){
+
+		int start = 0;
+		int end = arr.length-1;
+		int mid = (start+end)/2;
+		Stack<Integer> path = new Stack<>();
+
+		while(start<=end){
+			mid = (start+end)/2;
+			System.out.println("mid: "+mid);
+			if(arr[mid]==num){
+				path.push(mid);
+//				path.stream().forEach(a->System.out.print(a+" "));
+				while(!path.empty()){
+					System.out.print(path.pop()+" ");
+				}
+				return mid;
+			}else if(arr[mid]>num){
+				end=mid-1;
+				System.out.println("end: "+end);
+				path.push(mid);
+			}else{
+				start = mid + 1;
+				System.out.println("start: " + start);
+				path.push(mid);
+			}
+
+		}
+
+		return -1;
+	}
+
+	/*
+		head: pointing to head
+		p: a node that needs to change to point to head
+		q: a node after p.  this helps to indicate the end of linked list
+
+	 */
+
+	public void practiceReversedLinkedList(int[] arr){
+
+		class Node{
+			int data;
+			Node next;
+			Node(int i){
+				data = i;
+			}
+		}
+		int i=0;
+		Node n1 = new Node(i);
+		Node head = n1;
+		while (i<arr.length-1){
+			i=i+1;
+			Node n2 = new Node(arr[i]);
+			n1.next = n2;
+			n1 = n2;
+		}
+		n1=head;
+		while(n1.next!=null){
+
+			System.out.println(n1.data);
+			n1 = n1.next;
+		}
+
+		/*  head    p      q
+			        head   p    q
+			1  ->   2  ->  3    4 5
+		    1  <-   2  <-  3
+
+		    head,next = null
+		    head = p.next
+		    p=head;
+		    q=p.next
+			head =1
+				head.next = 2
+			p = 2
+			 p.next = 3
+			q = 3
+			 q.next = 4
+
+			head.next = null
+			p.next=head
+			head=p;
+			p=q;
+			q=q.next;
+
+		 */
+		Node p = head.next;
+		head.next=null;
+		Node q = p.next;
+
+		while(q != null){
+			p.next=head;
+			head=p;
+			p=q;
+			q=q.next;
+		}
+		System.out.println("---------------");
+		Node rn = head;
+		while(rn!=null){
+			System.out.println(rn.data);
+			rn=rn.next;
+		}
+
+	}
+
+
+	public void practiceReversedLinkedList3(int[] arr) {
+
+		class Node {
+			int data;
+			Node next;
+
+			Node(int i) {
+				data = i;
+			}
+		}
+
+		int i = 0;
+		Node n1 = new Node(arr[i]);
+		Node head = n1;
+
+		while(i<arr.length-1) {
+			i = i + 1;
+			Node n2 = new Node(arr[i]);
+			n1.next = n2;
+			n1 = n2;
+		}
+
+		n1 = head;
+		while (n1 != null) {
+			System.out.println(n1.data);
+			n1 = n1.next;
+		}
+
+		/*      h     p     q
+		              h     p   q
+		                    h   p    q
+				1  -> 2 ->  3   4
+	    null <- 1  <- 2 <-  3 <-4
+		 */
+
+		Node p = head.next;
+		Node q = p.next;
+
+		head.next = null;
+
+		while(q!=null){
+			p.next = head;
+			head = p;
+			p=q;
+			q=p.next;
+		}
+		p.next = head;
+		System.out.println("-----------------");
+		while(p!=null){
+			System.out.println(p.data);
+			p=p.next;
+		}
 	}
 }
 

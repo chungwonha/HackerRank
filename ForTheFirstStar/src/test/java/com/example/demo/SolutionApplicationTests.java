@@ -1,9 +1,14 @@
 package com.example.demo;
 
+import net.bytebuddy.dynamic.scaffold.MethodGraph;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.CompareEqual;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.lang.reflect.Array;
+import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collector;
 
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -999,8 +1004,8 @@ class SolutionApplicationTests {
 	}
 
 	@Test
-	void testFindPrime(){
-		SolutionApplication.findPrime(15);
+	void testFindPrime1(){
+		SolutionApplication.findPrime1(15);
 	}
 
 	@Test
@@ -1220,4 +1225,219 @@ class SolutionApplicationTests {
 		myQuickSort.quickSort(a);
 		Arrays.stream(a).forEach(num->System.out.print(num+" "));
 	}
+
+	@Test
+	void testFindPrime2(){
+		SolutionApplication a = new SolutionApplication();
+		a.findPrime(100);
+	}
+
+	@Test
+	void testFibonaci(){
+		//SolutionApplication.fibonaci();
+		int[] arr = new int[100];
+//		arr[1]=1;
+//		int a = SolutionApplication.findFibonacci2(100);
+//		System.out.println(a);
+
+		int a2 = SolutionApplication.findFibonacci(5,arr);
+		System.out.println(a2);
+
+		int a3 = SolutionApplication.findFibonacciBottomUp(20);
+		System.out.println(a3);
+	}
+
+	@Test
+	void testMinimumCostToClimbStair(){
+		SolutionApplication s = new SolutionApplication();
+		int[] a = {1,100,2,3,4,5,6,19};
+		SolutionApplication.MinimumCostToClimbStair m = s.getMinimumCostToClimbStair(a);
+		m.findMinimumCost();
+	}
+
+	@Test
+	void testFindMinimum() {
+		SolutionApplication s = new SolutionApplication();
+//		int[] a = {1,100,2,3,4,5,6,19};
+//		int[] a = {1,100,1,1,1,1,1,19};
+//		int[] a = {10,100,9,8,7,6,5,3};
+		int[] a = {1,2,3,4,5,6,7};
+		int result = s.findMinimum(a,0);
+		System.out.println("result: "+result);
+
+	}
+
+	@Test
+	void testMyFib(){
+		SolutionApplication sa = new SolutionApplication();
+		SolutionApplication.myFib myfib =  sa.getMyFib();
+		BigDecimal bd = myfib.fibonacciModified(new BigDecimal(0),new BigDecimal(1),20);
+		System.out.println(bd.toString());
+	}
+
+	@Test
+	void testMyRfcPractice() {
+		SolutionApplication s = new SolutionApplication();
+		SolutionApplication.MyBfsPractice bfs = s.getMyBfsPractice();
+		bfs.bfs();
+		System.out.println("-------------------------");
+		SolutionApplication.MyDfsPractice dfs = s.getMyDfsPractice();
+		dfs.dfs();
+
+	}
+
+	@Test
+	void testAa(){
+		SolutionApplication s = new SolutionApplication();
+
+		HashSet<List<Long>> a = new HashSet<>();
+		ArrayList<Long>  aa = new ArrayList<>();
+		aa.add(new Long(1));
+		aa.add(new Long(2));
+		aa.add(new Long(3));
+		a.add(aa);
+
+		ArrayList<Long>  bb = new ArrayList<>();
+		bb.add(new Long(1));
+		bb.add(new Long(2));
+		bb.add(new Long(9));
+
+		ArrayList<Long>  cc = new ArrayList<>();
+		cc.add(new Long(1));
+		cc.add(new Long(2));
+		cc.add(new Long(2));
+		a.add(aa);
+		a.add(bb);
+		a.add(cc);
+
+		a.stream().forEach(list -> {
+			for(Long each:list){
+					System.out.print(each+" ");
+			}
+			System.out.println("");
+		});
+
+		HashMap<List<Long>,Long> bukcet = new HashMap<>();
+		bukcet.put(aa,new Long(6));
+		bukcet.put(bb,new Long(8));
+		bukcet.put(cc,new Long(10));
+
+		ArrayList<Long>  dd = new ArrayList<>();
+		dd.add(new Long(1));
+		dd.add(new Long(2));
+		dd.add(new Long(3));
+
+//		bb = bb.stream().sorted().collect(toList());
+
+		System.out.println(bukcet.get(dd)!=null?bukcet.get(dd).toString():"Not found");
+
+		long[] lll = new long[3];
+		HashMap<List<Long>, Long> qqq = new HashMap<>();
+		qqq.keySet().stream().forEach(k->{
+			System.out.println(qqq.get(k));
+		});
+		dd.stream().forEach(aa::add);
+		ArrayList<Long> numList = new ArrayList<Long>();
+		numList.add(0L);
+		Long a123 = new Long(2);
+		long longR = numList.stream().reduce(0L,Long::sum);
+
+//		qqq.values().stream().filter(v->v==n).count()
+		System.out.println(s.myFib2(new int[]{1,2,3}, 5));
+		System.out.println("----------------");
+		s.myFib3(new int[]{1,2,3},3,0);
+
+		int q = 10 ^ 10;
+		System.out.println("q: "+q);
+
+	}
+
+
+	@Test
+	public void testFindNumbersToSum(){
+		SolutionApplication a = new SolutionApplication();
+
+		int r = a.findNumbersToSum(new int[]{2,4,6,10},16);
+		System.out.println("r: "+r);
+		r = a.findNumbersToSum(new int[]{8,3,1,2},3);
+		System.out.println("r: "+r);
+		r = a.findNumbersToSum(new int[]{2,5,3,6},10);
+		System.out.println("r: "+r);
+
+//		ArrayList<String>  cc = {"aaa","bbb"};
+//		cc.add(new Long(8));
+//		cc.add(new Long(3));
+//		cc.add(new Long(1));
+//		cc.add(new Long(2));
+
+
+//		r = a.findWays(cc,3L,0);
+		System.out.println("r: "+r);
+
+		r = a.findNumbersToSum(new int[]{5, 37, 8, 39, 33, 17, 22, 32, 13, 7, 10, 35, 40, 2, 43, 49, 46, 19, 41, 1, 12, 11, 28},166);
+		System.out.println("---->>>r: "+r);
+	}
+
+	@Test
+	public void testCoinChangeResult(){
+//		ArrayList<Long> aa = new ArrayList<>();
+//		long[] a = {5, 37, 8, 39, 33, 17, 22, 32, 13, 7, 10, 35, 40, 2, 43, 49, 46, 19, 41, 1, 12, 11, 28};
+//		Arrays.stream(a).forEach(aa::add);
+//		SolutionApplication s = new SolutionApplication();
+//		SolutionApplication.CoinChangeResult c = s.getCoinChangeResult();
+//		long r = c.getWays(166,aa);
+//
+//		System.out.println("a: "+r);
+String s = "nifty";
+System.out.println(s.substring(1,3));
+System.out.println(s.compareTo("sss"));
+		System.out.println(s.compareTo("--------------------"));
+//Boolean a = new Boolean("FalSe");
+int aa;
+		char[] ccc = s.toCharArray();
+
+		LinkedList<Integer> aList = new LinkedList<>();
+		aList.add(1);
+		aList.add(2);
+		aList.add(3);
+		aList.stream().forEach(System.out::println);
+
+	}
+
+
+	@Test
+	public void testPracticeBinarySearchTree(){
+		SolutionApplication s = new SolutionApplication();
+		int k = s.practiceBinarySearchTree(new int[]{4,6,8,10,15,22,78},78);
+		System.out.println("found at "+k);
+		k = s.practiceBinarySearchTree(new int[]{4,6,8,10,15,22,78},4);
+		System.out.println("found at "+k);
+		k = s.practiceBinarySearchTree(new int[]{4,6,8,10,15,22,78},6);
+		System.out.println("found at "+k);
+		k = s.practiceBinarySearchTree(new int[]{4,6,8,10,15,22,78},45);
+		System.out.println("found at "+k);
+	}
+
+	@Test
+	public void testPracticeBinarySearchTreeWithStack(){
+		SolutionApplication s = new SolutionApplication();
+		int k = s.practiceBinarySearchTreeWithStack(new int[]{4,6,8,10,15,22,78},78);
+		System.out.println("found at "+k);
+//		k = s.practiceBinarySearchTree(new int[]{4,6,8,10,15,22,78},4);
+//		System.out.println("found at "+k);
+//		k = s.practiceBinarySearchTree(new int[]{4,6,8,10,15,22,78},6);
+//		System.out.println("found at "+k);
+//		k = s.practiceBinarySearchTree(new int[]{4,6,8,10,15,22,78},45);
+//		System.out.println("found at "+k);
+	}
+
+	@Test
+	public void testPracticeReversedLinkedList(){
+		SolutionApplication a = new SolutionApplication();
+//		a.practiceReversedLinkedList(new int[]{4,6,8,10,15,22,78});
+		System.out.println("--------------------");
+		a.practiceReversedLinkedList3(new int[]{4,6,8,10,15,22,78});
+
+	}
+
 }
