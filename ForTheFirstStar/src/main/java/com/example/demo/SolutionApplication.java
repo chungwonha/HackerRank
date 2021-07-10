@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.objenesis.strategy.StdInstantiatorStrategy;
 
 import java.awt.*;
 import java.awt.datatransfer.SystemFlavorMap;
@@ -4915,6 +4916,38 @@ obi OTF
 
 			return true;
 		}
+
+	}
+
+	public void test1234(){
+		ArrayList<Integer>  a = new ArrayList<>();
+		Integer r = a.stream().reduce(Integer::min).get();
+
+		for(int i=0;i<a.size();i++){
+			if(a.get(i)==2){
+				a.remove(i);
+			}
+		}
+
+	}
+
+	public void buildMinHeap(){
+		int[] input = {4,3,7,1,2,9};
+		ArrayList<Integer>  heap = new ArrayList<>();
+
+		int counter=0;
+		for(int i:input){
+			if(heap.size()==0) heap.add(0,input[i]);
+			else{
+				int root = heap.get(0);
+				if(root>input[i]){
+					heap.add(heap.size()-1,root);
+					heap.add(0,input[i]);
+				}
+			}
+
+		}
+
 
 	}
 }

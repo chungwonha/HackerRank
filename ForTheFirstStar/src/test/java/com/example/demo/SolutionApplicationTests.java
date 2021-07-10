@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collector;
 
 import static java.util.stream.Collectors.toList;
@@ -1437,6 +1438,33 @@ int aa;
 //		a.practiceReversedLinkedList(new int[]{4,6,8,10,15,22,78});
 		System.out.println("--------------------");
 		a.practiceReversedLinkedList3(new int[]{4,6,8,10,15,22,78});
+
+		ArrayList<Integer>  heap = new ArrayList<>();
+		heap.add(0,2);
+		heap.add(1,999);
+		int index = heap.indexOf(999);
+		System.out.println("index:"+ index);
+		Integer ii = heap.stream().reduce(Integer::min).get();
+		System.out.println(ii);
+		heap.remove(0);
+		System.out.println(heap.get(0));
+		Integer ii2 = heap.stream().reduce(Integer::min).get();
+		System.out.println(ii2);
+
+//		Integer ii3 = heap.stream().filter(t==999).collect(toList()).size();
+//		heap.stream().forEach(System.out::println);
+//		heap.remove(0);
+//		System.out.println("------------");
+//		System.out.println(heap.get(0));
+//		heap.set(0,99);
+//		heap.stream().forEach(System.out::println);
+//
+//		System.out.println(heap.get(1));
+//		String s= "1 2";
+//		String[] ss = s.split(" ");
+//		System.out.println(ss[0]);
+//		System.out.println(ss[1]);
+
 
 	}
 
