@@ -4648,6 +4648,15 @@ obi OTF
 			System.out.println(n1.data);
 			n1 = n1.next;
 		}
+		String s= "sas";
+		char[] cc = s.toCharArray();
+		Stack<Character> sss= new Stack<>();
+		sss.push('a');
+		StringBuilder sb = new StringBuilder(s);
+		sb.deleteCharAt(1);
+		System.out.println("-------------");
+		System.out.println(s.substring(0,s.length()/2+1));
+		System.out.println(s.substring(s.length()/2));
 
 		/*      h     p     q
 		              h     p   q
@@ -4673,6 +4682,240 @@ obi OTF
 			System.out.println(p.data);
 			p=p.next;
 		}
+	}
+
+
+	/*
+	Given a string of lowercase letters in the range ascii[a-z], determine the index of a character that can be removed to make the string a palindrome.
+	There may be more than one solution, but any will do. If the word is already a palindrome or there is no solution, return -1. Otherwise, return the index of a character to remove.
+	 */
+	class PalindromeIndexResult1 {
+
+		/*
+		 * Complete the 'palindromeIndex' function below.
+		 *
+		 * The function is expected to return an INTEGER.
+		 * The function accepts STRING s as parameter.
+		 */
+        /*
+            aaab
+            if even number
+            start+1   end-1
+            a         a
+            a         b
+
+            baba
+            ababa
+            abaab
+            aba
+            if odd
+            b   b
+            a   a
+
+            remove char
+            and check if s is palindrome
+
+        */
+		public int palindromeIndex(String s) {
+			// Write your code here
+			char[] chars = s.toCharArray();
+
+			Stack<Character> rs = new Stack<>();
+			Stack<Character> ls = new Stack<>();
+			int end_i=chars.length-1;
+			for(int i=0;i<chars.length;i++){
+
+				ls.push(chars[i]);
+				rs.push(chars[end_i-i]);
+
+			}
+
+			for(int j=0;j<chars.length;j++){
+				char lc = ls.pop();
+				char rc = rs.pop();
+				if(lc!=rc){
+					//  System.out.println("found: "+lc+" "+rc);
+					//  System.out.println("index: "+j+" or "+ ((end_i-j)));
+					StringBuilder sb1 = new StringBuilder(s);
+					StringBuilder sb2 = new StringBuilder(s);
+					String a = sb1.deleteCharAt(j).toString();
+					String b = sb2.deleteCharAt(end_i-j).toString();
+					if(testPalindrome(a)){
+						return j;
+					}else if(testPalindrome(b)){
+						return end_i-j;
+					}else{
+						continue;
+					}
+				}
+			}
+			return -1;
+		}
+
+
+		public boolean testPalindrome(String s){
+			char[] chars = s.toCharArray();
+
+			Stack<Character> rs = new Stack<>();
+			Stack<Character> ls = new Stack<>();
+			int end_i=chars.length-1;
+			for(int i=0;i<chars.length;i++){
+
+				ls.push(chars[i]);
+				rs.push(chars[end_i-i]);
+
+			}
+
+			for(int j=0;j<chars.length;j++){
+				char lc = ls.pop();
+				char rc = rs.pop();
+				if(lc!=rc){
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+	}
+
+	class PalindromeIndexResult2 {
+
+		/*
+		 * Complete the 'palindromeIndex' function below.
+		 *
+		 * The function is expected to return an INTEGER.
+		 * The function accepts STRING s as parameter.
+		 */
+        /*
+            aaab
+            if even number
+            start+1   end-1
+            a         a
+            a         b
+
+            baba
+            ababa
+            abaab
+            aba
+            if odd
+            b   b
+            a   a
+
+            remove char
+            and check if s is palindrome
+
+        */
+		public int palindromeIndex(String s) {
+			// Write your code here
+			char[] chars = s.toCharArray();
+			int end_i=chars.length-1;
+			for(int i=0;i<chars.length;i++){
+
+				if(chars[i]!=chars[end_i-i]){
+					StringBuilder sb1 = new StringBuilder(s);
+					StringBuilder sb2 = new StringBuilder(s);
+					String a = sb1.deleteCharAt(i).toString();
+					String b = sb2.deleteCharAt(end_i-i).toString();
+					if(testPalindrome(a)){
+						return i;
+					}else if(testPalindrome(b)){
+						return end_i-i;
+					}else{
+						continue;
+					}
+				}
+			}
+
+
+			return -1;
+		}
+
+
+		public boolean testPalindrome(String s){
+			char[] chars = s.toCharArray();
+
+			int end_i=chars.length-1;
+			for(int i=0;i<chars.length;i++){
+				if(chars[i]!=chars[end_i-i]){
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+	}
+
+	class PalindromeIndexResult3 {
+
+		/*
+		 * Complete the 'palindromeIndex' function below.
+		 *
+		 * The function is expected to return an INTEGER.
+		 * The function accepts STRING s as parameter.
+		 */
+        /*
+            aaab
+            if even number
+            start+1   end-1
+            a         a
+            a         b
+
+            baba
+            ababa
+            abaab
+            aba
+            if odd
+            b   b
+            a   a
+
+            remove char
+            and check if s is palindrome
+
+        */
+		public int palindromeIndex(String s) {
+			// Write your code here
+			char[] chars = s.toCharArray();
+
+			Stack<Character> rs = new Stack<>();
+			Stack<Character> ls = new Stack<>();
+			int end_i=chars.length-1;
+			for(int i=0;i<chars.length;i++){
+
+				if(chars[i]!=chars[end_i-i]){
+					StringBuilder sb1 = new StringBuilder(s);
+					StringBuilder sb2 = new StringBuilder(s);
+					String a = sb1.deleteCharAt(i).toString();
+					String b = sb2.deleteCharAt(end_i-i).toString();
+					if(testPalindrome(a)){
+						return i;
+					}else if(testPalindrome(b)){
+						return end_i-i;
+					}else{
+						continue;
+					}
+				}
+			}
+
+
+			return -1;
+		}
+
+
+		public boolean testPalindrome(String s){
+			char[] chars = s.toCharArray();
+
+			int end_i=chars.length-1;
+			for(int i=0;i<chars.length;i++){
+				if(chars[i]!=chars[end_i-i]){
+					return false;
+				}
+			}
+
+			return true;
+		}
+
 	}
 }
 
