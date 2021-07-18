@@ -27,29 +27,29 @@ public class SolutionApplication {
 
 	public static int diagonalDifference(List<List<Integer>> arr) {
 
-		ArrayList<Integer> firstDiag=new ArrayList();
-		ArrayList<Integer> secondDiag=new ArrayList();
+		ArrayList<Integer> firstDiag = new ArrayList();
+		ArrayList<Integer> secondDiag = new ArrayList();
 
 		arr.stream().forEach(l -> {
-						int index = arr.indexOf(l);
-						System.out.println("index: "+index);
-						System.out.println(l.get(index));
-						System.out.println(l.get((l.size()-1)-index));
-						firstDiag.add(l.get(index));
-						secondDiag.add(l.get((l.size()-1)-index));
-					}
-				);
-		Integer diff = firstDiag.stream().reduce(0,Integer::sum)-
-				   secondDiag.stream().reduce(0,Integer::sum);
+					int index = arr.indexOf(l);
+					System.out.println("index: " + index);
+					System.out.println(l.get(index));
+					System.out.println(l.get((l.size() - 1) - index));
+					firstDiag.add(l.get(index));
+					secondDiag.add(l.get((l.size() - 1) - index));
+				}
+		);
+		Integer diff = firstDiag.stream().reduce(0, Integer::sum) -
+				secondDiag.stream().reduce(0, Integer::sum);
 
 		return Math.abs(diff);
 	}
 
 	static void plusMinus(int[] arr) {
 
-		double zeros = new Double(Arrays.stream(arr).filter(i->i==0).count())/new Double(arr.length);
-		double pos = new Double(Arrays.stream(arr).filter(i->i>0).count())/new Double(arr.length);
-		double neg = new Double(Arrays.stream(arr).filter(i->i<0).count())/new Double(arr.length);
+		double zeros = new Double(Arrays.stream(arr).filter(i -> i == 0).count()) / new Double(arr.length);
+		double pos = new Double(Arrays.stream(arr).filter(i -> i > 0).count()) / new Double(arr.length);
+		double neg = new Double(Arrays.stream(arr).filter(i -> i < 0).count()) / new Double(arr.length);
 
 		System.out.println(new DecimalFormat("0.000000").format(new Double(pos)));
 		System.out.println(new DecimalFormat("0.000000").format(new Double(neg)));
@@ -58,8 +58,8 @@ public class SolutionApplication {
 
 	static void staircase(int n) {
 
-		for(int j=0;j<n;j++) {
-			System.out.println(String.join("",Collections.nCopies(n-j-1," "))+String.join("",Collections.nCopies(j+1,"#")));
+		for (int j = 0; j < n; j++) {
+			System.out.println(String.join("", Collections.nCopies(n - j - 1, " ")) + String.join("", Collections.nCopies(j + 1, "#")));
 		}
 
 	}
@@ -73,20 +73,20 @@ public class SolutionApplication {
 	 */
 	static void miniMaxSum(int[] arr) {
 		Arrays.sort(arr);
-		Arrays.stream(arr).forEach(i->{
+		Arrays.stream(arr).forEach(i -> {
 			System.out.println(i);
 		});
-		long min = (long)arr[0]+(long)arr[1]+(long)arr[2]+(long)arr[3];
-		long max = (long)arr[1]+(long)arr[2]+(long)arr[3]+(long)arr[4];
-		System.out.println(min + " " +max);
+		long min = (long) arr[0] + (long) arr[1] + (long) arr[2] + (long) arr[3];
+		long max = (long) arr[1] + (long) arr[2] + (long) arr[3] + (long) arr[4];
+		System.out.println(min + " " + max);
 	}
 
 	public static int birthdayCakeCandles(List<Integer> candles) {
 		Optional<Integer> max = candles.stream().reduce(Integer::max);
-		List<Integer> tallest = candles.stream().filter(c->c.equals(max.get())).collect(toList());
+		List<Integer> tallest = candles.stream().filter(c -> c.equals(max.get())).collect(toList());
 
-		System.out.println("max: "+max.get());
-		System.out.println("tallest.size(): "+tallest.size());
+		System.out.println("max: " + max.get());
+		System.out.println("tallest.size(): " + tallest.size());
 		return tallest.size();
 	}
 
@@ -108,8 +108,8 @@ public class SolutionApplication {
 //			System.out.println(parseFormat.format(date) + " = " + displayFormat.format(date));
 			System.out.println(date2);
 			String m_time = displayFormat.format(date2);
-			return m_time.substring(0,m_time.length()-2);
-		}catch (Exception e){
+			return m_time.substring(0, m_time.length() - 2);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";
@@ -164,17 +164,17 @@ This took three replacements at a cost of
 		ArrayList newList = new ArrayList();
 
 		List inputs = Arrays.asList(s);
-		inputs.stream().forEach(a->{
-			System.out.println(((int[])a).length);
+		inputs.stream().forEach(a -> {
+			System.out.println(((int[]) a).length);
 		});
-		int[] newArray1 = {s[0][0],s[0][1],s[0][2],s[0][0]+s[0][1]+s[0][2]};
-		int[] newArray2 = {s[1][0],s[1][1],s[1][2],s[1][0]+s[1][1]+s[1][2]};
-		int[] newArray3 = {s[2][0],s[2][1],s[2][2],s[2][0]+s[2][1]+s[2][2]};
-		int[] newArray4 = {s[0][0],s[1][0],s[2][0],s[0][0]+s[1][0]+s[2][0]};
-		int[] newArray5 = {s[0][1],s[1][1],s[2][1],s[0][1]+s[1][1]+s[2][1]};
-		int[] newArray6 = {s[0][2],s[1][2],s[2][2],s[0][2]+s[1][2]+s[2][2]};
-		int[] newArray7 = {s[0][0],s[1][1],s[2][2],s[0][0]+s[1][1]+s[2][2]};
-		int[] newArray8 = {s[0][2],s[1][1],s[2][0],s[0][2]+s[1][1]+s[2][0]};
+		int[] newArray1 = {s[0][0], s[0][1], s[0][2], s[0][0] + s[0][1] + s[0][2]};
+		int[] newArray2 = {s[1][0], s[1][1], s[1][2], s[1][0] + s[1][1] + s[1][2]};
+		int[] newArray3 = {s[2][0], s[2][1], s[2][2], s[2][0] + s[2][1] + s[2][2]};
+		int[] newArray4 = {s[0][0], s[1][0], s[2][0], s[0][0] + s[1][0] + s[2][0]};
+		int[] newArray5 = {s[0][1], s[1][1], s[2][1], s[0][1] + s[1][1] + s[2][1]};
+		int[] newArray6 = {s[0][2], s[1][2], s[2][2], s[0][2] + s[1][2] + s[2][2]};
+		int[] newArray7 = {s[0][0], s[1][1], s[2][2], s[0][0] + s[1][1] + s[2][2]};
+		int[] newArray8 = {s[0][2], s[1][1], s[2][0], s[0][2] + s[1][1] + s[2][0]};
 		newList.add(newArray1);
 		newList.add(newArray2);
 		newList.add(newArray3);
@@ -187,44 +187,44 @@ This took three replacements at a cost of
 
 //		newList.stream().map(a->((int[])a)[3]).distinct().forEach(System.out::println);
 
-		int[] possibleTargetNums = newList.stream().mapToInt(a->((int[])a)[3]).distinct().toArray();
+		int[] possibleTargetNums = newList.stream().mapToInt(a -> ((int[]) a)[3]).distinct().toArray();
 		List<Integer> possibleTargetNumsList = Arrays.stream(possibleTargetNums)        // IntStream
-												   .boxed()          // Stream<Integer>
-												   .collect(Collectors.toList());
+				.boxed()          // Stream<Integer>
+				.collect(Collectors.toList());
 		ArrayList al = new ArrayList();
-		HashMap<Integer,Integer> countMapping = new HashMap();
-		long count1=0;
-		long count2=0;
+		HashMap<Integer, Integer> countMapping = new HashMap();
+		long count1 = 0;
+		long count2 = 0;
 		int targetNum = 0;
 
-		for(Integer eachNum:possibleTargetNumsList){
-			count1 = newList.stream().filter(a->((int[])a)[3]==eachNum).count();
+		for (Integer eachNum : possibleTargetNumsList) {
+			count1 = newList.stream().filter(a -> ((int[]) a)[3] == eachNum).count();
 
-			countMapping.put(eachNum,(int)count1);
+			countMapping.put(eachNum, (int) count1);
 
-			if(count1>count2){
-				count2=count1;
-				targetNum=eachNum;
+			if (count1 > count2) {
+				count2 = count1;
+				targetNum = eachNum;
 			}
 		}
-		System.out.println(targetNum+ " Highest count: "+count2);
+		System.out.println(targetNum + " Highest count: " + count2);
 
 //		al.stream().forEach(System.out::println);
 		final int temp = targetNum;
-		List<Integer> numsForCost = possibleTargetNumsList.stream().filter(a->a!=temp).collect(toList());
+		List<Integer> numsForCost = possibleTargetNumsList.stream().filter(a -> a != temp).collect(toList());
 
 		int cost = 0;
-		for(Integer i:numsForCost){
+		for (Integer i : numsForCost) {
 			int count = countMapping.get(i);
-			System.out.println("Math.abs(targetNum-i): "+Math.abs(targetNum-i)+ " "+"count: "+count);
-			cost = cost + (Math.abs(targetNum-i)*count);
+			System.out.println("Math.abs(targetNum-i): " + Math.abs(targetNum - i) + " " + "count: " + count);
+			cost = cost + (Math.abs(targetNum - i) * count);
 		}
-		System.out.println("cost: "+cost);
+		System.out.println("cost: " + cost);
 		System.out.println("---------------");
-		newList.stream().forEach(a->{
-			int[] ar = (int[])a;
-			for(int i=0;i<ar.length;i++){
-				System.out.print(ar[i]+" ");
+		newList.stream().forEach(a -> {
+			int[] ar = (int[]) a;
+			for (int i = 0; i < ar.length; i++) {
+				System.out.print(ar[i] + " ");
 			}
 			System.out.println("");
 		});
@@ -235,11 +235,11 @@ This took three replacements at a cost of
 	public static List<Integer> gradingStudents(List<Integer> grades) {
 		ArrayList resultList = new ArrayList();
 
-		grades.stream().forEach(i->{
-			int diff = 5-i%5;
-			if(i>37 && diff<3){
-				resultList.add(i+diff);
-			}else{
+		grades.stream().forEach(i -> {
+			int diff = 5 - i % 5;
+			if (i > 37 && diff < 3) {
+				resultList.add(i + diff);
+			} else {
 				resultList.add(i);
 			}
 		});
@@ -250,25 +250,25 @@ This took three replacements at a cost of
 
 	static int[] breakingRecords(int[] scores) {
 
-		int maxScore=scores[0],minScore=scores[0],maxCount=0,minCount=0 ;
+		int maxScore = scores[0], minScore = scores[0], maxCount = 0, minCount = 0;
 
-		for(int i:scores){
+		for (int i : scores) {
 
-			if(i>maxScore){
+			if (i > maxScore) {
 				maxCount++;
-				maxScore=i;
-			}else if(i<minScore){
+				maxScore = i;
+			} else if (i < minScore) {
 				minCount++;
-				minScore=i;
+				minScore = i;
 			}
 
 		}
-		int[] results = {maxCount,minCount};
+		int[] results = {maxCount, minCount};
 
- 		return results;
+		return results;
 	}
 
-/*You are choreographing a circus show with various animals. For one act, you are given two kangaroos on a number line ready to jump in the positive direction (i.e, toward positive infinity).
+	/*You are choreographing a circus show with various animals. For one act, you are given two kangaroos on a number line ready to jump in the positive direction (i.e, toward positive infinity).
 
     The first kangaroo starts at location
 
@@ -356,17 +356,17 @@ YES
 			4,6
 
 		 */
-		int y = 0, z=0, yprev=x1, zprev=x2;
+		int y = 0, z = 0, yprev = x1, zprev = x2;
 		String result = "NO";
-		for(int i=1;i<10001;i++){
-			y=yprev+v1;
-			z=zprev+v2;
-			if(y==z){
+		for (int i = 1; i < 10001; i++) {
+			y = yprev + v1;
+			z = zprev + v2;
+			if (y == z) {
 				result = "YES";
 				break;
-			}else{
-				yprev=y;
-				zprev=z;
+			} else {
+				yprev = y;
+				zprev = z;
 			}
 		}
 		return result;
@@ -407,50 +407,50 @@ getTotalX has the following parameter(s):
 
 	public static int getTotalX(List<Integer> a, List<Integer> b) {
 
-		HashMap<Integer,Integer> factorsOfSecondArray = new HashMap<>();
+		HashMap<Integer, Integer> factorsOfSecondArray = new HashMap<>();
 
-		b.stream().forEach(i ->{
-			for(int j=1;j<i+1;j++) {
+		b.stream().forEach(i -> {
+			for (int j = 1; j < i + 1; j++) {
 //				System.out.println(i+"%"+j+"="+i%j);
 				if (i % j == 0) {
-					if(factorsOfSecondArray.get(j)==null) {
+					if (factorsOfSecondArray.get(j) == null) {
 						factorsOfSecondArray.put(j, 1);
-					}else{
-						factorsOfSecondArray.put(j, factorsOfSecondArray.get(j)+1);
+					} else {
+						factorsOfSecondArray.put(j, factorsOfSecondArray.get(j) + 1);
 					}
 				}
 			}
-		} );
+		});
 
 //	factorsOfSecondArray.keySet().stream().forEach(i->{
 //		System.out.println(i+" -> "+factorsOfSecondArray.get(i));
 //	});
 
-	//factorsOfSecondArray.keySet().stream().filter(integer -> factorsOfSecondArray.get(integer)==b.size()).forEach(System.out::println);
-	List<Integer> integersBeingConsidered = factorsOfSecondArray.keySet().stream().filter(integer -> factorsOfSecondArray.get(integer)==b.size()).collect(toList());
+		//factorsOfSecondArray.keySet().stream().filter(integer -> factorsOfSecondArray.get(integer)==b.size()).forEach(System.out::println);
+		List<Integer> integersBeingConsidered = factorsOfSecondArray.keySet().stream().filter(integer -> factorsOfSecondArray.get(integer) == b.size()).collect(toList());
 
 //	integersBeingConsidered.stream().forEach(System.out::println);
 
-	HashMap<Integer,Integer> finalIntegersWithCounts = new HashMap<>();
-		a.stream().forEach(i ->{
-			for(Integer j:integersBeingConsidered) {
+		HashMap<Integer, Integer> finalIntegersWithCounts = new HashMap<>();
+		a.stream().forEach(i -> {
+			for (Integer j : integersBeingConsidered) {
 //				System.out.println(j+"%"+i+"="+j%i);
 				if (j % i == 0) {
-					if(finalIntegersWithCounts.get(j)==null){
-						finalIntegersWithCounts.put(j,1);
-					}else{
-						finalIntegersWithCounts.put(j,finalIntegersWithCounts.get(j)+1);
+					if (finalIntegersWithCounts.get(j) == null) {
+						finalIntegersWithCounts.put(j, 1);
+					} else {
+						finalIntegersWithCounts.put(j, finalIntegersWithCounts.get(j) + 1);
 					}
 				}
 			}
-		} );
+		});
 
 //		System.out.println("--------");
 //		finalIntegersWithCounts.keySet().stream().forEach(i->{
 //			System.out.println(i+" -> "+finalIntegersWithCounts.get(i));
 //		});
 
-		List<Integer>  finalIntegers = finalIntegersWithCounts.keySet().stream().filter(integer -> finalIntegersWithCounts.get(integer)==a.size()).collect(toList());
+		List<Integer> finalIntegers = finalIntegersWithCounts.keySet().stream().filter(integer -> finalIntegersWithCounts.get(integer) == a.size()).collect(toList());
 
 		return finalIntegers.size();
 	}
@@ -479,11 +479,11 @@ Returns
 - int: the number of pairs
 	 */
 	static int divisibleSumPairs(int n, int k, int[] ar) {
-		int count=0;
+		int count = 0;
 
-		for(int i=0;i<ar.length;i++){
-			for(int j=i+1;j<ar.length;j++) {
-				if ((ar[i] + ar[j]) % k == 0){
+		for (int i = 0; i < ar.length; i++) {
+			for (int j = i + 1; j < ar.length; j++) {
+				if ((ar[i] + ar[j]) % k == 0) {
 					count++;
 				}
 			}
@@ -515,18 +515,18 @@ Returns
 	 */
 	static int migratoryBirds(List<Integer> arr) {
 
-		HashMap<Integer,Integer> countMapping = new HashMap<>();
+		HashMap<Integer, Integer> countMapping = new HashMap<>();
 		arr.stream().forEach(integer -> {
-			if(countMapping.get(integer)==null){
-				countMapping.put(integer,1);
-			}else{
-				countMapping.put(integer,countMapping.get(integer)+1);
+			if (countMapping.get(integer) == null) {
+				countMapping.put(integer, 1);
+			} else {
+				countMapping.put(integer, countMapping.get(integer) + 1);
 			}
 		});
 
 		Optional<Integer> max = countMapping.keySet().stream().map(countMapping::get).collect(toList()).stream().reduce(Integer::max);
-		System.out.println("max: "+max.get());
-		List<Integer> maxNumbers = countMapping.keySet().stream().filter(i-> countMapping.get(i).equals(max.get())).collect(toList());
+		System.out.println("max: " + max.get());
+		List<Integer> maxNumbers = countMapping.keySet().stream().filter(i -> countMapping.get(i).equals(max.get())).collect(toList());
 		maxNumbers.stream().forEach(System.out::println);
 		Optional<Integer> finalAnswer = maxNumbers.stream().reduce(Integer::min);
 
@@ -535,30 +535,30 @@ Returns
 
 	static void bonAppetit(List<Integer> bill, int k, int b) {
 		bill.remove(k);
-		double amt = (double)bill.stream().reduce(Integer::sum).get();
-		double d = b - amt/2;
-		if(amt%2==0) {
-			System.out.println(d == 0 ? "Bon Appetit" : (int)d);
-		}else{
+		double amt = (double) bill.stream().reduce(Integer::sum).get();
+		double d = b - amt / 2;
+		if (amt % 2 == 0) {
+			System.out.println(d == 0 ? "Bon Appetit" : (int) d);
+		} else {
 			System.out.println(d == 0 ? "Bon Appetit" : d);
 		}
 	}
 
 	static int hurdleRace(int k, int[] height) {
 		Optional<Integer> maxHeight = Arrays.stream(height).boxed().collect(Collectors.toList()).stream().reduce(Integer::max);
-		return k>=maxHeight.get()?0:maxHeight.get()-k;
+		return k >= maxHeight.get() ? 0 : maxHeight.get() - k;
 	}
 
 
 	static String catAndMouse(int x, int y, int z) {
-		int a = Math.abs(x-z);
-		int b = Math.abs(y-z);
+		int a = Math.abs(x - z);
+		int b = Math.abs(y - z);
 
-		if(a>b){
+		if (a > b) {
 			return "Cat B";
-		}else if (a<b){
+		} else if (a < b) {
 			return "Cat A";
-		}else {
+		} else {
 			return "Mouse C";
 		}
 
@@ -566,15 +566,15 @@ Returns
 
 
 	static int designerPdfViewer(int[] h, String word) {
-		String[] letters={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-		HashMap <String,Integer> letterMap = new HashMap<>();
-		for(int i=0;i<letters.length;i++){
-			letterMap.put(letters[i],h[i]);
+		String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+		HashMap<String, Integer> letterMap = new HashMap<>();
+		for (int i = 0; i < letters.length; i++) {
+			letterMap.put(letters[i], h[i]);
 		}
 		String[] s = word.split("");
-		Integer maxHeight = Arrays.stream(s).map(each_s->letterMap.get(each_s)).reduce(Integer::max).get();
+		Integer maxHeight = Arrays.stream(s).map(each_s -> letterMap.get(each_s)).reduce(Integer::max).get();
 
-		return word.length()*maxHeight;
+		return word.length() * maxHeight;
 
 	}
 
@@ -613,70 +613,71 @@ Returns
 
 	static int[] missingNumbers(int[] arr, int[] brr) {
 
-		List<Integer> arrSortedList = Arrays.stream(arr).boxed().sorted().collect(toList());;
-		HashMap<Integer,Integer> brrCounts = new HashMap<>();
+		List<Integer> arrSortedList = Arrays.stream(arr).boxed().sorted().collect(toList());
+		;
+		HashMap<Integer, Integer> brrCounts = new HashMap<>();
 
-		for(int i:brr){
-			if(brrCounts.get(i)==null){
-				brrCounts.put(i,1);
-			}else{
-				brrCounts.put(i,brrCounts.get(i)+1);
+		for (int i : brr) {
+			if (brrCounts.get(i) == null) {
+				brrCounts.put(i, 1);
+			} else {
+				brrCounts.put(i, brrCounts.get(i) + 1);
 			}
 		}
 
-		arrSortedList.stream().forEach(integer -> brrCounts.put(integer,brrCounts.get(integer)-1));
+		arrSortedList.stream().forEach(integer -> brrCounts.put(integer, brrCounts.get(integer) - 1));
 
-		brrCounts.keySet().stream().forEach(s->System.out.println(s+" -> "+brrCounts.get(s)));
+		brrCounts.keySet().stream().forEach(s -> System.out.println(s + " -> " + brrCounts.get(s)));
 
-		List<Integer> results = brrCounts.keySet().stream().filter(integer -> brrCounts.get(integer)>0).collect(toList());
+		List<Integer> results = brrCounts.keySet().stream().filter(integer -> brrCounts.get(integer) > 0).collect(toList());
 
 		results.stream().forEach(System.out::println);
 
-		return results.stream().mapToInt(i->i).toArray();
+		return results.stream().mapToInt(i -> i).toArray();
 
 	}
 
 	static String balancedSums2(List<Integer> arr) {
 
-		int leftSum=0;
-		int sum=arr.stream().reduce(Integer::sum).get();
+		int leftSum = 0;
+		int sum = arr.stream().reduce(Integer::sum).get();
 		boolean found = false;
 		int newNum;
-		for(int i = 0;i<arr.size();i++) {
+		for (int i = 0; i < arr.size(); i++) {
 			newNum = arr.get(i);
-			if((sum-newNum)%2==0){
-				found=true;
+			if ((sum - newNum) % 2 == 0) {
+				found = true;
 			}
 		}
-		return found==true?"YES":"NO";
+		return found == true ? "YES" : "NO";
 	}
 
 	static String balancedSums_orig(List<Integer> arr) {
-		int startingPoint=arr.size()/2;
+		int startingPoint = arr.size() / 2;
 
-		int leftSum=0;
-		int rightSum=0;
+		int leftSum = 0;
+		int rightSum = 0;
 		boolean found = false;
 
 		List<Integer> leftList;
 		List<Integer> rightList;
 
-		for(int pivotPoint = startingPoint;pivotPoint<arr.size();pivotPoint++) {
-			leftList = arr.subList(0,pivotPoint);
-			rightList = arr.subList(pivotPoint+1,arr.size());
+		for (int pivotPoint = startingPoint; pivotPoint < arr.size(); pivotPoint++) {
+			leftList = arr.subList(0, pivotPoint);
+			rightList = arr.subList(pivotPoint + 1, arr.size());
 
-			leftSum = leftList.size()==0?0:leftList.stream().reduce(Integer::sum).get();
-			rightSum = rightList.size()==0?0:rightList.stream().reduce(Integer::sum).get();
+			leftSum = leftList.size() == 0 ? 0 : leftList.stream().reduce(Integer::sum).get();
+			rightSum = rightList.size() == 0 ? 0 : rightList.stream().reduce(Integer::sum).get();
 
 			if (leftSum == rightSum) {
 				System.out.println(arr.get(pivotPoint));
 				System.out.println("YES");
-				found=true;
+				found = true;
 				break;
 			}
 		}
 
-		if(!found) {
+		if (!found) {
 			for (int pivotPoint = startingPoint; pivotPoint >= 0; pivotPoint--) {
 				leftList = arr.subList(0, pivotPoint);
 				rightList = arr.subList(pivotPoint + 1, arr.size());
@@ -693,40 +694,40 @@ Returns
 			}
 		}
 
-		return found==true?"YES":"NO";
+		return found == true ? "YES" : "NO";
 
 	}
 
 	static String balancedSums(List<Integer> arr) {
 
-		List<Integer> rightList=arr.subList(0,arr.size());
+		List<Integer> rightList = arr.subList(0, arr.size());
 
-		int leftSum=0;
-		int rightSum=rightList.stream().reduce(Integer::sum).get();
+		int leftSum = 0;
+		int rightSum = rightList.stream().reduce(Integer::sum).get();
 
 		boolean found = false;
 		int pivotNum;
 
-		for(int pivotPoint = 0;pivotPoint<arr.size();pivotPoint++) {
+		for (int pivotPoint = 0; pivotPoint < arr.size(); pivotPoint++) {
 			if (leftSum == rightSum) {
 				System.out.println(arr.get(pivotPoint));
 				System.out.println("YES");
-				found=true;
+				found = true;
 				break;
 			}
 			pivotNum = arr.get(pivotPoint);
-			if(pivotPoint!=0) {
+			if (pivotPoint != 0) {
 				leftSum = leftSum + arr.get(pivotPoint - 1);
 			}
-			rightSum = rightSum-pivotNum;
+			rightSum = rightSum - pivotNum;
 
 		}
 
-		if (!found&&(leftSum == rightSum)) {
-			found=true;
+		if (!found && (leftSum == rightSum)) {
+			found = true;
 		}
 
-		return found==true?"YES":"NO";
+		return found == true ? "YES" : "NO";
 
 	}
 
@@ -737,10 +738,10 @@ Returns
 	static int viralAdvertising(int n) {
 
 		int numOfPeopleLiked = 0;
-		int numOfSahred =5;
+		int numOfSahred = 5;
 		int cumulative = 0;
-		for(int i=0;i<n;i++){
-			numOfSahred = i==0?5:3 * numOfPeopleLiked;
+		for (int i = 0; i < n; i++) {
+			numOfSahred = i == 0 ? 5 : 3 * numOfPeopleLiked;
 			numOfPeopleLiked = numOfSahred / 2;
 			cumulative = cumulative + numOfPeopleLiked;
 		}
@@ -749,29 +750,29 @@ Returns
 
 
 	static int camelcase(String s) {
-		int count=0;
-		for(int i=0;i<s.length();i++){
-			int j=s.charAt(i);
-			if((j>=65)&&(j<=90)){
+		int count = 0;
+		for (int i = 0; i < s.length(); i++) {
+			int j = s.charAt(i);
+			if ((j >= 65) && (j <= 90)) {
 				count++;
 			}
 		}
-		return count+1;
+		return count + 1;
 	}
 
 	static int makingAnagrams1(String s1, String s2) {
-		HashMap<String,Integer> letterMapping = new HashMap<>();
+		HashMap<String, Integer> letterMapping = new HashMap<>();
 
-		for(String each:s1.split("")){
-			letterMapping.merge(each,1,(oldValue, newValue) -> oldValue + 1);
+		for (String each : s1.split("")) {
+			letterMapping.merge(each, 1, (oldValue, newValue) -> oldValue + 1);
 		}
 
-		for(String each:s2.split("")){
-			letterMapping.merge(each,1,(oldValue, newValue) -> oldValue + 1);
+		for (String each : s2.split("")) {
+			letterMapping.merge(each, 1, (oldValue, newValue) -> oldValue + 1);
 		}
 		//ccvvffff
 		//cvff
-		List<String> keyList =letterMapping.keySet().stream().collect(toList());
+		List<String> keyList = letterMapping.keySet().stream().collect(toList());
 //		for(String key:keyList){
 //			letterMapping.
 //		}
@@ -781,19 +782,19 @@ Returns
 	}
 
 
-	static int makingAnagrams(String s1,String s2){
-		HashMap<String,Integer> letterMapping = new HashMap<>();
-		HashMap<String,Integer> letterMapping2 = new HashMap<>();
-		String[] letters = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+	static int makingAnagrams(String s1, String s2) {
+		HashMap<String, Integer> letterMapping = new HashMap<>();
+		HashMap<String, Integer> letterMapping2 = new HashMap<>();
+		String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 		/*
 		initialize the latter-count map by counting letters from each input.
 		 */
-		for(String each:s1.split("")){
-			letterMapping.merge(each,1,(oldValue, newValue) -> oldValue + 1);
+		for (String each : s1.split("")) {
+			letterMapping.merge(each, 1, (oldValue, newValue) -> oldValue + 1);
 		}
 
-		for(String each:s2.split("")){
-			letterMapping2.merge(each,1,(oldValue, newValue) -> oldValue + 1);
+		for (String each : s2.split("")) {
+			letterMapping2.merge(each, 1, (oldValue, newValue) -> oldValue + 1);
 		}
 
 		//		Arrays.stream(letters).forEach(key->System.out.println(key+" -> "+letterMapping.get(key)+" - "+letterMapping2.get(key)+" = "+(Math.abs(letterMapping.get(key)-letterMapping2.get(key)))));
@@ -802,7 +803,7 @@ Returns
 			Since this is to find the minimum number of character deletions, simply subtract and find difference between input 1 and input 2.
 			if you remove a number of letters same as difference, it will make 2 inputs same after the deletion.
 		 */
-		int r = Arrays.stream(letters).map(key->Math.abs((letterMapping.get(key)!=null?letterMapping.get(key):0)-(letterMapping2.get(key)!=null?letterMapping2.get(key):0))).reduce(Integer::sum).get();
+		int r = Arrays.stream(letters).map(key -> Math.abs((letterMapping.get(key) != null ? letterMapping.get(key) : 0) - (letterMapping2.get(key) != null ? letterMapping2.get(key) : 0))).reduce(Integer::sum).get();
 		return r;
 	}
 
@@ -831,16 +832,16 @@ Returns
 
 	 */
 	static String gameOfThrones(String s) {
-		HashMap<String,Integer> letterMapping = new HashMap<>();
-		for(String each:s.split("")){
-			letterMapping.merge(each,1,(oldValue, newValue) -> oldValue + 1);
+		HashMap<String, Integer> letterMapping = new HashMap<>();
+		for (String each : s.split("")) {
+			letterMapping.merge(each, 1, (oldValue, newValue) -> oldValue + 1);
 		}
 
-		List<String> list = letterMapping.keySet().stream().filter(k->letterMapping.get(k)%2!=0).collect(toList());
+		List<String> list = letterMapping.keySet().stream().filter(k -> letterMapping.get(k) % 2 != 0).collect(toList());
 
-		if(list.size()==0 || list.size()==1){
+		if (list.size() == 0 || list.size() == 1) {
 			return "YES";
-		}else if(list.size()>1){
+		} else if (list.size() > 1) {
 			return "NO";
 		}
 
@@ -850,18 +851,18 @@ Returns
 	static int stringConstruction(String s) {
 		String[] s_array = s.split("");
 
-		System.out.println(s.substring(0,1));
-		System.out.println(s.substring(1,2));
-		System.out.println(s.substring(2,3));
-		System.out.println(s.substring(0,2));
-		System.out.println(s.substring(1,3));
-		System.out.println(s.substring(0,3));
+		System.out.println(s.substring(0, 1));
+		System.out.println(s.substring(1, 2));
+		System.out.println(s.substring(2, 3));
+		System.out.println(s.substring(0, 2));
+		System.out.println(s.substring(1, 3));
+		System.out.println(s.substring(0, 3));
 
 
 		return 0;
 	}
 
-	static void ifelse(int n){
+	static void ifelse(int n) {
 		/*
 		If n is odd, print Weird
 		If n is even and in the inclusive range of 2 to 5, print Not Weird
@@ -869,13 +870,13 @@ Returns
 		If n is even and greater than 20, print Not Weird
 		 */
 
-		if (n%2!=0){
+		if (n % 2 != 0) {
 			System.out.println("Weird");
-		}else if ((n%2==0) && (n>=2 && n <=5)){
+		} else if ((n % 2 == 0) && (n >= 2 && n <= 5)) {
 			System.out.println("Not Weird");
-		}else if((n%2==0) &&(n>=6 && n<=20)){
+		} else if ((n % 2 == 0) && (n >= 6 && n <= 20)) {
 			System.out.println("Weird");
-		}else if(n%2==0 && n>20){
+		} else if (n % 2 == 0 && n > 20) {
 			System.out.println("Not Weird");
 		}
 	}
@@ -888,28 +889,28 @@ Returns
 	It contains at least one special character. The special characters are: !@#$%^&*()-+
 	 */
 	static int minimumNumber(int n, String password) {
-		Optional<String> numFound = Arrays.stream(password.split("")).filter(each->each.matches("[0-9]")).findAny();
-		Optional<String> lowerFound = Arrays.stream(password.split("")).filter(each->each.matches("[a-z]")).findAny();
-		Optional<String> upperFound = Arrays.stream(password.split("")).filter(each->each.matches("[A-Z]")).findAny();
-		Optional<String> specialFound = Arrays.stream(password.split("")).filter(each->each.matches("[!@#$%^&*()+-]")).findAny();
-		int missingReqCount=0;
+		Optional<String> numFound = Arrays.stream(password.split("")).filter(each -> each.matches("[0-9]")).findAny();
+		Optional<String> lowerFound = Arrays.stream(password.split("")).filter(each -> each.matches("[a-z]")).findAny();
+		Optional<String> upperFound = Arrays.stream(password.split("")).filter(each -> each.matches("[A-Z]")).findAny();
+		Optional<String> specialFound = Arrays.stream(password.split("")).filter(each -> each.matches("[!@#$%^&*()+-]")).findAny();
+		int missingReqCount = 0;
 
-		if(!numFound.isPresent()){
+		if (!numFound.isPresent()) {
 			missingReqCount++;
 		}
-		if(!lowerFound.isPresent()){
+		if (!lowerFound.isPresent()) {
 			missingReqCount++;
 		}
-		if(!upperFound.isPresent()){
+		if (!upperFound.isPresent()) {
 			missingReqCount++;
 		}
-		if(!specialFound.isPresent()){
+		if (!specialFound.isPresent()) {
 			missingReqCount++;
 		}
 
-		if((6-password.length()) > missingReqCount){
-			return 6-password.length();
-		}else{
+		if ((6 - password.length()) > missingReqCount) {
+			return 6 - password.length();
+		} else {
 			return missingReqCount;
 		}
 
@@ -925,39 +926,39 @@ Returns
 		if (endNum * endNum > b) {
 			endNum = endNum - 1;
 		}
-		return (endNum == begNum)&&((begNum*begNum)>=a && (begNum*begNum)<=b) ? 1 : endNum - begNum + 1;
+		return (endNum == begNum) && ((begNum * begNum) >= a && (begNum * begNum) <= b) ? 1 : endNum - begNum + 1;
 	}
 
 	static int squares1(int a, int b) {
-		int[][] arr = {{11,734},
-		{228,919},
-		{71,188},
-		{270,303},
-		{312,701},
-		{251,325},
-		{418,954},
-		{407,597},
-		{4,4},
-		{248,583},
-		{318,936},
-		{176,769},
-		{323,838},
-		{383,981},
-		{152,560},
-		{94,217},
-		{232,442},
-		{180,447},
-		{384,819},
-		{175,842},
-		{81,451},
-		{381,771},
-		{260,669},
-		{95,558},
-		{111,926},
-		{212,676},
-		{368,424},
-		{153,373},
-		{127,305}};
+		int[][] arr = {{11, 734},
+				{228, 919},
+				{71, 188},
+				{270, 303},
+				{312, 701},
+				{251, 325},
+				{418, 954},
+				{407, 597},
+				{4, 4},
+				{248, 583},
+				{318, 936},
+				{176, 769},
+				{323, 838},
+				{383, 981},
+				{152, 560},
+				{94, 217},
+				{232, 442},
+				{180, 447},
+				{384, 819},
+				{175, 842},
+				{81, 451},
+				{381, 771},
+				{260, 669},
+				{95, 558},
+				{111, 926},
+				{212, 676},
+				{368, 424},
+				{153, 373},
+				{127, 305}};
 		int[] answer = {24,
 				15,
 				5,
@@ -988,7 +989,7 @@ Returns
 				7,
 				6};
 
-		for(int i=0;i<arr.length;i++) {
+		for (int i = 0; i < arr.length; i++) {
 //			int begNum = (int) Math.ceil(Math.sqrt(a));
 //			int endNum = (int) Math.ceil(Math.sqrt(b));
 
@@ -1000,9 +1001,9 @@ Returns
 			if (endNum * endNum > b) {
 				endNum = endNum - 1;
 			}
-			int finalAnswer = (endNum == begNum)&&((begNum*begNum)>=a && (begNum*begNum)<=b) ? 1 : endNum - begNum + 1;
-			if(finalAnswer!=answer[i]){
-				System.out.println(arr[i][0]+" "+arr[i][1]+" should be "+answer[i]+" but "+finalAnswer );
+			int finalAnswer = (endNum == begNum) && ((begNum * begNum) >= a && (begNum * begNum) <= b) ? 1 : endNum - begNum + 1;
+			if (finalAnswer != answer[i]) {
+				System.out.println(arr[i][0] + " " + arr[i][1] + " should be " + answer[i] + " but " + finalAnswer);
 			}
 		}
 		return 0;
@@ -1040,7 +1041,7 @@ Returns
 		}
 	}
 
-	static void runLinkedList(){
+	static void runLinkedList() {
 		SinglyLinkedList list = new SinglyLinkedList();
 //		SinglyLinkedListNode node1 = new SinglyLinkedListNode(16);
 //		SinglyLinkedListNode node2 = new SinglyLinkedListNode(13);
@@ -1058,13 +1059,13 @@ Returns
 	static void printLinkedList(SinglyLinkedListNode head) {
 		System.out.println(head.data);
 		SinglyLinkedListNode node = head.next;
-		while(node!=null) {
+		while (node != null) {
 			System.out.println(node.data);
 			node = node.next;
 		}
 	}
 
-	static SinglyLinkedListNode buildLinkedList(int[] arr){
+	static SinglyLinkedListNode buildLinkedList(int[] arr) {
 		SinglyLinkedList llist = new SinglyLinkedList();
 		for (int i = 0; i < arr.length; i++) {
 			llist.insertNode(arr[i]);
@@ -1072,21 +1073,22 @@ Returns
 
 		return llist.head;
 	}
+
 	static SinglyLinkedListNode deleteNode(SinglyLinkedListNode head, int position) {
 
 		SinglyLinkedListNode currentNode = head;
 		SinglyLinkedListNode prevNode = null;
-		int count=0;
-		while(currentNode.next!=null){
+		int count = 0;
+		while (currentNode.next != null) {
 			SinglyLinkedListNode nextNode = currentNode.next;
-			if(count==position){
-				if(prevNode!=null) {
+			if (count == position) {
+				if (prevNode != null) {
 					prevNode.next = nextNode;
-				}else{
+				} else {
 					head = nextNode;
 				}
 				break;
-			}else{
+			} else {
 				prevNode = currentNode;
 				currentNode = nextNode;
 			}
@@ -1101,13 +1103,13 @@ Returns
 
 		SinglyLinkedListNode currentNode = head;
 		List<Integer> temp = new ArrayList<>();
-		while(currentNode.next!=null){
+		while (currentNode.next != null) {
 			temp.add(currentNode.data);
 			SinglyLinkedListNode nextNode = currentNode.next;
-			currentNode=nextNode;
+			currentNode = nextNode;
 		}
 
-		for(int i=temp.size()-1;i>=0;i--){
+		for (int i = temp.size() - 1; i >= 0; i--) {
 			System.out.println(temp.get(i));
 		}
 
@@ -1116,17 +1118,17 @@ Returns
 
 	static int powerSum(int X, int N) {
 
-		double max = (double)Math.pow(X,1.0/(double)N);
-		System.out.println("max: "+max);
+		double max = (double) Math.pow(X, 1.0 / (double) N);
+		System.out.println("max: " + max);
 		ArrayList<Double> results = new ArrayList<>();
 		ArrayList<Double> elements = new ArrayList<>();
 		ArrayList<Double> elements2 = new ArrayList<>();
 
-		for(int i=1;i<=max;i++){
+		for (int i = 1; i <= max; i++) {
 
-			double d_pow = Math.pow(i,N);
+			double d_pow = Math.pow(i, N);
 			elements.add(d_pow);
-			System.out.println(i+ " "+d_pow);
+			System.out.println(i + " " + d_pow);
 
 		}
 
@@ -1134,29 +1136,29 @@ Returns
 		//find diff = TARGET-number
 		//collect numbers less than diff
 		//loop through numbers
-			//sum = sum + nqumber
-			//if sum < diff
-			//continue add
-			//
+		//sum = sum + nqumber
+		//if sum < diff
+		//continue add
+		//
 		int count = 0;
-		double sum=0.0;
+		double sum = 0.0;
 
-		elements.stream().forEach(a->elements2.add(a));
+		elements.stream().forEach(a -> elements2.add(a));
 
 
-		for(int i=elements.size()-1;i>=0;i--){
+		for (int i = elements.size() - 1; i >= 0; i--) {
 			double d1 = elements.get(i);
-			double difference=0;
+			double difference = 0;
 //			sum = sum + d1;
-			if(sum==X){
-				sum=0;
+			if (sum == X) {
+				sum = 0;
 				elements2.remove(i);
 				count++;
-			}else{
+			} else {
 
 //				difference = X - sum;
-				List<Double> s = elements2.stream().filter(a->a<d1).collect(toList());
-				for(int j=0;j<s.size();j++){
+				List<Double> s = elements2.stream().filter(a -> a < d1).collect(toList());
+				for (int j = 0; j < s.size(); j++) {
 
 				}
 //				System.out.println("diff: "+diff);
@@ -1173,7 +1175,6 @@ Returns
 //		System.out.println();
 
 
-
 //		while(X==0){
 //			Math.pow(count,N)
 //		}
@@ -1188,98 +1189,98 @@ Returns
 //
 // }
 
-	static void javaString(String A, String B){
-		int sumLengh = A.length()+B.length();
+	static void javaString(String A, String B) {
+		int sumLengh = A.length() + B.length();
 		System.out.println(sumLengh);
 		char[] A_chars = A.toCharArray();
 		char[] B_chars = B.toCharArray();
 
-		int equal_counter=0;
-		for(int i=0;i<Math.min(A.length(),B.length());i++){
-			if(A_chars[i]>B_chars[i]){
+		int equal_counter = 0;
+		for (int i = 0; i < Math.min(A.length(), B.length()); i++) {
+			if (A_chars[i] > B_chars[i]) {
 				System.out.println("Yes");
 				break;
-			}else if(A_chars[i]<B_chars[i]){
+			} else if (A_chars[i] < B_chars[i]) {
 				System.out.println("No");
 				break;
-			}else{
+			} else {
 				equal_counter++;
 			}
 		}
-		if(equal_counter==Math.min(A.length(),B.length())){
-			if(A.length()>B.length()){
+		if (equal_counter == Math.min(A.length(), B.length())) {
+			if (A.length() > B.length()) {
 				System.out.println("Yes");
-			}else if(A.length()<=B.length()){
+			} else if (A.length() <= B.length()) {
 				System.out.println("No");
 			}
 		}
-		String newA = A.substring(0,1).toUpperCase()+A.substring(1,A.length());
-		String newB = B.substring(0,1).toUpperCase()+B.substring(1,B.length());
-		System.out.println(newA+" "+newB);
+		String newA = A.substring(0, 1).toUpperCase() + A.substring(1, A.length());
+		String newB = B.substring(0, 1).toUpperCase() + B.substring(1, B.length());
+		System.out.println(newA + " " + newB);
 	}
 
-	static void isAnagram(String a, String b){
-		HashMap<String,Integer> a_counter_map = new HashMap<>();
-		HashMap<String,Integer> b_counter_map = new HashMap<>();
+	static void isAnagram(String a, String b) {
+		HashMap<String, Integer> a_counter_map = new HashMap<>();
+		HashMap<String, Integer> b_counter_map = new HashMap<>();
 
 		String[] a_str = a.toLowerCase().split("");
 		String[] b_str = b.toLowerCase().split("");
 
-		if(a.length()!=b.length()){
+		if (a.length() != b.length()) {
 			System.out.println("Not Anagrams");
-		}else {
+		} else {
 			Arrays.stream(a_str).forEach(each_a -> a_counter_map.merge(each_a, 1, (oldValue, newValue) -> newValue = oldValue + 1));
 			Arrays.stream(b_str).forEach(each_b -> b_counter_map.merge(each_b, 1, (oldValue, newValue) -> newValue = oldValue + 1));
-			boolean isAnagram=true;
-			Object[] key_arr =a_counter_map.keySet().toArray();
-			for(Object key:key_arr){
-				if(a_counter_map.get(key)!=b_counter_map.get(key)){
+			boolean isAnagram = true;
+			Object[] key_arr = a_counter_map.keySet().toArray();
+			for (Object key : key_arr) {
+				if (a_counter_map.get(key) != b_counter_map.get(key)) {
 					isAnagram = false;
 					break;
 				}
 			}
 
-			System.out.println(isAnagram?"Anagrams":"Not Anagrams");
+			System.out.println(isAnagram ? "Anagrams" : "Not Anagrams");
 
 		}
 
 
 	}
 
-	static void isAnagram2(String a, String b){
+	static void isAnagram2(String a, String b) {
 
-		if(a.length()!=b.length()){
+		if (a.length() != b.length()) {
 			System.out.println("Not Anagrams");
-		}else {
+		} else {
 			char[] a_sorted = a.toLowerCase().toCharArray();
 			char[] b_sorted = b.toLowerCase().toCharArray();
 			java.util.Arrays.sort(a_sorted);
 			Arrays.sort(b_sorted);
 
-			if(String.copyValueOf(a_sorted).toString().equals(String.copyValueOf(b_sorted).toString())){
+			if (String.copyValueOf(a_sorted).toString().equals(String.copyValueOf(b_sorted).toString())) {
 				System.out.println("Anagrams");
-			}else{
+			} else {
 				System.out.println("Not Anagrams");
 			}
 		}
 	}
 
-	static void getSmallestAndLargest(String s, int k){
+	static void getSmallestAndLargest(String s, int k) {
 
-		String smallest="";
-		String largest="";
+		String smallest = "";
+		String largest = "";
 		java.util.ArrayList<String> s_arr = new ArrayList<>();
-		for(int i=0;i<s.length();i++) {
-			if(i+k>s.length()){
+		for (int i = 0; i < s.length(); i++) {
+			if (i + k > s.length()) {
 				break;
 			}
-			s_arr.add(s.substring(i,i+k));
+			s_arr.add(s.substring(i, i + k));
 		}
 
-		if(s.length()==k){
-		  smallest=s;
-		  largest=s;
-		}else {
+		if (s.length() == k) {
+			smallest = s;
+			largest = s;
+		} else {
 			for (int j = 0; j < s_arr.size(); j++) {
 				char[] each_c = s_arr.get(j).toCharArray();
 
@@ -1314,14 +1315,15 @@ Returns
 			}
 		}
 
-		System.out.println("smallest: "+smallest+" largest:"+largest);
+		System.out.println("smallest: " + smallest + " largest:" + largest);
 	}
+
 	static long repeatedString(String s, long n) {
-		String ss = s.replaceAll("[a]","");
+		String ss = s.replaceAll("[a]", "");
 		long numOfA = 0;
-		if(ss.equals("")) {
+		if (ss.equals("")) {
 			numOfA = n;
-		}else{
+		} else {
 			System.out.println("replaced ss: " + ss);
 			String[] s_arr = s.split("");
 			long numOfRepeats = n / s.length();
@@ -1338,23 +1340,23 @@ Returns
 				}
 			}
 		}
-		System.out.println("numOfA after diff: "+numOfA);
+		System.out.println("numOfA after diff: " + numOfA);
 
 		return numOfA;
 	}
 
 	static int libraryFine(int d1, int m1, int y1, int d2, int m2, int y2) {
 
-		if(y2 < y1){
+		if (y2 < y1) {
 			return 10000;
 		}
 
-		if(y2 == y1 && m2 < m1){
-			return (m1-m2) * 500;
+		if (y2 == y1 && m2 < m1) {
+			return (m1 - m2) * 500;
 		}
 
-		if(y2==y1 && m2==m1 && d2<d1){
-			return (d1-d2)*15;
+		if (y2 == y1 && m2 == m1 && d2 < d1) {
+			return (d1 - d2) * 15;
 		}
 		return 0;
 	}
@@ -1369,9 +1371,9 @@ Returns
         */
 		ArrayList<Long> outputList = new ArrayList();
 
-		for(int i=0;i<arr.length;i++) {
-			long nonzeroCount = Arrays.stream(arr).filter(a->a>0).count();
-			if(nonzeroCount!=0) {
+		for (int i = 0; i < arr.length; i++) {
+			long nonzeroCount = Arrays.stream(arr).filter(a -> a > 0).count();
+			if (nonzeroCount != 0) {
 				outputList.add(nonzeroCount);
 				int minNum = Arrays.stream(arr).filter(a -> a > 0).reduce(Integer::min).getAsInt();
 				for (int j = 0; j < arr.length; j++) {
@@ -1379,15 +1381,15 @@ Returns
 					System.out.print("arr[" + j + "]: " + arr[j] + "-" + minNum + " ");
 				}
 				System.out.println("");
-			}else{
+			} else {
 				break;
 			}
 		}
 
 		int[] finalOutput = new int[outputList.size()];
-		int counter=0;
-		for(Long each:outputList){
-			finalOutput[counter]=each.intValue();
+		int counter = 0;
+		for (Long each : outputList) {
+			finalOutput[counter] = each.intValue();
 			counter++;
 		}
 		return finalOutput;
@@ -1396,39 +1398,39 @@ Returns
 	public static int countingValleys(int steps, String path) {
 		// Write your code here
 		String[] pathArr = path.split("");
-		int stepTracker=0;
-		int valleyCounter=0;
-		for(String step:pathArr){
-			int preValue=stepTracker;
-			if(step.equals("U")){
+		int stepTracker = 0;
+		int valleyCounter = 0;
+		for (String step : pathArr) {
+			int preValue = stepTracker;
+			if (step.equals("U")) {
 				stepTracker++;
-				if(preValue<0&&stepTracker==0){
+				if (preValue < 0 && stepTracker == 0) {
 					valleyCounter++;
 				}
-			}else if(step.equals("D")){
+			} else if (step.equals("D")) {
 				stepTracker--;
 			}
 		}
 		return valleyCounter;
 	}
 
-	static void patternSyntaxChecker(String s){
+	static void patternSyntaxChecker(String s) {
 		try {
 			Pattern p = Pattern.compile(s);
 			System.out.println("Valid");
-		}catch(PatternSyntaxException pe){
+		} catch (PatternSyntaxException pe) {
 			System.out.println("Invalid");
 		}
 	}
 
-	static void primalityTest(String s){
+	static void primalityTest(String s) {
 		BigInteger bi = new BigInteger(s);
-		System.out.println(bi.isProbablePrime(1)?"prime":"not prime");
+		System.out.println(bi.isProbablePrime(1) ? "prime" : "not prime");
 
 	}
 
-	static void testBigDecimal(String[] strings){
-		for(String s:strings){
+	static void testBigDecimal(String[] strings) {
+		for (String s : strings) {
 			System.out.println(s);
 		}
 		System.out.println("----------------");
@@ -1437,7 +1439,7 @@ Returns
 			public int compare(String o1, String o2) {
 				BigDecimal o1_bigDecimal = new BigDecimal(o1);
 				BigDecimal o2_bigDecimal = new BigDecimal(o2);
-				if(o2_bigDecimal.compareTo(o1_bigDecimal)==0){
+				if (o2_bigDecimal.compareTo(o1_bigDecimal) == 0) {
 					return 1;
 				}
 				return o2_bigDecimal.compareTo(o1_bigDecimal);
@@ -1447,28 +1449,28 @@ Returns
 		Arrays.stream(strings).forEach(System.out::println);
 	}
 
-	static void testBigDecimal2(String[] strings){
-		for(String s:strings){
+	static void testBigDecimal2(String[] strings) {
+		for (String s : strings) {
 			System.out.println(s);
 		}
 		System.out.println("----------------");
 		ArrayList<BigDecimal> bigDecimalArrayList = new ArrayList<>();
-		ArrayList<BigDecimal> sortedList =new ArrayList<>();
-		Arrays.stream(strings).forEach(s->bigDecimalArrayList.add(new BigDecimal(s)));
+		ArrayList<BigDecimal> sortedList = new ArrayList<>();
+		Arrays.stream(strings).forEach(s -> bigDecimalArrayList.add(new BigDecimal(s)));
 
-		bigDecimalArrayList.stream().sorted().forEach(bd->sortedList.add(bd));
+		bigDecimalArrayList.stream().sorted().forEach(bd -> sortedList.add(bd));
 		Collections.reverse(sortedList);
 
-		for(int i=0;i<strings.length;i++){
-			strings[i]=sortedList.get(i).toString();
+		for (int i = 0; i < strings.length; i++) {
+			strings[i] = sortedList.get(i).toString();
 		}
 
-		for(String s:strings){
+		for (String s : strings) {
 			System.out.println(s);
 		}
 	}
 
-	static void testBigInteger(String a, String b){
+	static void testBigInteger(String a, String b) {
 		BigInteger big_a = new BigInteger(a);
 		BigInteger big_b = new BigInteger(b);
 
@@ -1481,7 +1483,7 @@ Returns
 		System.out.println(big_a instanceof BigInteger ? ((BigInteger) big_a) : null);
 	}
 
-	static void javaStringToken(String ss){
+	static void javaStringToken(String ss) {
 
 		System.out.println(ss.length());
 
@@ -1493,9 +1495,9 @@ Returns
 //		String s_arr2=ss.replaceAll("[A-Za-z!]","a");
 //		System.out.println(s_arr2);
 
-		ss =ss.trim();
+		ss = ss.trim();
 
-		if(ss.length()>0 && ss.length()<=40000) {
+		if (ss.length() > 0 && ss.length() <= 40000) {
 //			System.out.println("--->" + ss);
 //
 //			System.out.println("--->" + ss);
@@ -1510,29 +1512,29 @@ Returns
 	}
 
 	//Java Regex for IP validation
-	static void pattern(String s,String pattern){
+	static void pattern(String s, String pattern) {
 
 		System.out.println(s.matches(pattern));
 
 	}
 
-	static int java2dArray(int[][] inputArr){
+	static int java2dArray(int[][] inputArr) {
 
 		int maxSum = 0;
-		for(int i=0;i<inputArr.length-2;i++) {
+		for (int i = 0; i < inputArr.length - 2; i++) {
 
-			for(int j=0;j<inputArr[i].length-2;j++) {
+			for (int j = 0; j < inputArr[i].length - 2; j++) {
 				int topLeft = inputArr[i][j];
-				int topMiddle =inputArr[i][j+1];
-				int topRight = inputArr[i][j+2];
+				int topMiddle = inputArr[i][j + 1];
+				int topRight = inputArr[i][j + 2];
 
-				int secRowMiddle=inputArr[i+1][j+1];
+				int secRowMiddle = inputArr[i + 1][j + 1];
 
-				int leftBottom=inputArr[i+2][j];
-				int midlleBottom=inputArr[i+2][j+1];
-				int rightBottom=inputArr[i+2][j+2];
-				int sum = topLeft+topMiddle+topRight+secRowMiddle+leftBottom+midlleBottom+rightBottom;
-				if((i==0&&j==0)||(maxSum<sum)){
+				int leftBottom = inputArr[i + 2][j];
+				int midlleBottom = inputArr[i + 2][j + 1];
+				int rightBottom = inputArr[i + 2][j + 2];
+				int sum = topLeft + topMiddle + topRight + secRowMiddle + leftBottom + midlleBottom + rightBottom;
+				if ((i == 0 && j == 0) || (maxSum < sum)) {
 					maxSum = sum;
 				}
 			}
@@ -1543,10 +1545,7 @@ Returns
 	}
 
 	//JAVA 1D Array Part 2
-	static boolean canWin(int leap, int[] game){
-
-
-
+	static boolean canWin(int leap, int[] game) {
 
 
 		//leap = 3,  length=5, 0 0 0 0 0
@@ -1586,38 +1585,38 @@ Returns
 		//all zeros
 		//leapable -> zeros located in index % leap ==0
 		//last 0 must be index located where +1 or +leap >= game.length
-			// game.length-leap
+		// game.length-leap
 
 		//0,1,1,1,1,0,1,1,1,0,1
 		//0,1,1,1,0,0,1,1,1,0,1
 		//0,0,0,0,0 leap=3
-        //find index of 1st zero from the last
+		//find index of 1st zero from the last
 		//and see if the index can be rechable
 		//1. last index - leap should be 0
 
 		ArrayList<Integer> zeroIndexList = new ArrayList<>();
-		for(int i=0;i<game.length;i++){
-			if(game[i]==0) {
+		for (int i = 0; i < game.length; i++) {
+			if (game[i] == 0) {
 				zeroIndexList.add(i);
 			}
 		}
 
- 		int i=0;
+		int i = 0;
 
-		while(i<=game.length-1) {
+		while (i <= game.length - 1) {
 			if (game[i] == 0) {
 				if (i + 1 > game.length - 1 || i + leap > game.length - 1) {
-						return true;
+					return true;
 				} else {
-					game[i]=1;
-					if (game[i+leap] == 0) {
+					game[i] = 1;
+					if (game[i + leap] == 0) {
 						i = i + leap;
-					}else if(game[i+1] == 0){
+					} else if (game[i + 1] == 0) {
 						i++;
-					}else if(i>0&&game[i-1]==0) {
+					} else if (i > 0 && game[i - 1] == 0) {
 						i--;
-					}else {
-							return false;
+					} else {
+						return false;
 					}
 				}
 			} else if (game[i] == 1) {
@@ -1628,39 +1627,38 @@ Returns
 	}
 
 
-
 	public static boolean canWin2(int leap, int[] game) {
-		class ZeroNode{
+		class ZeroNode {
 			public int myIndex;
 			public boolean visited;
 		}
 
 		ArrayList<Integer> zeroIndexList = new ArrayList<>();
-		HashMap<Integer,ZeroNode> zeroIndexMap = new HashMap<>();
-		for(int i=0;i<game.length;i++){
-			if(game[i]==0) {
+		HashMap<Integer, ZeroNode> zeroIndexMap = new HashMap<>();
+		for (int i = 0; i < game.length; i++) {
+			if (game[i] == 0) {
 				ZeroNode zeroNode = new ZeroNode();
-				zeroNode.myIndex=i;
-				zeroIndexMap.put(i,zeroNode);
+				zeroNode.myIndex = i;
+				zeroIndexMap.put(i, zeroNode);
 			}
 		}
 
-		int i=0;
+		int i = 0;
 
-		while(i<=game.length-1) {
+		while (i <= game.length - 1) {
 			if (game[i] == 0) {
 				if (i + 1 > game.length - 1 || i + leap > game.length - 1) {
 					return true;
 				} else {
 //					game[i]=1;
-					zeroIndexMap.get(i).visited=true;
-					if (game[i+leap] == 0) {
+					zeroIndexMap.get(i).visited = true;
+					if (game[i + leap] == 0) {
 						i = i + leap;
-					}else if(game[i+1] == 0){
+					} else if (game[i + 1] == 0) {
 						i++;
-					}else if(i>0&&game[i-1]==0) {
+					} else if (i > 0 && game[i - 1] == 0) {
 						i--;
-					}else {
+					} else {
 						return false;
 					}
 				}
@@ -1672,7 +1670,7 @@ Returns
 	}
 
 	//Java Subarray
-	static void findNegativeSums(int[] nums){
+	static void findNegativeSums(int[] nums) {
 
 		/*0
 		//01
@@ -1694,22 +1692,22 @@ Returns
 		2,1
 		*/
 		int count = 0;
-			for(int i=0;i<nums.length;i++){
+		for (int i = 0; i < nums.length; i++) {
 
-				for(int j=i;j<nums.length;j++){
-					int size = j-i+1;
-					int[] sub = new int[size];
-					System.arraycopy(nums,i,sub,0,size);
-					int sum = Arrays.stream(sub).sum();
-					if(sum<0){
-						count++;
-					}
-					Arrays.stream(sub).forEach(a->System.out.print(a+","));
-					System.out.println("");
+			for (int j = i; j < nums.length; j++) {
+				int size = j - i + 1;
+				int[] sub = new int[size];
+				System.arraycopy(nums, i, sub, 0, size);
+				int sum = Arrays.stream(sub).sum();
+				if (sum < 0) {
+					count++;
 				}
-
+				Arrays.stream(sub).forEach(a -> System.out.print(a + ","));
+				System.out.println("");
 			}
-			System.out.println("count: "+count);
+
+		}
+		System.out.println("count: " + count);
 
 	}
 
@@ -1736,46 +1734,46 @@ Returns
 			(   }
 			{   }
 		 */
-	static boolean isBalanced(String s){
+	static boolean isBalanced(String s) {
 
 		String[] inputs = s.split("");
-		if(s.length()%2!=0){
+		if (s.length() % 2 != 0) {
 			return false;
 		}
 
-		if((inputs[0].equals("}")||inputs[0].equals(")"))){
+		if ((inputs[0].equals("}") || inputs[0].equals(")"))) {
 			return false;
 		}
-		if((inputs[inputs.length-1].equals("{")||inputs[inputs.length-1].equals("("))){
+		if ((inputs[inputs.length - 1].equals("{") || inputs[inputs.length - 1].equals("("))) {
 			return false;
 		}
 
 		ArrayList<String> closeStack = new ArrayList<>();
-		ArrayList<String> openStack=new ArrayList<>();
+		ArrayList<String> openStack = new ArrayList<>();
 
-		for(int i=0;i<inputs.length;i++){
+		for (int i = 0; i < inputs.length; i++) {
 
 			//store open and close brackets in 2 separate buckets
-			if(inputs[i].equals("{")||inputs[i].equals("(")){
+			if (inputs[i].equals("{") || inputs[i].equals("(")) {
 				openStack.add(inputs[i]);
 
-			}else if(inputs[i].equals("}")||inputs[i].equals(")")){
+			} else if (inputs[i].equals("}") || inputs[i].equals(")")) {
 				closeStack.add(inputs[i]);
 			}
 
 			//when # of items in the 2 buckets are same, start comparing
 			//get an item from Open bracket bucket in normal order
 			//get an item from Close bracket bucket in reverse order
-			if(openStack.size()==closeStack.size()){
-				for(int j=0;j<openStack.size();j++) {
+			if (openStack.size() == closeStack.size()) {
+				for (int j = 0; j < openStack.size(); j++) {
 					String openS = openStack.get(j);
-					String closeS = closeStack.get(openStack.size()-j-1);
-					if (openS.equals("{")){
-						if(!closeS.equals("}")){
+					String closeS = closeStack.get(openStack.size() - j - 1);
+					if (openS.equals("{")) {
+						if (!closeS.equals("}")) {
 							return false;
 						}
-					}else if(openS.equals("(")) {
-						if(!closeS.equals(")")){
+					} else if (openS.equals("(")) {
+						if (!closeS.equals(")")) {
 							return false;
 						}
 					}
@@ -1785,26 +1783,26 @@ Returns
 			}
 		}
 
-		if(openStack.size()!=closeStack.size()){
+		if (openStack.size() != closeStack.size()) {
 			return false;
 		}
 		return true;
 	}
 
-	static int longestSubarray(List<Integer> arr){
-		HashMap<Integer,Integer> countBucket = new HashMap<>();
+	static int longestSubarray(List<Integer> arr) {
+		HashMap<Integer, Integer> countBucket = new HashMap<>();
 
-		for(int i=0;i<arr.size();i++){
+		for (int i = 0; i < arr.size(); i++) {
 			System.out.println(i);
-			countBucket.merge(arr.get(i),1,(oldValue,newvalue)->oldValue+1);
+			countBucket.merge(arr.get(i), 1, (oldValue, newvalue) -> oldValue + 1);
 		}
 
-		countBucket.keySet().stream().forEach(a->System.out.println(a+" : "+countBucket.get(a)));
+		countBucket.keySet().stream().forEach(a -> System.out.println(a + " : " + countBucket.get(a)));
 		Optional<Integer> startintPoint = countBucket.keySet().stream().reduce(Integer::min);
 		Optional<Integer> endPoint = countBucket.keySet().stream().reduce(Integer::max);
 		int maxSum = 0;
-		for(int i=startintPoint.get();i<endPoint.get();i++){
-			if(countBucket.get(i)!=null && countBucket.get(i+1)!=null) {
+		for (int i = startintPoint.get(); i < endPoint.get(); i++) {
+			if (countBucket.get(i) != null && countBucket.get(i + 1) != null) {
 				int sum = countBucket.get(i) + countBucket.get(i + 1);
 				if (maxSum < sum) {
 					maxSum = sum;
@@ -1824,9 +1822,9 @@ Returns
 
 		 */
 		int pairCounter = 0;
-		for (int i=0;i<ar.length;i++){
+		for (int i = 0; i < ar.length; i++) {
 
-			if(ar[i]!=0) {
+			if (ar[i] != 0) {
 				for (int j = i + 1; j < ar.length; j++) {
 					if (ar[i] == ar[j]) {
 						pairCounter++;
@@ -1842,7 +1840,7 @@ Returns
 		return pairCounter;
 	}
 
-	static void jumpingOnClouds(int[] c){
+	static void jumpingOnClouds(int[] c) {
 		/*
 				0 1 0 0 1 0
 				0->2->3->5
@@ -1861,45 +1859,46 @@ Returns
 
 
 		 */
-		class Node{
-			public Node(int i,int[] arr){
+		class Node {
+			public Node(int i, int[] arr) {
 				id = i;
 				myValue = arr[i];
-				if(i==arr.length-1){
+				if (i == arr.length - 1) {
 					isItTail = true;
 				}
-				if(i==0){
+				if (i == 0) {
 					isItHead = true;
 				}
-				if(i+2<=arr.length-1) {
+				if (i + 2 <= arr.length - 1) {
 					plusOneNode = new Node(i + 1, arr);
 					plusTwoNode = new Node(i + 2, arr);
 				}
 
 			}
+
 			public int id;
 			public int myValue;
 			public Node plusOneNode;
 			public Node plusTwoNode;
-			public boolean isItTail=false;
-			public boolean isItHead=false;
-			public boolean isVisited=false;
+			public boolean isItTail = false;
+			public boolean isItHead = false;
+			public boolean isVisited = false;
 		}
 
 		LinkedList<Node> linkedList = new LinkedList<>();
-		Node node = new Node(0,c);
+		Node node = new Node(0, c);
 		Node currentNode = node;
-		String pathString="";
-		while(!currentNode.isItTail || !currentNode.isVisited){
-			if(currentNode.myValue==0 && !currentNode.isVisited){
-				pathString = pathString+Integer.toString(currentNode.id);
-				currentNode.isVisited=true;
-			}else if (currentNode.myValue==0 && currentNode.isVisited){
-				if(currentNode.plusOneNode.myValue==0 && !currentNode.plusOneNode.isVisited){
+		String pathString = "";
+		while (!currentNode.isItTail || !currentNode.isVisited) {
+			if (currentNode.myValue == 0 && !currentNode.isVisited) {
+				pathString = pathString + Integer.toString(currentNode.id);
+				currentNode.isVisited = true;
+			} else if (currentNode.myValue == 0 && currentNode.isVisited) {
+				if (currentNode.plusOneNode.myValue == 0 && !currentNode.plusOneNode.isVisited) {
 					currentNode = currentNode.plusOneNode;
-				}else {
-					if(currentNode.plusTwoNode.myValue==0 && !currentNode.plusTwoNode.isVisited){
-						currentNode=currentNode.plusTwoNode;
+				} else {
+					if (currentNode.plusTwoNode.myValue == 0 && !currentNode.plusTwoNode.isVisited) {
+						currentNode = currentNode.plusTwoNode;
 					}
 				}
 			}
@@ -1917,7 +1916,7 @@ Returns
 
 	}
 
-	static void jumpingOnClouds2(int[] c){
+	static void jumpingOnClouds2(int[] c) {
 
 		/*
 			0 1 0 0 0 1 0
@@ -1961,25 +1960,25 @@ Returns
 		 */
 		String pathString = "0";
 
-		int i=0;
+		int i = 0;
 		int pathCounter = 1;
-		while(i<c.length-2){
-				if(c[i+2]==0){
-					pathString=pathString+Integer.toString(i+2);
-					i=i+2;
-					pathCounter++;
-				}else if(c[i+1]==0){
-					pathString=pathString+Integer.toString(i+1);
-					i=i+1;
-					pathCounter++;
-				}
-			System.out.println(pathString);
+		while (i < c.length - 2) {
+			if (c[i + 2] == 0) {
+				pathString = pathString + Integer.toString(i + 2);
+				i = i + 2;
+				pathCounter++;
+			} else if (c[i + 1] == 0) {
+				pathString = pathString + Integer.toString(i + 1);
+				i = i + 1;
+				pathCounter++;
 			}
-
-		if(i==c.length-1){
-			pathCounter = pathCounter-1;
+			System.out.println(pathString);
 		}
-		System.out.println("-----"+pathCounter);
+
+		if (i == c.length - 1) {
+			pathCounter = pathCounter - 1;
+		}
+		System.out.println("-----" + pathCounter);
 
 
 	}
@@ -1988,7 +1987,7 @@ Returns
 		This works but this is too slow
 		This is based on counting and putting in a bucket(hashmap)
 	 */
-	static int sherlockAndAnagrams(String s){
+	static int sherlockAndAnagrams(String s) {
 
 		/*
 			cdcd
@@ -2021,20 +2020,20 @@ Returns
 
 		int stringWidth = 1;
 
-		int foundCounter=0;
+		int foundCounter = 0;
 
-		while(stringWidth!=s.length()+1) {
-			System.out.println("stringWidth: "+stringWidth);
-			for(int k=0;k+stringWidth<s.length();k++) {
+		while (stringWidth != s.length() + 1) {
+			System.out.println("stringWidth: " + stringWidth);
+			for (int k = 0; k + stringWidth < s.length(); k++) {
 				HashMap<String, Integer> sourceLetterMapping = new HashMap<>();
-				String sourceStr = s.substring(k, k+stringWidth);
+				String sourceStr = s.substring(k, k + stringWidth);
 				System.out.println("sourceStr: " + sourceStr);
 				for (String each : sourceStr.split("")) {
 					sourceLetterMapping.merge(each, 1, (oldValue, newValue) -> oldValue + 1);
 				}
 
-				for (int i = 0+k; i+stringWidth <= s.length(); i++) {
-					if(k!=i) {
+				for (int i = 0 + k; i + stringWidth <= s.length(); i++) {
+					if (k != i) {
 						String targetStr = s.substring(i, i + sourceStr.length());
 						System.out.println("targetStr: " + targetStr);
 						HashMap<String, Integer> targetStrMap = new HashMap<>();
@@ -2042,10 +2041,10 @@ Returns
 							targetStrMap.merge(each, 1, (oldValue, newValue) -> oldValue + 1);
 						}
 
-						Optional<Integer> matchCount = sourceLetterMapping.keySet().stream().filter(a -> sourceLetterMapping.get(a) == targetStrMap.get(a)).map(a->targetStrMap.get(a)).reduce(Integer::sum);
+						Optional<Integer> matchCount = sourceLetterMapping.keySet().stream().filter(a -> sourceLetterMapping.get(a) == targetStrMap.get(a)).map(a -> targetStrMap.get(a)).reduce(Integer::sum);
 						if (matchCount.isPresent() && matchCount.get() == sourceStr.length()) {
 							foundCounter = foundCounter + 1;
-							System.out.println("found: " + sourceStr + " - " + targetStr+" -> ["+k+","+(k+stringWidth)+"],"+"["+i+","+(i+sourceStr.length())+"]");
+							System.out.println("found: " + sourceStr + " - " + targetStr + " -> [" + k + "," + (k + stringWidth) + "]," + "[" + i + "," + (i + sourceStr.length()) + "]");
 
 						}
 						targetStrMap.clear();
@@ -2057,7 +2056,7 @@ Returns
 
 		}
 
-		System.out.println("foundCounter: "+foundCounter);
+		System.out.println("foundCounter: " + foundCounter);
 
 		return foundCounter;
 	}
@@ -2066,7 +2065,7 @@ Returns
 	This works better
 	this is based on sorting instead counting and putting in a bucket(Hashmap)
 	 */
-	static int sherlockAndAnagrams2(String s){
+	static int sherlockAndAnagrams2(String s) {
 
 		/*
 			cdcd
@@ -2099,19 +2098,19 @@ Returns
 
 		int stringWidth = 1;
 
-		int foundCounter=0;
+		int foundCounter = 0;
 
-		while(stringWidth!=s.length()+1) {
-			System.out.println("stringWidth: "+stringWidth);
-			for(int k=0;k+stringWidth<s.length();k++) {
-				String sourceStr = s.substring(k, k+stringWidth);
+		while (stringWidth != s.length() + 1) {
+			System.out.println("stringWidth: " + stringWidth);
+			for (int k = 0; k + stringWidth < s.length(); k++) {
+				String sourceStr = s.substring(k, k + stringWidth);
 				char[] charArr = sourceStr.toCharArray();
 				Arrays.sort(charArr);
 				sourceStr = new String(charArr);
 				System.out.println("sourceStr: " + sourceStr);
 
-				for (int i = 0+k; i+stringWidth <= s.length(); i++) {
-					if(k!=i) {
+				for (int i = 0 + k; i + stringWidth <= s.length(); i++) {
+					if (k != i) {
 						String targetStr = s.substring(i, i + sourceStr.length());
 						System.out.println("targetStr: " + targetStr);
 						char[] targetCharArr = targetStr.toCharArray();
@@ -2121,7 +2120,7 @@ Returns
 
 						if (sourceStr.equals(targetStr)) {
 							foundCounter = foundCounter + 1;
-							System.out.println("found: " + sourceStr + " - " + targetStr+" -> ["+k+","+(k+stringWidth)+"],"+"["+i+","+(i+sourceStr.length())+"]");
+							System.out.println("found: " + sourceStr + " - " + targetStr + " -> [" + k + "," + (k + stringWidth) + "]," + "[" + i + "," + (i + sourceStr.length()) + "]");
 
 						}
 					}
@@ -2132,7 +2131,7 @@ Returns
 
 		}
 
-		System.out.println("foundCounter: "+foundCounter);
+		System.out.println("foundCounter: " + foundCounter);
 
 		return foundCounter;
 	}
@@ -2175,16 +2174,16 @@ Returns
 		 */
 
 
-		HashMap<Integer,Integer> bucket = new HashMap<>();
+		HashMap<Integer, Integer> bucket = new HashMap<>();
 
 //		Integer[] boxedArry = Arrays.stream(arr).boxed().toArray(Integer[]::new);
-		for(int i = 0;i<arr.length;i++){
-			bucket.merge(arr[i],1,(oldValue,newValue)->oldValue+1);
+		for (int i = 0; i < arr.length; i++) {
+			bucket.merge(arr[i], 1, (oldValue, newValue) -> oldValue + 1);
 		}
-		int max=0;
-		if(bucket.size()==1) {
+		int max = 0;
+		if (bucket.size() == 1) {
 			return 0;
-		}else{
+		} else {
 			bucket.keySet().stream().forEach(a -> System.out.println(bucket.get(a)));
 			max = bucket.keySet().stream().map(a -> bucket.get(a)).reduce(Integer::max).get();
 		}
@@ -2207,28 +2206,27 @@ Returns
 //		});
 //
 //		Arrays.stream(boxedArry).forEach(System.out::println);
-		return arr.length-max;
-
+		return arr.length - max;
 
 
 	}
 
-	static int[] circularArrayRotation(int[] a, int k, int[] queries){
+	static int[] circularArrayRotation(int[] a, int k, int[] queries) {
 
 		LinkedList myList = new LinkedList();
-		for(int each : a) {
+		for (int each : a) {
 			myList.add(each);
 		}
 
 		myList.stream().forEach(System.out::println);
-		for(int i=k-1;i>=0;i--){
-			myList.add(0,myList.getLast());
+		for (int i = k - 1; i >= 0; i--) {
+			myList.add(0, myList.getLast());
 			myList.removeLast();
 		}
 		myList.stream().forEach(System.out::println);
 		int[] result = new int[queries.length];
-		for(int j=0;j<queries.length;j++){
-			result[0]=(Integer)myList.get(queries[j]);
+		for (int j = 0; j < queries.length; j++) {
+			result[0] = (Integer) myList.get(queries[j]);
 		}
 
 		return result;
@@ -2306,22 +2304,22 @@ obi OTF
 				put {i,i+1} in indexBucket
 		 */
 
-		Arrays.stream(arr).anyMatch(i->i==2);
+		Arrays.stream(arr).anyMatch(i -> i == 2);
 
 		ArrayList<Integer> indexBucket = new ArrayList<>();
 		ArrayList<Integer> valueBucket = new ArrayList<>();
 		boolean reversable = true;
 		boolean swappable = true;
 		boolean outOfOrderStart = false;
-		int lastIndexInBucket=-1;
+		int lastIndexInBucket = -1;
 
-		if(arr.length==2){
-			if(arr[0]>arr[1]){
-				swappable=true;
-				reversable=false;
+		if (arr.length == 2) {
+			if (arr[0] > arr[1]) {
+				swappable = true;
+				reversable = false;
 				System.out.println("swap 1 2");
 			}
-		}else {
+		} else {
 
 			for (int i = 0; i < arr.length - 1; i++) {
 
@@ -2375,70 +2373,70 @@ obi OTF
 				return;
 			}
 
-			if(swappable){
+			if (swappable) {
 				//verify swappable
-				if(indexBucket.get(0)+1==indexBucket.get(1)){
+				if (indexBucket.get(0) + 1 == indexBucket.get(1)) {
 					//swap
-					System.out.println("swap "+indexBucket.get(0)+" "+indexBucket.get(1));
+					System.out.println("swap " + indexBucket.get(0) + " " + indexBucket.get(1));
 				}
-			}else if (reversable) {
+			} else if (reversable) {
 				// check if it's reversable
-				indexBucket.stream().forEach(a->System.out.print(a+" "));
+				indexBucket.stream().forEach(a -> System.out.print(a + " "));
 				System.out.println("");
 				//since the last item of the out-of-ordered is missing because of the items are collected in the loop above
 				//use lastIndexInBucket +1 to get the real last item in the out-of-ordered segment
 				//but need to add 1 more to lastIndexInBucket because the output req starts the arr index from 1, not 0.
-				System.out.println("reverse "+(lastIndexInBucket+2)+" "+(indexBucket.get(0)+1));
+				System.out.println("reverse " + (lastIndexInBucket + 2) + " " + (indexBucket.get(0) + 1));
 			}
 		}
 
 
 	}
 
-	static int moves (List<Integer>arr){
-		if(arr.size()==2){
-			return arr.get(0)%2!=0&&arr.get(1)%2==0?1:0;
+	static int moves(List<Integer> arr) {
+		if (arr.size() == 2) {
+			return arr.get(0) % 2 != 0 && arr.get(1) % 2 == 0 ? 1 : 0;
 		}
-		long middlePoint = arr.size()%2==0?arr.size()/2-1:arr.size()/2;
-		long oddNumCountInLeft = arr.stream().limit(middlePoint).filter(q->q%2!=0).count();
-		long evenNumCountInRight = arr.stream().skip(middlePoint+1).filter(q->q%2==0).count();
+		long middlePoint = arr.size() % 2 == 0 ? arr.size() / 2 - 1 : arr.size() / 2;
+		long oddNumCountInLeft = arr.stream().limit(middlePoint).filter(q -> q % 2 != 0).count();
+		long evenNumCountInRight = arr.stream().skip(middlePoint + 1).filter(q -> q % 2 == 0).count();
 
-		return oddNumCountInLeft>evenNumCountInRight?(int)oddNumCountInLeft:(int)evenNumCountInRight;
+		return oddNumCountInLeft > evenNumCountInRight ? (int) oddNumCountInLeft : (int) evenNumCountInRight;
 	}
 
 	static int countCounterfeit(List<String> serialNumber) {
 
 
 		int totalBillWorth = 0;
-		for(String s : serialNumber){
-			if(s.length()<=12||s.length()>=10) {
+		for (String s : serialNumber) {
+			if (s.length() <= 12 || s.length() >= 10) {
 
 				boolean distincEngLetterPass = false;
-				if(s.substring(0,1).matches("[A-Z]")&&
-						s.substring(1,2).matches("[A-Z]")&&
-						s.substring(2,3).matches("[A-Z]")) {
+				if (s.substring(0, 1).matches("[A-Z]") &&
+						s.substring(1, 2).matches("[A-Z]") &&
+						s.substring(2, 3).matches("[A-Z]")) {
 					String[] sArr = s.substring(0, 3).split("");
 					int i = Arrays.stream(sArr).distinct().toArray().length;
-					if(i==3){
-						distincEngLetterPass=true;
+					if (i == 3) {
+						distincEngLetterPass = true;
 					}
 				}
 
 				boolean yearPass = false;
 //				if (s.substring(3, 7).matches("[^0-9]")) {
-				try{
+				try {
 					int year = Integer.parseInt(s.substring(3, 7));
 					if (year < 1900 || year > 2019) {
 						continue;
-					}else{
+					} else {
 						yearPass = true;
 					}
-				}catch(NumberFormatException e){
+				} catch (NumberFormatException e) {
 					continue;
 				}
 
 				boolean denominationPass = false;
-				String denomination = s.substring(7, s.length()-8+7);
+				String denomination = s.substring(7, s.length() - 8 + 7);
 				int[] denoArr = {10, 20, 50, 100, 200, 500, 1000};
 				for (int eachD : denoArr) {
 					if (Integer.parseInt(denomination) == eachD) {
@@ -2544,15 +2542,15 @@ obi OTF
 //			}
 //		});
 
-		Arrays.sort(unsorted,(o1, o2) -> {
-			if(o1.length()>o2.length()){
+		Arrays.sort(unsorted, (o1, o2) -> {
+			if (o1.length() > o2.length()) {
 				return 1;
-			}else if(o1.length()<o2.length()){
+			} else if (o1.length() < o2.length()) {
 				return -1;
-			}else{
-				if(o1.equals(o2)){
+			} else {
+				if (o1.equals(o2)) {
 					return 0;
-				}else {
+				} else {
 					BigInteger bi1 = new BigInteger(o1);
 					BigInteger bi2 = new BigInteger(o2);
 
@@ -2589,11 +2587,11 @@ obi OTF
 			j=2
 
 	*/
-	static void allSubsetOfASet(int[] input){
+	static void allSubsetOfASet(int[] input) {
 
-		for(int i=0;i<input.length;i++){
-			for(int j=i;j<input.length;j++) {
-				for(int k = i;k<=j;k++) {
+		for (int i = 0; i < input.length; i++) {
+			for (int j = i; j < input.length; j++) {
+				for (int k = i; k <= j; k++) {
 					System.out.print(input[k] + ",");
 				}
 				System.out.println("");
@@ -2623,60 +2621,60 @@ obi OTF
     */
 	static int activityNotifications(int[] expenditure, int d) {
 
-		int notificationCounter=0;
+		int notificationCounter = 0;
 		LinkedList<Integer> sortedList = new LinkedList<>();
 		LinkedList<Integer> subArryList = new LinkedList<>();
-		for(int i=0;i<expenditure.length;i++){
+		for (int i = 0; i < expenditure.length; i++) {
 
-			if(i+d==expenditure.length){
+			if (i + d == expenditure.length) {
 				break;
 			}
-				if (i == 0) {
-					for(int j=0;j<d;j++){
-						subArryList.add(expenditure[i+j]);
-					}
-					subArryList.stream().sorted().forEach(a->sortedList.add(a));
-				} else {
-					int newNum = expenditure[i + d -1];
-					sortedList.removeFirstOccurrence(subArryList.getFirst());
-					subArryList.add(newNum);
-					subArryList.removeFirst();
-					if(newNum>=sortedList.getLast()){
-						sortedList.addLast(newNum);
-					}else if(newNum<=sortedList.getFirst()){
-						sortedList.addFirst(newNum);
-					}else{
-						for(int j=0;j<sortedList.size();j++){
-							if(sortedList.get(j)>newNum){
-								sortedList.add(j,newNum);
-								break;
-							}
-						}
-
-					}
+			if (i == 0) {
+				for (int j = 0; j < d; j++) {
+					subArryList.add(expenditure[i + j]);
 				}
+				subArryList.stream().sorted().forEach(a -> sortedList.add(a));
+			} else {
+				int newNum = expenditure[i + d - 1];
+				sortedList.removeFirstOccurrence(subArryList.getFirst());
+				subArryList.add(newNum);
+				subArryList.removeFirst();
+				if (newNum >= sortedList.getLast()) {
+					sortedList.addLast(newNum);
+				} else if (newNum <= sortedList.getFirst()) {
+					sortedList.addFirst(newNum);
+				} else {
+					for (int j = 0; j < sortedList.size(); j++) {
+						if (sortedList.get(j) > newNum) {
+							sortedList.add(j, newNum);
+							break;
+						}
+					}
+
+				}
+			}
 
 			System.out.println("-----------");
-			subArryList.stream().forEach(a->System.out.print(a+" "));
+			subArryList.stream().forEach(a -> System.out.print(a + " "));
 			System.out.println("<--");
-			sortedList.stream().forEach(a->System.out.print(a+" "));
+			sortedList.stream().forEach(a -> System.out.print(a + " "));
 			System.out.println("-----------");
 
 
 			System.out.println("");
-				double median;
-				if (d % 2 == 0) {
-					//even number
-					int num = d / 2;
-					median = (sortedList.get(num) + sortedList.get(num - 1)) / 2.0;
-				} else {
-					//odd number
-					median = sortedList.get(Math.round(d / 2));
-				}
+			double median;
+			if (d % 2 == 0) {
+				//even number
+				int num = d / 2;
+				median = (sortedList.get(num) + sortedList.get(num - 1)) / 2.0;
+			} else {
+				//odd number
+				median = sortedList.get(Math.round(d / 2));
+			}
 
-				if ((2 * median) <= expenditure[d + i]) {
-					notificationCounter++;
-				}
+			if ((2 * median) <= expenditure[d + i]) {
+				notificationCounter++;
+			}
 
 		}
 		return notificationCounter;
@@ -2771,7 +2769,6 @@ obi OTF
 	static void matrixRotation(List<List<Integer>> matrix, int r) {
 
 
-
 	}
 
 	// Complete the beautifulDays function below.
@@ -2807,12 +2804,12 @@ obi OTF
 	 */
 	static int beautifulDays(int i, int j, int k) {
 
-		int beautifulDayCounter=0;
-		while(i<=j){
+		int beautifulDayCounter = 0;
+		while (i <= j) {
 			String tempStr = Integer.toString(i);
 			StringBuffer sb = new StringBuffer(tempStr);
 			int reverseInt = Integer.parseInt(sb.reverse().toString());
-			if(Math.abs(i-reverseInt)%k==0){
+			if (Math.abs(i - reverseInt) % k == 0) {
 				beautifulDayCounter++;
 			}
 			i++;
@@ -2822,22 +2819,22 @@ obi OTF
 
 	}
 
-	static int lonelyInteger(int[] a){
-		HashMap<Integer,Integer> bucket = new HashMap<>();
+	static int lonelyInteger(int[] a) {
+		HashMap<Integer, Integer> bucket = new HashMap<>();
 
-		for(int i=0;i<a.length;i++){
+		for (int i = 0; i < a.length; i++) {
 
-			bucket.merge(a[i],1,(oldV,newV)->oldV+1);
+			bucket.merge(a[i], 1, (oldV, newV) -> oldV + 1);
 
 		}
 
-		int ans = bucket.keySet().stream().filter(k->bucket.get(k)==1).collect(Collectors.toList()).get(0);
+		int ans = bucket.keySet().stream().filter(k -> bucket.get(k) == 1).collect(Collectors.toList()).get(0);
 		return ans;
 	}
 
-	static void test(){
-		int[][] cases = {{1,2,3},{3,4,5}};
-		for (int i=0;i<cases.length;i++){
+	static void test() {
+		int[][] cases = {{1, 2, 3}, {3, 4, 5}};
+		for (int i = 0; i < cases.length; i++) {
 
 		}
 	}
@@ -2846,17 +2843,17 @@ obi OTF
 		{1,2,3,4,5,6,7}
 		loop each number and find divisible or not
 	 */
-	static void findPrime1(int n){
-		int primeCounter=0;
-		for(int i=2;i<=n;i++){
+	static void findPrime1(int n) {
+		int primeCounter = 0;
+		for (int i = 2; i <= n; i++) {
 			int counter = 0;
-			for(int j=2;j<=n;j++){
-				if(i%j==0){
+			for (int j = 2; j <= n; j++) {
+				if (i % j == 0) {
 					counter++;
 				}
 			}
 
-			if(counter==1){
+			if (counter == 1) {
 				primeCounter++;
 			}
 		}
@@ -2864,12 +2861,13 @@ obi OTF
 		System.out.println(primeCounter);
 
 	}
-	static void play(){//String playerOneShips, List<String> playerTwoGuesses){
-		HashMap<String,String[]> board = new HashMap<>();
-		String[] a = {"A","B","C","D","E","F"};
 
-		for(int i=0;i<a.length;i++){
-			board.put(a[i],new String[6]);
+	static void play() {//String playerOneShips, List<String> playerTwoGuesses){
+		HashMap<String, String[]> board = new HashMap<>();
+		String[] a = {"A", "B", "C", "D", "E", "F"};
+
+		for (int i = 0; i < a.length; i++) {
+			board.put(a[i], new String[6]);
 		}
 
 //		String[] p1Inputs = playerOneShips.split(" ");
@@ -2879,21 +2877,21 @@ obi OTF
 		int value = Integer.parseInt(s.split("")[1]);
 		String[] aa = board.get(key);
 		aa[value] = "x";
-		board.put(key,aa);
+		board.put(key, aa);
 
-		board.keySet().stream().forEach(key1->{
-				String[] each =board.get(key1);
-				for(int j=0;j<a.length;j++) {
-					System.out.println(each[j]);
+		board.keySet().stream().forEach(key1 -> {
+					String[] each = board.get(key1);
+					for (int j = 0; j < a.length; j++) {
+						System.out.println(each[j]);
+					}
 				}
-			}
 		);
 	}
 
 	/*
 	Hash Tables: Ice Cream Parlor
 	 */
-	static void whatFlavor(int[] cost, int money){
+	static void whatFlavor(int[] cost, int money) {
 		/*
                 5
                 1 4 5 3 2
@@ -2925,17 +2923,17 @@ obi OTF
                     4 9 6 7 8
             */
 
-		HashMap<Integer,Integer> bucket = new HashMap<>();
+		HashMap<Integer, Integer> bucket = new HashMap<>();
 
-		for(int i=0;i<cost.length;i++){
-			if(cost[i]<money){
-				int diff = money-cost[i];
-				if(bucket.get(diff)!=null){
+		for (int i = 0; i < cost.length; i++) {
+			if (cost[i] < money) {
+				int diff = money - cost[i];
+				if (bucket.get(diff) != null) {
 					int j = bucket.get(diff);
-					System.out.println((j+1)+" "+(i+1));
+					System.out.println((j + 1) + " " + (i + 1));
 					break;
-				}else{
-					bucket.put(cost[i],i);
+				} else {
+					bucket.put(cost[i], i);
 				}
 
 			}
@@ -2952,16 +2950,16 @@ obi OTF
 
             */
 		int[] results = new int[p.length];
-		for(int x=1;x<=p.length;x++){
+		for (int x = 1; x <= p.length; x++) {
 
-			for(int i=0;i<p.length;i++){
+			for (int i = 0; i < p.length; i++) {
 
-				if(p[i]==x){
+				if (p[i] == x) {
 
-					for(int k=0;k<p.length;k++){
+					for (int k = 0; k < p.length; k++) {
 
-						if(p[k]==i+1){
-							results[x-1]=k+1;
+						if (p[k] == i + 1) {
+							results[x - 1] = k + 1;
 							break;
 						}
 					}
@@ -2987,14 +2985,14 @@ obi OTF
         */
 		int e = 100;
 		int i = 0;
-		while(1==1){
-			i=(i+k)%c.length;
-			if(c[i]==0){
-				e=e-1;
-			}else if(c[i]==1){
-				e=e-3;
+		while (1 == 1) {
+			i = (i + k) % c.length;
+			if (c[i] == 0) {
+				e = e - 1;
+			} else if (c[i] == 1) {
+				e = e - 3;
 			}
-			if(i==0){
+			if (i == 0) {
 				break;
 			}
 		}
@@ -3007,37 +3005,37 @@ obi OTF
 		char[] t_arr = t.toCharArray();
 
 		int deleteCounter = 0;
-		if(s.length()<t.length()){
-			s_arr = new char[s.length()+(t.length()-s.length())];
-			System.arraycopy(s.toCharArray(),0,s_arr,0,s.length());
-		}else{
+		if (s.length() < t.length()) {
+			s_arr = new char[s.length() + (t.length() - s.length())];
+			System.arraycopy(s.toCharArray(), 0, s_arr, 0, s.length());
+		} else {
 			s_arr = s.toCharArray();
 		}
 
 
-		for(int i=0;i<s.length();i++){
-			if(s_arr[i]!=t_arr[i]){
-				deleteCounter = s.length()-i;
+		for (int i = 0; i < s.length(); i++) {
+			if (s_arr[i] != t_arr[i]) {
+				deleteCounter = s.length() - i;
 				break;
 			}
-			if(i+1>t_arr.length-1){
-				deleteCounter = s.length()-t_arr.length;
+			if (i + 1 > t_arr.length - 1) {
+				deleteCounter = s.length() - t_arr.length;
 				break;
 			}
 		}
 
 
-		int appendNum = t_arr.length-(s_arr.length-deleteCounter);
+		int appendNum = t_arr.length - (s_arr.length - deleteCounter);
 
 
-		return deleteCounter+appendNum!=k?"No":"Yes";
+		return deleteCounter + appendNum != k ? "No" : "Yes";
 	}
 
 	static void extraLongFactorials(int n) {
 
-		BigInteger ans = BigInteger.valueOf((long)n);
+		BigInteger ans = BigInteger.valueOf((long) n);
 
-		for(int i=n-1;i>=1;i--){
+		for (int i = n - 1; i >= 1; i--) {
 			ans = ans.multiply(BigInteger.valueOf(i));
 		}
 
@@ -3045,58 +3043,58 @@ obi OTF
 	}
 
 	static String timeInWords(int h, int m) {
-		String[] past_to={"past","to"};
-		String[] teens={"ten","twenty","half"};
-		String[] ones={"one","two","three","four","five","six","seven","eight","nine"};
-		String[] teens_3={"eleven","twelve","thirteen"};
+		String[] past_to = {"past", "to"};
+		String[] teens = {"ten", "twenty", "half"};
+		String[] ones = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+		String[] teens_3 = {"eleven", "twelve", "thirteen"};
 
 		String pastTo;
-		String return_s="";
-		if(m==0){
-			return_s = ones[h-1]+" o' clock";
-		}else if(m>=1 && m<=30 ){
+		String return_s = "";
+		if (m == 0) {
+			return_s = ones[h - 1] + " o' clock";
+		} else if (m >= 1 && m <= 30) {
 			pastTo = past_to[0];
 			String s = Integer.toString(m);
-			if(s.length()>1) {
-				String hour =h>10?teens[h-11]:ones[h-1];
-				if(m==15){
-					return_s = "quarter "+pastTo+" "+hour;
-				}else if(m==30){
-					return_s = "half "+pastTo+" "+hour;
-				}else {
+			if (s.length() > 1) {
+				String hour = h > 10 ? teens[h - 11] : ones[h - 1];
+				if (m == 15) {
+					return_s = "quarter " + pastTo + " " + hour;
+				} else if (m == 30) {
+					return_s = "half " + pastTo + " " + hour;
+				} else {
 					String a = teens[Integer.parseInt(s.split("")[0]) - 1];
 					String b = ones[Integer.parseInt(s.split("")[1]) - 1];
-					if(m>=11&&m<=13){
-						return_s = teens_3[m-11]+" minutes "+pastTo+" "+hour;
-					}else {
+					if (m >= 11 && m <= 13) {
+						return_s = teens_3[m - 11] + " minutes " + pastTo + " " + hour;
+					} else {
 						return_s = a + " " + b + " minutes " + pastTo + " " + hour;
 					}
 				}
 
-			}else if(s.length()==1) {
+			} else if (s.length() == 1) {
 				String b = ones[Integer.parseInt(s.split("")[0]) - 1];
-				return_s = b+(b.equals("one")?" minute ":" minutes ")+pastTo+" "+ones[h-1];
+				return_s = b + (b.equals("one") ? " minute " : " minutes ") + pastTo + " " + ones[h - 1];
 			}
 
-		}else if(m>30){
+		} else if (m > 30) {
 			pastTo = past_to[1];
-			int newMin = 60-m;
+			int newMin = 60 - m;
 			String s = Integer.toString(newMin);
-			String hour =h>=10?teens_3[h-10]:ones[h];
+			String hour = h >= 10 ? teens_3[h - 10] : ones[h];
 
-			if(s.length()>1) {
-				if(m==45) {
-					return_s = "quarter "+ pastTo + " " + hour;
-				}else if(newMin>=11&&newMin<=13){
-					return_s = teens_3[newMin-11]+" minutes "+pastTo+" "+hour;
-				}else{
+			if (s.length() > 1) {
+				if (m == 45) {
+					return_s = "quarter " + pastTo + " " + hour;
+				} else if (newMin >= 11 && newMin <= 13) {
+					return_s = teens_3[newMin - 11] + " minutes " + pastTo + " " + hour;
+				} else {
 					String a = teens[Integer.parseInt(s.split("")[0]) - 1];
 					String b = ones[Integer.parseInt(s.split("")[1]) - 1];
 					return_s = a + " " + b + " minutes " + pastTo + " " + hour;
 				}
-			}else if(s.length()==1) {
-					String b = ones[Integer.parseInt(s.split("")[0]) - 1];
-					return_s = b+(b.equals("one")?" minute ":" minutes ")+pastTo+" "+hour;
+			} else if (s.length() == 1) {
+				String b = ones[Integer.parseInt(s.split("")[0]) - 1];
+				return_s = b + (b.equals("one") ? " minute " : " minutes ") + pastTo + " " + hour;
 			}
 		}
 
@@ -3108,101 +3106,101 @@ obi OTF
 
 
 		int[] results = new int[cases.length];
-		int counter=0;
-		for(int i=0;i<cases.length;i++){
+		int counter = 0;
+		for (int i = 0; i < cases.length; i++) {
 
 			int startingPt = cases[i][0];
 			int endingPt = cases[i][1];
 			int min = width[startingPt];
-			for(int j = startingPt;j<=endingPt;j++){
-				if(min>width[j]){
+			for (int j = startingPt; j <= endingPt; j++) {
+				if (min > width[j]) {
 					min = width[j];
 				}
 			}
-			results[counter]=min;
+			results[counter] = min;
 			counter++;
 		}
 		return results;
 
 	}
 
-	static String organizingContainers(int q,int[][] container) {
+	static String organizingContainers(int q, int[][] container) {
 
 		long[] swapCounterMap = new long[container[0].length];
-		int max=0;
-		long sum=0;
-		int zeroCounter=0;
-		for(int i=0;i<container.length;i++){
-		max=0;
-		sum=0;
-			zeroCounter=0;
-			for(int j=0;j<container[i].length;j++){
-				System.out.print(container[i][j]+" ");
-				sum=sum+container[i][j];
-				if(max<container[i][j]){
-					max=container[i][j];
+		int max = 0;
+		long sum = 0;
+		int zeroCounter = 0;
+		for (int i = 0; i < container.length; i++) {
+			max = 0;
+			sum = 0;
+			zeroCounter = 0;
+			for (int j = 0; j < container[i].length; j++) {
+				System.out.print(container[i][j] + " ");
+				sum = sum + container[i][j];
+				if (max < container[i][j]) {
+					max = container[i][j];
 				}
-				if(container[i][j]==0){
+				if (container[i][j] == 0) {
 					zeroCounter++;
 				}
 			}
 
-			if(zeroCounter==container[i].length-1){
-				swapCounterMap[i]=0;
-			}else{
-				swapCounterMap[i]=sum-max;
+			if (zeroCounter == container[i].length - 1) {
+				swapCounterMap[i] = 0;
+			} else {
+				swapCounterMap[i] = sum - max;
 			}
 		}
 
-		long swappable = Arrays.stream(swapCounterMap).filter(each->each!=0).count();
-		if(swappable==1){
+		long swappable = Arrays.stream(swapCounterMap).filter(each -> each != 0).count();
+		if (swappable == 1) {
 			return "Impossible";
 		}
 		long a = 0;
-		for(int k=0;k<swapCounterMap.length;k++){
-			if(k==0) {
+		for (int k = 0; k < swapCounterMap.length; k++) {
+			if (k == 0) {
 				a = swapCounterMap[k];
-			}else{
-				a = a-swapCounterMap[k];
+			} else {
+				a = a - swapCounterMap[k];
 			}
 		}
 
-		return Math.abs(a)>q?"Impossible":"Possible";
+		return Math.abs(a) > q ? "Impossible" : "Possible";
 	}
 
-	static int theLoverLetterMystery(String s){
+	static int theLoverLetterMystery(String s) {
 		char[] chars = s.toCharArray();
 		int sum = 0;
-		double d = chars.length%2!=0?chars.length/2-0.5:chars.length/2-1;
-		for(int i=0;i<=(int)d;i++){
-			sum = sum + Math.abs(chars[i]-chars[chars.length-i-1]);
-			System.out.println(chars[i]+" "+chars[chars.length-i-1]+" "+sum);
+		double d = chars.length % 2 != 0 ? chars.length / 2 - 0.5 : chars.length / 2 - 1;
+		for (int i = 0; i <= (int) d; i++) {
+			sum = sum + Math.abs(chars[i] - chars[chars.length - i - 1]);
+			System.out.println(chars[i] + " " + chars[chars.length - i - 1] + " " + sum);
 		}
 		return sum;
 	}
 
 	public static int anagram(String s) {
 
-		if(s.length()%2!=0){
+		if (s.length() % 2 != 0) {
 			return -1;
 		}
 
-		HashMap<String, Integer> bucket1=new HashMap<>();
-		HashMap<String, Integer> bucket2=new HashMap<>();
+		HashMap<String, Integer> bucket1 = new HashMap<>();
+		HashMap<String, Integer> bucket2 = new HashMap<>();
 		String[] strings = s.split("");
-		int middleStart = strings.length/2;
+		int middleStart = strings.length / 2;
 		Integer diff = 0;
-		for(int i=0;i<middleStart;i++){
-			bucket1.merge(strings[i],1,(oldValue, newValue)->oldValue+1);
-			bucket2.merge(strings[middleStart+i],1,(oldValue, newValue)->oldValue+1);
+		for (int i = 0; i < middleStart; i++) {
+			bucket1.merge(strings[i], 1, (oldValue, newValue) -> oldValue + 1);
+			bucket2.merge(strings[middleStart + i], 1, (oldValue, newValue) -> oldValue + 1);
 		}
 
 		Iterator<String> bk = bucket1.keySet().iterator();
-		while(bk.hasNext()){
+		while (bk.hasNext()) {
 			String k = bk.next();
 			int b1 = bucket1.get(k);
-			int b2 = bucket2.containsKey(k)?bucket2.get(k):0;
-			diff = diff + Math.abs(b1-b2);
+			int b2 = bucket2.containsKey(k) ? bucket2.get(k) : 0;
+			diff = diff + Math.abs(b1 - b2);
 		}
 
 		return diff;
@@ -3281,19 +3279,19 @@ obi OTF
 		0,9,
 
 	 */
-	static public List<Integer> stones(int n, int a, int b){
-			ArrayList<Integer> answers = new ArrayList<>();
-			int numOfNoneZero = n;//>4?n-1:n;
-			for (int j = 0; j <= numOfNoneZero; j++) {
-				int ans=a * (numOfNoneZero - j) + b * (numOfNoneZero - (numOfNoneZero - j));
-				if((numOfNoneZero-j)>(numOfNoneZero-(numOfNoneZero-j))) {
-					ans = ans - a;
-				}else{
-					ans = ans-b;
-				}
-				answers.add(ans);
+	static public List<Integer> stones(int n, int a, int b) {
+		ArrayList<Integer> answers = new ArrayList<>();
+		int numOfNoneZero = n;//>4?n-1:n;
+		for (int j = 0; j <= numOfNoneZero; j++) {
+			int ans = a * (numOfNoneZero - j) + b * (numOfNoneZero - (numOfNoneZero - j));
+			if ((numOfNoneZero - j) > (numOfNoneZero - (numOfNoneZero - j))) {
+				ans = ans - a;
+			} else {
+				ans = ans - b;
 			}
-			return answers.stream().distinct().sorted().collect(toList());
+			answers.add(ans);
+		}
+		return answers.stream().distinct().sorted().collect(toList());
 	}
 
 	/*
@@ -3379,19 +3377,20 @@ obi OTF
 	static class Result {
 		int counter = 0;
 		int a = 0;
-		String s ="";
+		String s = "";
+
 		public void stepPerms(int n) {
 
 			for (int i = 1; i <= 3; i++) {
 
-				if(a==n){
+				if (a == n) {
 					counter++;
 //					a=a-(i-1);
 //					break;
-				}else if (a<n){
+				} else if (a < n) {
 					a = a + i;
 					stepPerms(n);
-				}else if (a>n){
+				} else if (a > n) {
 					break;
 				}
 
@@ -3403,33 +3402,34 @@ obi OTF
 
 	static class Result2 {
 		int counter = 0;
-		String s ="";
+		String s = "";
+
 		public void stepPerms(int n) {
 
 			//for (int i = 1; i <= 3; i++) {
 
-				addNext(0,n);
+			addNext(0, n);
 
 			//}
 		}
 
-		public void addNext(int addedSoFar, int n){
+		public void addNext(int addedSoFar, int n) {
 			int localAdd = addedSoFar;
-			if(addedSoFar==n){
+			if (addedSoFar == n) {
 				counter++;
 				System.out.println("");
 
 			}
 			for (int i = 1; i <= 3; i++) {
-				System.out.print(i+" ");
+				System.out.print(i + " ");
 //				if(localAdd==n){
 //					counter++;
 //					System.out.println("");
 //					break;
 //				}else
-				if (localAdd<n){
+				if (localAdd < n) {
 					localAdd = localAdd + i;
-					addNext(localAdd,n);
+					addNext(localAdd, n);
 				}
 //				else if (localAdd>n){
 //					break;
@@ -3441,29 +3441,29 @@ obi OTF
 
 	static class Result3 {
 		int counter = 0;
-		String s ="";
+		String s = "";
+
 		public void stepPerms(int n) {
 
 			//for (int i = 1; i <= 3; i++) {
-			counter=0;
-			addNext(0,n);
+			counter = 0;
+			addNext(0, n);
 
 			//}
 		}
 
-		public void addNext(int addedSoFar, int n){
+		public void addNext(int addedSoFar, int n) {
 			int localAdd = 0;
 			for (int i = 1; i <= 3; i++) {
 				//System.out.print(i+" ");
 				localAdd = addedSoFar + i;
 
-				if(localAdd==n){
+				if (localAdd == n) {
 					counter++;
 					//System.out.println("");
-				}else if (localAdd<n){
-					addNext(localAdd,n);
-				}
-				else if (localAdd>n){
+				} else if (localAdd < n) {
+					addNext(localAdd, n);
+				} else if (localAdd > n) {
 					break;
 				}
 			}
@@ -3492,8 +3492,8 @@ obi OTF
 
 			List<Integer> indexList = new ArrayList<>();//arr.stream().filter(a -> a < m).distinct().collect(toList());
 
-			for(int each =0;each<arr.size();each++){
-				if(arr.get(each)<m) {
+			for (int each = 0; each < arr.size(); each++) {
+				if (arr.get(each) < m) {
 					indexList.add(each);
 				}
 			}
@@ -3506,8 +3506,8 @@ obi OTF
 				for (int j = i + 1; j < indexList.size(); j++) {
 					if ((a + arr.get(indexList.get(j))) == m) {
 
-						result.add(indexList.get(i)+1);
-						result.add(indexList.get(j)+1);
+						result.add(indexList.get(i) + 1);
+						result.add(indexList.get(j) + 1);
 						return result;
 					}
 				}
@@ -3516,29 +3516,30 @@ obi OTF
 		}
 	}
 
-	public class MyDfsGraph{
+	public class MyDfsGraph {
 
-		class Node{
+		class Node {
 			int data;
 			LinkedList<Node> adjacents;
 			boolean marked;
-			Node(int data){
-				this.data=data;
-				this.marked=false;
+
+			Node(int data) {
+				this.data = data;
+				this.marked = false;
 				this.adjacents = new LinkedList<>();
 			}
 		}
 
 		Node[] nodes;
 
-		MyDfsGraph(int size){
+		MyDfsGraph(int size) {
 			nodes = new Node[size];
-			for(int i=0;i<size;i++){
-				nodes[i]=new Node(i);
+			for (int i = 0; i < size; i++) {
+				nodes[i] = new Node(i);
 			}
 		}
 
-		void addEdge(int a, int b){
+		void addEdge(int a, int b) {
 			Node n1 = nodes[a];
 			Node n2 = nodes[b];
 			n1.adjacents.add(n2);
@@ -3546,16 +3547,16 @@ obi OTF
 
 		}
 
-		void dfs(int index){
+		void dfs(int index) {
 			Node root = nodes[index];
 			Stack<Node> stack = new Stack<>();
 			stack.push(root);
-			root.marked=true;
-			while(!stack.empty()){
+			root.marked = true;
+			while (!stack.empty()) {
 				Node n = stack.pop();
-				for(Node each_n:n.adjacents){
-					if(!each_n.marked){
-						each_n.marked=true;
+				for (Node each_n : n.adjacents) {
+					if (!each_n.marked) {
+						each_n.marked = true;
 						stack.push(each_n);
 					}
 				}
@@ -3563,50 +3564,53 @@ obi OTF
 			}
 		}
 
-		void print(Node node){
+		void print(Node node) {
 			System.out.println(node.data);
 		}
 
 
 	}
 
-	public MyDfsGraph getMyDfsGraph(int size){
+	public MyDfsGraph getMyDfsGraph(int size) {
 		return new MyDfsGraph(size);
 	}
 
 
-	class MyBinaryTreeLevel{
+	class MyBinaryTreeLevel {
 
-		class Node{
+		class Node {
 			int data;
 			int level;
 
 			Node rightNode;
 			Node leftNode;
 
-			Node(int data){
+			Node(int data) {
 				this.data = data;
 			}
 
 		}
 
 		int size;
-		MyBinaryTreeLevel(int size){
+
+		MyBinaryTreeLevel(int size) {
 			this.size = size;
 		}
 
-		void createTree(){
+		void createTree() {
 
 			LinkedList<Node> linkedList = new LinkedList<>();
 
-			for(int i=0;i<this.size;i++){
+			for (int i = 0; i < this.size; i++) {
 //				Node node = new Node()
 			}
 		}
 	}
 
 
-	public class MyQuickSort{
+
+
+	public class MyQuickSort {
 			/*
 			Reference: https://www.youtube.com/watch?v=7BDzle2n47c
 
@@ -3633,35 +3637,36 @@ obi OTF
 
 			 */
 
-		void quickSort(int[] arr){
+		void quickSort(int[] arr) {
 
 			int start = 0;
-			int end = arr.length-1;
-			Arrays.stream(arr).forEach(num->System.out.print(num+" "));
+			int end = arr.length - 1;
+			Arrays.stream(arr).forEach(num -> System.out.print(num + " "));
 			System.out.println("");
-			quickSort(arr,start,end);
+			quickSort(arr, start, end);
 
 
 //			start = quicksort(arr, start, end, pivotIndex);
 		}
-		void quickSort(int[] arr, int start, int end){
+
+		void quickSort(int[] arr, int start, int end) {
 			int partitionIndex = sortAndPartition(arr, start, end);
-			if(start<partitionIndex-1) {
-				quickSort(arr, start, partitionIndex-1);
+			if (start < partitionIndex - 1) {
+				quickSort(arr, start, partitionIndex - 1);
 			}
-			if(partitionIndex<end){
-				quickSort(arr,partitionIndex,end);
+			if (partitionIndex < end) {
+				quickSort(arr, partitionIndex, end);
 			}
 		}
 
 		int sortAndPartition(int[] arr, int start, int end) {
-			int pivotNum = arr[(start+end)/2];
-			while(start<=end) {
+			int pivotNum = arr[(start + end) / 2];
+			while (start <= end) {
 
-				while(arr[start]<pivotNum) start++;
-				while(arr[end]>pivotNum) end--;
+				while (arr[start] < pivotNum) start++;
+				while (arr[end] > pivotNum) end--;
 
-				if(start<=end) {
+				if (start <= end) {
 					swap(arr, start, end);
 					start++;
 					end--;
@@ -3686,109 +3691,197 @@ obi OTF
 			return start;
 		}
 
-		void swap(int[] arr,int leftIndex, int rightIndex){
+		void swap(int[] arr, int leftIndex, int rightIndex) {
 			int temp = arr[leftIndex];
-			arr[leftIndex]=arr[rightIndex];
-			arr[rightIndex]=temp;
+			arr[leftIndex] = arr[rightIndex];
+			arr[rightIndex] = temp;
 		}
 
 	}
 
-	MyQuickSort getMyQuickSort(){
+	MyQuickSort getMyQuickSort() {
 		return new MyQuickSort();
 	}
 
+	public class MyQuickSort2 {
 
-	static void findPrime(int size){
+		/*
 
-		for(int i=size;i>=2;i--){
-			int counter=0;
-			for(int j=2;j<size;j++){
-				if(i!=j && i%j==0){
+			arr=3,7,5,8,9,6,2,1,4
+
+
+		 pivot
+		 start
+		 end
+		 partition
+		 recursion
+		 swap
+
+		 arr=3,7,9,8,5,6,2,1,4
+		 pivotindex=4
+		 pivot=arr[4]=5
+		 s=0
+		 e=8
+
+		 s->hold 7
+		 e->hold 4
+		 swap ->  3 4     5       7
+
+		 s->hold 9
+		 e->hold 1
+		 swap -> 3 4 1     5     9 7
+
+		 s->hold 8
+		 e->hold 2
+		 swap -> 3 4 1 2    5   8 9 7
+
+		 s->
+		 e->
+
+		 arr=3,4,1,2,5,6,8,9,7
+		 s, e=pivotIndex
+		 s=pivotIndex+1, e
+
+		 arr1=3,4,1,2,5
+		 arr2=6,8,9,7
+
+
+		 pivotIndex = arr.length/2;
+		 start=0 -> s
+		 end=arr.length-1; -> e
+*/
+		 void quicksort(int[] arr, int s,int e, int pivot){
+
+			int newIndex = partition(arr,s,e,pivot);
+
+			if(newIndex>s) {
+				int pivot1 = arr[(newIndex-s)/2];
+				quicksort(arr, s, newIndex,pivot1);
+			}
+			if(newIndex+1<e) {
+				int newIndex2=newIndex+1;
+				int pivot2 = arr[((e-s)+newIndex2)/2];
+				quicksort(arr, newIndex2, e,pivot2);
+			}
+
+		 }
+
+		 int partition(int[] arr,int s,int e,int pivot){
+
+			 while(s<e) {
+				 while(arr[s]<pivot) s++;
+				 while(arr[e]>pivot) e--;
+				 if(s<e) {
+					 swap(arr, s, e);
+					 s++;
+					 e--;
+				 }
+			}
+
+			 return s;
+		 }
+
+		 void swap(int[] arr,int s,int e) {
+			int temp = arr[s];
+			arr[s]=arr[e];
+			arr[e]=temp;
+		 }
+
+	}
+
+	public MyQuickSort2 getMyQuickSort2(){
+		return new MyQuickSort2();
+	}
+
+	static void findPrime(int size) {
+
+		for (int i = size; i >= 2; i--) {
+			int counter = 0;
+			for (int j = 2; j < size; j++) {
+				if (i != j && i % j == 0) {
 					counter++;
 				}
 			}
-			if(counter==0){
-				System.out.print(i+" ");
+			if (counter == 0) {
+				System.out.print(i + " ");
 			}
 		}
 
 	}
 
-	static void fibonaci(){
+	static void fibonaci() {
 		ArrayList<Integer> list = new ArrayList<>();
 		list.add(1);
-		for(int i=1;i<10;i++){
-			if(list.size()==1){
+		for (int i = 1; i < 10; i++) {
+			if (list.size() == 1) {
 				list.add(1);
-			}else{
-				int a = list.get(i-1)+list.get(i-2);
+			} else {
+				int a = list.get(i - 1) + list.get(i - 2);
 				list.add(a);
 			}
 		}
-		list.stream().forEach(num->System.out.print(num+" "));
+		list.stream().forEach(num -> System.out.print(num + " "));
 	}
 
 
-	static int findFibonacci2(int n){
-		if (n==1 || n==2) return 1;
-		else return findFibonacci2(n-1)+findFibonacci2(n-2);
+	static int findFibonacci2(int n) {
+		if (n == 1 || n == 2) return 1;
+		else return findFibonacci2(n - 1) + findFibonacci2(n - 2);
 	}
 
-	static int findFibonacci(int n, int[] arr){
+	static int findFibonacci(int n, int[] arr) {
 		int result;
 
 		if (arr[n] != 0) return arr[n];
-		else if (n==0) result = 0;
-		else if(n==1) result = 1;
+		else if (n == 0) result = 0;
+		else if (n == 1) result = 1;
 		else result = findFibonacci(n - 1, arr) + findFibonacci(n - 2, arr);
 
-		arr[n]=result;
+		arr[n] = result;
 		return result;
 	}
 
 
-
-	static int findFibonacciBottomUp(int n){
-		int result=0;
-		if(n==1||n==2){
+	static int findFibonacciBottomUp(int n) {
+		int result = 0;
+		if (n == 1 || n == 2) {
 			return 1;
-		}else{
+		} else {
 			int[] a = new int[n];
-			a[0]=1;
-			a[1]=1;
-			for(int i=2;i<n;i++){
-				result = a[i-1]+a[i-2];
-				a[i]=result;
+			a[0] = 1;
+			a[1] = 1;
+			for (int i = 2; i < n; i++) {
+				result = a[i - 1] + a[i - 2];
+				a[i] = result;
 			}
 		}
 		return result;
 	}
 
 
-	class MinimumCostToClimbStair{
+	class MinimumCostToClimbStair {
 
-		class Node{
+		class Node {
 			int value;
 			Node[] adjacents = new Node[2];
 			boolean marked = false;
 			int sum;
 
-			Node(int i){
+			Node(int i) {
 				value = i;
 			}
 
-			Node getLeftNode(){
+			Node getLeftNode() {
 				return this.adjacents[0];
 			}
 
-			Node getRightNode(){
+			Node getRightNode() {
 				return this.adjacents[1];
 			}
 
-			void addAdjacents(Node left, Node right){
-				adjacents[0]=left;
-				adjacents[1]=right;
+			void addAdjacents(Node left, Node right) {
+				adjacents[0] = left;
+				adjacents[1] = right;
 			}
 
 
@@ -3796,9 +3889,9 @@ obi OTF
 
 		ArrayList<Node> nodeGraph;
 
-		MinimumCostToClimbStair(int[] arr){
-			 this.nodeGraph = new ArrayList<>();
-			for(int i=0;i<arr.length;i++) {
+		MinimumCostToClimbStair(int[] arr) {
+			this.nodeGraph = new ArrayList<>();
+			for (int i = 0; i < arr.length; i++) {
 
 				Node node = new Node(arr[i]);
 				this.nodeGraph.add(node);
@@ -3807,37 +3900,37 @@ obi OTF
 			this.buildGraph();
 		}
 
-		void buildGraph(){
-			for(int i = 0; i< nodeGraph.size(); i++){
+		void buildGraph() {
+			for (int i = 0; i < nodeGraph.size(); i++) {
 				Node each = nodeGraph.get(i);
-				each.addAdjacents(i+1<=(nodeGraph.size()-1)? nodeGraph.get(i+1):null,
-								  i+2<=(nodeGraph.size()-1)? nodeGraph.get(i+2):null);
+				each.addAdjacents(i + 1 <= (nodeGraph.size() - 1) ? nodeGraph.get(i + 1) : null,
+						i + 2 <= (nodeGraph.size() - 1) ? nodeGraph.get(i + 2) : null);
 			}
 		}
 
 
-		int[] findMinimumCost(){
+		int[] findMinimumCost() {
 			Stack<Node> nodeStack = new Stack<>();
-			nodeGraph.get(0).marked=true;
+			nodeGraph.get(0).marked = true;
 			nodeStack.push(nodeGraph.get(0));
 
-			int sum=0;
+			int sum = 0;
 			ArrayList<Integer> temp = new ArrayList<>();
-			while(!nodeStack.empty()) {
+			while (!nodeStack.empty()) {
 				Node n = nodeStack.pop();
-				System.out.println(n.value +" popped");
+				System.out.println(n.value + " popped");
 				temp.add(n.value);
-				n.sum  = n.sum + n.value;
+				n.sum = n.sum + n.value;
 
 
-				if(n.adjacents[0]==null&&n.adjacents[1]==null) {
-					System.out.println(n.value+" has no adjacent "+": sum so far: "+n.sum);
-					n.sum = n.sum-n.value;
+				if (n.adjacents[0] == null && n.adjacents[1] == null) {
+					System.out.println(n.value + " has no adjacent " + ": sum so far: " + n.sum);
+					n.sum = n.sum - n.value;
 				}
 
-				for(int i=0;i<2;i++) {
+				for (int i = 0; i < 2; i++) {
 					Node each = n.adjacents[i];
-					if(each!=null) {
+					if (each != null) {
 						each.marked = true;
 						nodeStack.push(each);
 
@@ -3845,40 +3938,40 @@ obi OTF
 				}
 
 			}
-			return new int[]{0,1};
+			return new int[]{0, 1};
 		}
 
 	}
 
-	public MinimumCostToClimbStair getMinimumCostToClimbStair(int[] arr){
+	public MinimumCostToClimbStair getMinimumCostToClimbStair(int[] arr) {
 		return new MinimumCostToClimbStair(arr);
 	}
 
 
-	public int findMinimum(int[] arr, int i){
-			int nextIndex=0;
-			if(i+1<=arr.length-1 && i+2 > arr.length-1) {
-				nextIndex=i+1;
-			}else if(i+1<=arr.length-1 && i+2 <= arr.length-1) {
-				if (arr[i + 1] < arr[i + 2]) {
-					nextIndex = i + 1;
-				} else if (arr[i + 1] > arr[i + 2]) {
-					nextIndex = i + 2;
-				} else {
-					nextIndex = i + 2;
-				}
-			}else if(i+1>arr.length-1){
-				System.out.println("Done");
-				return arr[i];
+	public int findMinimum(int[] arr, int i) {
+		int nextIndex = 0;
+		if (i + 1 <= arr.length - 1 && i + 2 > arr.length - 1) {
+			nextIndex = i + 1;
+		} else if (i + 1 <= arr.length - 1 && i + 2 <= arr.length - 1) {
+			if (arr[i + 1] < arr[i + 2]) {
+				nextIndex = i + 1;
+			} else if (arr[i + 1] > arr[i + 2]) {
+				nextIndex = i + 2;
+			} else {
+				nextIndex = i + 2;
 			}
+		} else if (i + 1 > arr.length - 1) {
+			System.out.println("Done");
+			return arr[i];
+		}
 
 
-		return arr[i]+findMinimum(arr,nextIndex);
+		return arr[i] + findMinimum(arr, nextIndex);
 
 	}
 
 	class myFib {
-		int counter =2;
+		int counter = 2;
 
 		public BigDecimal fibonacciModified(BigDecimal t1, BigDecimal t2, int n) {
 
@@ -3895,33 +3988,33 @@ obi OTF
 		}
 	}
 
-	myFib getMyFib(){
+	myFib getMyFib() {
 		return new myFib();
 	}
 
-	class MyBfsPractice{
+	class MyBfsPractice {
 
 		Node startingNode;
 
-		class Node{
+		class Node {
 
 			int value;
 			boolean mark;
 			ArrayList<Node> adjacents;
 
-			Node(int value){
+			Node(int value) {
 				this.value = value;
 				mark = false;
 				adjacents = new ArrayList<>();
 			}
 
-			void addAdjacents(Node node){
+			void addAdjacents(Node node) {
 				this.adjacents.add(node);
 			}
 
 		}
 
-		MyBfsPractice(){
+		MyBfsPractice() {
 		/*
 			1
 		2      3
@@ -3951,16 +4044,16 @@ obi OTF
 
 		}
 
-		void bfs(){
+		void bfs() {
 			Queue<Node> q = new LinkedList<>();
 			q.add(startingNode);
 
-			while(!q.isEmpty()){
+			while (!q.isEmpty()) {
 				Node node = q.poll();
-				node.mark=true;
+				node.mark = true;
 				System.out.println(node.value);
-				for(Node n : node.adjacents) {
-					if(!n.mark) {
+				for (Node n : node.adjacents) {
+					if (!n.mark) {
 						q.add(n);
 					}
 				}
@@ -3969,34 +4062,34 @@ obi OTF
 
 	}
 
-	public MyBfsPractice getMyBfsPractice(){
+	public MyBfsPractice getMyBfsPractice() {
 		return new MyBfsPractice();
 	}
 
 
-	class MyDfsPractice{
+	class MyDfsPractice {
 
 		Node startingNode;
 
-		class Node{
+		class Node {
 
 			int value;
 			boolean mark;
 			ArrayList<Node> adjacents;
 
-			Node(int value){
+			Node(int value) {
 				this.value = value;
 				mark = false;
 				adjacents = new ArrayList<>();
 			}
 
-			void addAdjacents(Node node){
+			void addAdjacents(Node node) {
 				this.adjacents.add(node);
 			}
 
 		}
 
-		MyDfsPractice(){
+		MyDfsPractice() {
 
 			Node node1 = new Node(1);
 			Node node2 = new Node(2);
@@ -4040,37 +4133,38 @@ obi OTF
 
 		}
 
-		void dfs(){
+		void dfs() {
 			Stack<Node> stack = new Stack<>();
 //			System.out.println(startingNode.value+ " pushed ");
 			stack.push(startingNode);
-			startingNode.mark=true;
-			while(!stack.isEmpty()){
+			startingNode.mark = true;
+			while (!stack.isEmpty()) {
 				Node node = stack.pop();
 //				System.out.println(node.value+ " popped ");
-				System.out.println(node.value+" popped");
-				if(node.adjacents.size()>0){
-					for(Node n : node.adjacents) {
-						if(!n.mark) {
-	//						System.out.println(n.value+ " pushed ");
+				System.out.println(node.value + " popped");
+				if (node.adjacents.size() > 0) {
+					for (Node n : node.adjacents) {
+						if (!n.mark) {
+							//						System.out.println(n.value+ " pushed ");
 							stack.push(n);
-							n.mark=true;
+							n.mark = true;
 						}
 					}
-				}else{
-					System.out.println(node.value+" is last child");
+				} else {
+					System.out.println(node.value + " is last child");
 				}
 			}
 		}
 
 	}
-/*
+
+	/*
 		1
  	2      3
  4    5   6   7
      8   9
  */
-	public MyDfsPractice getMyDfsPractice(){
+	public MyDfsPractice getMyDfsPractice() {
 		return new MyDfsPractice();
 	}
 
@@ -4100,50 +4194,50 @@ obi OTF
 		 */
 
 
+		List<Integer> buildBfsGraph(int n, int m, List<List<Integer>> edges, int s) {
 
-		List<Integer> buildBfsGraph(int n, int m, List<List<Integer>> edges, int s){
-
-			class Node{
+			class Node {
 				public int value;
 				public List<Node> adjacents;
 				public Node parentNode;
 				public boolean marked;
-				public int level=0;
-				Node(int i){
+				public int level = 0;
+
+				Node(int i) {
 					value = i;
 					adjacents = new ArrayList<>();
 					marked = false;
 
 				}
 
-				public void setAdj(Node n){
+				public void setAdj(Node n) {
 					this.adjacents.add(n);
-					for(Node each : adjacents){
+					for (Node each : adjacents) {
 						each.setParentNode(this);
 					}
 				}
 
-				public void setParentNode(Node parentN){
+				public void setParentNode(Node parentN) {
 					parentNode = parentN;
 				}
 
 			}
 
 			List<Integer> results = new ArrayList<>();
-			Node[] nodes  = new Node[n];
+			Node[] nodes = new Node[n];
 
-			for(int r=0;r<n-1;r++){
-				results.add(r,-1);
+			for (int r = 0; r < n - 1; r++) {
+				results.add(r, -1);
 			}
-			for(int p=0;p<n;p++){
+			for (int p = 0; p < n; p++) {
 				Node node = new Node(p);
-				nodes[p]=node;
+				nodes[p] = node;
 			}
 
-			for(List list : edges){
+			for (List list : edges) {
 				List<Integer> aaa = list;
 				// System.out.print(aaa.get(0)+" "+aaa.get(1));
-				nodes[aaa.get(0)-1].setAdj(nodes[aaa.get(1)-1]);
+				nodes[aaa.get(0) - 1].setAdj(nodes[aaa.get(1) - 1]);
 
 				// System.out.println("");
 			}
@@ -4165,35 +4259,35 @@ obi OTF
 
 			// }
 
-			int level=6;
+			int level = 6;
 			int curLevel;
 			Queue<Node> queue = new LinkedList<Node>();
-			nodes[0].level=0;
+			nodes[0].level = 0;
 			queue.add(nodes[0]);
 
-			while(!queue.isEmpty()){
+			while (!queue.isEmpty()) {
 
 				Node polledNode = queue.poll();
 				curLevel = polledNode.level;
 				// System.out.println("polledNode: "+(polledNode.value+1)+" at level "+curLevel + " and marked: "+polledNode.marked);
-				polledNode.marked=true;
+				polledNode.marked = true;
 				List<Node> adjNodes = polledNode.adjacents;
-				if(adjNodes.size()>0){
-					for(Node eachN:adjNodes){
-						if(!eachN.marked){
-							eachN.level=curLevel+6;
-							results.set(eachN.value-1,eachN.level);
+				if (adjNodes.size() > 0) {
+					for (Node eachN : adjNodes) {
+						if (!eachN.marked) {
+							eachN.level = curLevel + 6;
+							results.set(eachN.value - 1, eachN.level);
 							queue.add(eachN);
 						}
 					}
-				}else{
+				} else {
 					// System.out.println((polledNode.value+1)+ " has no adj");
-					if(polledNode.value+1<nodes.length){
-						Node nextNode = nodes[polledNode.value+1];
-						if(nextNode != null){
+					if (polledNode.value + 1 < nodes.length) {
+						Node nextNode = nodes[polledNode.value + 1];
+						if (nextNode != null) {
 							// System.out.println("nextNode is not null: "+nextNode.value);
 							queue.add(nextNode);
-						}else{
+						} else {
 							// System.out.println("nextNode is null");
 						}
 						// queue.add(nextNode);
@@ -4222,8 +4316,7 @@ obi OTF
 			// Write your code here
 
 
-			return buildBfsGraph(n,m,edges,s);
-
+			return buildBfsGraph(n, m, edges, s);
 
 
 		}
@@ -4233,17 +4326,16 @@ obi OTF
 	/*
 		1,1,2,3,5,8,11,
 	 */
-	public int myFib2(int[] a,int n){
+	public int myFib2(int[] a, int n) {
 
-		if(n<=1) return 1;
-		int n1 = myFib2(a,n-1);
-		int n2 = myFib2(a,n-2);
-		int s = n1+n2;
-		System.out.println("sum: "+s+" --> "+n1+" + "+n2);
+		if (n <= 1) return 1;
+		int n1 = myFib2(a, n - 1);
+		int n2 = myFib2(a, n - 2);
+		int s = n1 + n2;
+		System.out.println("sum: " + s + " --> " + n1 + " + " + n2);
 		return s;
 
 	}
-
 
 
 	/*
@@ -4256,21 +4348,21 @@ obi OTF
 			5,5
 
 	 */
-	public int[] myFib3(int[] a,int target,int n){
+	public int[] myFib3(int[] a, int target, int n) {
 
 
-		if(n==1) return new int[]{1};
-		if(n==0) return new int[]{0};
-		int[] newArr = new int[a.length+1];
+		if (n == 1) return new int[]{1};
+		if (n == 0) return new int[]{0};
+		int[] newArr = new int[a.length + 1];
 
-		newArr[newArr.length-1] = a[a.length-1]+n;
+		newArr[newArr.length - 1] = a[a.length - 1] + n;
 
 		//a[n] = myFib3(myFib3(a,target,n),target,n);//+myFib3(a,target,n+1);
 
-		System.out.println("sum: "+newArr[newArr.length-1]);
-		if(newArr[newArr.length-1]==target){
+		System.out.println("sum: " + newArr[newArr.length - 1]);
+		if (newArr[newArr.length - 1] == target) {
 			System.out.println("found");
-		}else{
+		} else {
 			System.out.println("not found");
 		}
 
@@ -4290,32 +4382,32 @@ obi OTF
 
 
 	 */
-	public int findNumbersToSum(int[] a, int target){
-		return addNum(a,target,a.length-1);
+	public int findNumbersToSum(int[] a, int target) {
+		return addNum(a, target, a.length - 1);
 
 	}
 
-	public int addNum(int[] a,int target, int i){
-		System.out.print ("target: "+target+", i: "+i);
-		if(target ==0) {
-			System.out.println (" target is 0 return 1");
+	public int addNum(int[] a, int target, int i) {
+		System.out.print("target: " + target + ", i: " + i);
+		if (target == 0) {
+			System.out.println(" target is 0 return 1");
 			return 1;
-		}else if(target < 0){
-			System.out.println (" target is less than 0 return 0");
+		} else if (target < 0) {
+			System.out.println(" target is less than 0 return 0");
 			return 0;
-		}else if(i<0){
-			System.out.println (" i is less than 0 return 0");
+		} else if (i < 0) {
+			System.out.println(" i is less than 0 return 0");
 			return 0;
-		}else if (target < a[i]){
-			System.out.println (" move to "+(i-1)+" since target is less than "+a[i]);
-			return addNum(a,target,i-1);
-		}else {
-			System.out.println (" recursion: change target to "+"target-a[i]: "+target+"-"+a[i]+" | go to subset including target: "+target);
-			return addNum(a,target-a[i],i-1)+addNum(a,target,i-1);
+		} else if (target < a[i]) {
+			System.out.println(" move to " + (i - 1) + " since target is less than " + a[i]);
+			return addNum(a, target, i - 1);
+		} else {
+			System.out.println(" recursion: change target to " + "target-a[i]: " + target + "-" + a[i] + " | go to subset including target: " + target);
+			return addNum(a, target - a[i], i - 1) + addNum(a, target, i - 1);
 		}
 	}
 
-/*
+	/*
 	{8,3,1,2}
 	n=3
 
@@ -4329,18 +4421,18 @@ obi OTF
  */
 	public void coinChangeProblem(int n, List<Long> c) {
 
-			int a = findWays(c,n,c.size()-1);
-			System.out.println(a);
+		int a = findWays(c, n, c.size() - 1);
+		System.out.println(a);
 	}
 
-	public int findWays(List<Long> c, long target, int i){
+	public int findWays(List<Long> c, long target, int i) {
 
-		if (target<0) return 0;
-		else if (i<0) return 0;
-		else if (target>c.get(i)) return findWays(c,target,i-1);
-		else if(target==0) return 1;
+		if (target < 0) return 0;
+		else if (i < 0) return 0;
+		else if (target > c.get(i)) return findWays(c, target, i - 1);
+		else if (target == 0) return 1;
 		else {
-			return findWays(c,target-c.get(i),i-1)+findWays(c,target,i-1);
+			return findWays(c, target - c.get(i), i - 1) + findWays(c, target, i - 1);
 		}
 
 	}
@@ -4357,15 +4449,16 @@ obi OTF
 		 *  2. LONG_INTEGER_ARRAY c
 		 */
 
-		long counter=0;
-		HashMap<List<Long>,Long> bucket;
+		long counter = 0;
+		HashMap<List<Long>, Long> bucket;
+
 		public long getWays(int n, List<Long> c) {
 			// Write your code here
 			bucket = new HashMap<>();
 
 			ArrayList<Long> numList = new ArrayList<Long>();
-			addNextLevel(n,numList,c);
-			System.out.println("counter: "+counter);
+			addNextLevel(n, numList, c);
+			System.out.println("counter: " + counter);
 			// ArrayList<Long> aaa = new ArrayList();
 			// aaa.add(1L);
 			// aaa.add(1L);
@@ -4382,38 +4475,38 @@ obi OTF
 			//     System.out.println("");
 			// });
 
-			return bucket.values().stream().filter(v->v==n).count();
+			return bucket.values().stream().filter(v -> v == n).count();
 		}
 
-		public void addNextLevel(int n, List<Long> numArr, List<Long> c){
+		public void addNextLevel(int n, List<Long> numArr, List<Long> c) {
 			long sum = 0;
-			for(Long each:c){
-				System.out.print(each+" ");
-				List<Long> sortedList = getSortedList(numArr,each);
+			for (Long each : c) {
+				System.out.print(each + " ");
+				List<Long> sortedList = getSortedList(numArr, each);
 				Long foundNum = bucket.get(sortedList);
 
-				if(foundNum!=null){
-					sum=foundNum+each;
-				}else{
-					sum = sortedList.stream().reduce(0L,Long::sum);
-					bucket.put(sortedList,new Long(sum));
+				if (foundNum != null) {
+					sum = foundNum + each;
+				} else {
+					sum = sortedList.stream().reduce(0L, Long::sum);
+					bucket.put(sortedList, new Long(sum));
 				}
 
-				if(sum==n){
+				if (sum == n) {
 					System.out.println("");
 					counter++;
 					continue;
-				}else if (sum>n){
+				} else if (sum > n) {
 					break;
-				}else{
-					addNextLevel(n,sortedList,c);
+				} else {
+					addNextLevel(n, sortedList, c);
 				}
 			}
 		}
 
-		public List<Long> getSortedList(List<Long> numArr, Long newLong){
+		public List<Long> getSortedList(List<Long> numArr, Long newLong) {
 			ArrayList<Long> al = new ArrayList<>();
-			if(numArr.size()>0){
+			if (numArr.size() > 0) {
 				numArr.stream().forEach(al::add);
 			}
 			al.add(newLong);
@@ -4423,13 +4516,13 @@ obi OTF
 
 	}
 
-	public CoinChangeResult getCoinChangeResult(){
+	public CoinChangeResult getCoinChangeResult() {
 
 		return new CoinChangeResult();
 	}
 
 
-	class DoubleLinkedListResult{
+	class DoubleLinkedListResult {
 
 		class DoublyLinkedListNode {
 			int data;
@@ -4462,18 +4555,18 @@ obi OTF
 			  			break;
 
 		 */
-		public DoublyLinkedListNode sortedInsert(DoublyLinkedListNode llist, int data)   {
+		public DoublyLinkedListNode sortedInsert(DoublyLinkedListNode llist, int data) {
 			// Write your code here
 			DoublyLinkedListNode currentNode = llist;
-			while(currentNode.next!=null) {
+			while (currentNode.next != null) {
 
 				if (currentNode.data <= data && currentNode.next.data > data) {
 					DoublyLinkedListNode newNode = new DoublyLinkedListNode();
-					newNode.data=data;
+					newNode.data = data;
 					newNode.next = currentNode.next;
 					newNode.prev = currentNode;
-					currentNode.next=newNode;
-					currentNode.next.prev=newNode;
+					currentNode.next = newNode;
+					currentNode.next.prev = newNode;
 					break;
 				}
 			}
@@ -4485,58 +4578,59 @@ obi OTF
 		}
 	}
 
-	static class DD{
+	static class DD {
 		public int data;
-		public DD(int a){
-			data=a;
+
+		public DD(int a) {
+			data = a;
 		}
 	}
 
-	public int practiceBinarySearchTree(int[] arr, int num){
-
-			int start = 0;
-			int end = arr.length-1;
-			int mid = (start+end)/2;
-
-			while(start<=end){
-				mid = (start+end)/2;
-				System.out.println("mid: "+mid);
-				if(arr[mid]==num){
-					return mid;
-				}else if(arr[mid]>num){
-					end=mid-1;
-					System.out.println("end: "+end);
-				}else{
-					start = mid + 1;
-					System.out.println("start: " + start);
-				}
-
-			}
-			return -1;
-	}
-
-	public int practiceBinarySearchTreeWithStack(int[] arr, int num){
+	public int practiceBinarySearchTree(int[] arr, int num) {
 
 		int start = 0;
-		int end = arr.length-1;
-		int mid = (start+end)/2;
+		int end = arr.length - 1;
+		int mid = (start + end) / 2;
+
+		while (start <= end) {
+			mid = (start + end) / 2;
+			System.out.println("mid: " + mid);
+			if (arr[mid] == num) {
+				return mid;
+			} else if (arr[mid] > num) {
+				end = mid - 1;
+				System.out.println("end: " + end);
+			} else {
+				start = mid + 1;
+				System.out.println("start: " + start);
+			}
+
+		}
+		return -1;
+	}
+
+	public int practiceBinarySearchTreeWithStack(int[] arr, int num) {
+
+		int start = 0;
+		int end = arr.length - 1;
+		int mid = (start + end) / 2;
 		Stack<Integer> path = new Stack<>();
 
-		while(start<=end){
-			mid = (start+end)/2;
-			System.out.println("mid: "+mid);
-			if(arr[mid]==num){
+		while (start <= end) {
+			mid = (start + end) / 2;
+			System.out.println("mid: " + mid);
+			if (arr[mid] == num) {
 				path.push(mid);
 //				path.stream().forEach(a->System.out.print(a+" "));
-				while(!path.empty()){
-					System.out.print(path.pop()+" ");
+				while (!path.empty()) {
+					System.out.print(path.pop() + " ");
 				}
 				return mid;
-			}else if(arr[mid]>num){
-				end=mid-1;
-				System.out.println("end: "+end);
+			} else if (arr[mid] > num) {
+				end = mid - 1;
+				System.out.println("end: " + end);
 				path.push(mid);
-			}else{
+			} else {
 				start = mid + 1;
 				System.out.println("start: " + start);
 				path.push(mid);
@@ -4554,26 +4648,27 @@ obi OTF
 
 	 */
 
-	public void practiceReversedLinkedList(int[] arr){
+	public void practiceReversedLinkedList(int[] arr) {
 
-		class Node{
+		class Node {
 			int data;
 			Node next;
-			Node(int i){
+
+			Node(int i) {
 				data = i;
 			}
 		}
-		int i=0;
+		int i = 0;
 		Node n1 = new Node(i);
 		Node head = n1;
-		while (i<arr.length-1){
-			i=i+1;
+		while (i < arr.length - 1) {
+			i = i + 1;
 			Node n2 = new Node(arr[i]);
 			n1.next = n2;
 			n1 = n2;
 		}
-		n1=head;
-		while(n1.next!=null){
+		n1 = head;
+		while (n1.next != null) {
 
 			System.out.println(n1.data);
 			n1 = n1.next;
@@ -4603,20 +4698,20 @@ obi OTF
 
 		 */
 		Node p = head.next;
-		head.next=null;
+		head.next = null;
 		Node q = p.next;
 
-		while(q != null){
-			p.next=head;
-			head=p;
-			p=q;
-			q=q.next;
+		while (q != null) {
+			p.next = head;
+			head = p;
+			p = q;
+			q = q.next;
 		}
 		System.out.println("---------------");
 		Node rn = head;
-		while(rn!=null){
+		while (rn != null) {
 			System.out.println(rn.data);
-			rn=rn.next;
+			rn = rn.next;
 		}
 
 	}
@@ -4637,7 +4732,7 @@ obi OTF
 		Node n1 = new Node(arr[i]);
 		Node head = n1;
 
-		while(i<arr.length-1) {
+		while (i < arr.length - 1) {
 			i = i + 1;
 			Node n2 = new Node(arr[i]);
 			n1.next = n2;
@@ -4649,15 +4744,15 @@ obi OTF
 			System.out.println(n1.data);
 			n1 = n1.next;
 		}
-		String s= "sas";
+		String s = "sas";
 		char[] cc = s.toCharArray();
-		Stack<Character> sss= new Stack<>();
+		Stack<Character> sss = new Stack<>();
 		sss.push('a');
 		StringBuilder sb = new StringBuilder(s);
 		sb.deleteCharAt(1);
 		System.out.println("-------------");
-		System.out.println(s.substring(0,s.length()/2+1));
-		System.out.println(s.substring(s.length()/2));
+		System.out.println(s.substring(0, s.length() / 2 + 1));
+		System.out.println(s.substring(s.length() / 2));
 
 		/*      h     p     q
 		              h     p   q
@@ -4671,17 +4766,17 @@ obi OTF
 
 		head.next = null;
 
-		while(q!=null){
+		while (q != null) {
 			p.next = head;
 			head = p;
-			p=q;
-			q=p.next;
+			p = q;
+			q = p.next;
 		}
 		p.next = head;
 		System.out.println("-----------------");
-		while(p!=null){
+		while (p != null) {
 			System.out.println(p.data);
-			p=p.next;
+			p = p.next;
 		}
 	}
 
@@ -4723,29 +4818,29 @@ obi OTF
 
 			Stack<Character> rs = new Stack<>();
 			Stack<Character> ls = new Stack<>();
-			int end_i=chars.length-1;
-			for(int i=0;i<chars.length;i++){
+			int end_i = chars.length - 1;
+			for (int i = 0; i < chars.length; i++) {
 
 				ls.push(chars[i]);
-				rs.push(chars[end_i-i]);
+				rs.push(chars[end_i - i]);
 
 			}
 
-			for(int j=0;j<chars.length;j++){
+			for (int j = 0; j < chars.length; j++) {
 				char lc = ls.pop();
 				char rc = rs.pop();
-				if(lc!=rc){
+				if (lc != rc) {
 					//  System.out.println("found: "+lc+" "+rc);
 					//  System.out.println("index: "+j+" or "+ ((end_i-j)));
 					StringBuilder sb1 = new StringBuilder(s);
 					StringBuilder sb2 = new StringBuilder(s);
 					String a = sb1.deleteCharAt(j).toString();
-					String b = sb2.deleteCharAt(end_i-j).toString();
-					if(testPalindrome(a)){
+					String b = sb2.deleteCharAt(end_i - j).toString();
+					if (testPalindrome(a)) {
 						return j;
-					}else if(testPalindrome(b)){
-						return end_i-j;
-					}else{
+					} else if (testPalindrome(b)) {
+						return end_i - j;
+					} else {
 						continue;
 					}
 				}
@@ -4754,23 +4849,23 @@ obi OTF
 		}
 
 
-		public boolean testPalindrome(String s){
+		public boolean testPalindrome(String s) {
 			char[] chars = s.toCharArray();
 
 			Stack<Character> rs = new Stack<>();
 			Stack<Character> ls = new Stack<>();
-			int end_i=chars.length-1;
-			for(int i=0;i<chars.length;i++){
+			int end_i = chars.length - 1;
+			for (int i = 0; i < chars.length; i++) {
 
 				ls.push(chars[i]);
-				rs.push(chars[end_i-i]);
+				rs.push(chars[end_i - i]);
 
 			}
 
-			for(int j=0;j<chars.length;j++){
+			for (int j = 0; j < chars.length; j++) {
 				char lc = ls.pop();
 				char rc = rs.pop();
-				if(lc!=rc){
+				if (lc != rc) {
 					return false;
 				}
 			}
@@ -4810,19 +4905,19 @@ obi OTF
 		public int palindromeIndex(String s) {
 			// Write your code here
 			char[] chars = s.toCharArray();
-			int end_i=chars.length-1;
-			for(int i=0;i<chars.length;i++){
+			int end_i = chars.length - 1;
+			for (int i = 0; i < chars.length; i++) {
 
-				if(chars[i]!=chars[end_i-i]){
+				if (chars[i] != chars[end_i - i]) {
 					StringBuilder sb1 = new StringBuilder(s);
 					StringBuilder sb2 = new StringBuilder(s);
 					String a = sb1.deleteCharAt(i).toString();
-					String b = sb2.deleteCharAt(end_i-i).toString();
-					if(testPalindrome(a)){
+					String b = sb2.deleteCharAt(end_i - i).toString();
+					if (testPalindrome(a)) {
 						return i;
-					}else if(testPalindrome(b)){
-						return end_i-i;
-					}else{
+					} else if (testPalindrome(b)) {
+						return end_i - i;
+					} else {
 						continue;
 					}
 				}
@@ -4833,12 +4928,12 @@ obi OTF
 		}
 
 
-		public boolean testPalindrome(String s){
+		public boolean testPalindrome(String s) {
 			char[] chars = s.toCharArray();
 
-			int end_i=chars.length-1;
-			for(int i=0;i<chars.length;i++){
-				if(chars[i]!=chars[end_i-i]){
+			int end_i = chars.length - 1;
+			for (int i = 0; i < chars.length; i++) {
+				if (chars[i] != chars[end_i - i]) {
 					return false;
 				}
 			}
@@ -4881,19 +4976,19 @@ obi OTF
 
 			Stack<Character> rs = new Stack<>();
 			Stack<Character> ls = new Stack<>();
-			int end_i=chars.length-1;
-			for(int i=0;i<chars.length;i++){
+			int end_i = chars.length - 1;
+			for (int i = 0; i < chars.length; i++) {
 
-				if(chars[i]!=chars[end_i-i]){
+				if (chars[i] != chars[end_i - i]) {
 					StringBuilder sb1 = new StringBuilder(s);
 					StringBuilder sb2 = new StringBuilder(s);
 					String a = sb1.deleteCharAt(i).toString();
-					String b = sb2.deleteCharAt(end_i-i).toString();
-					if(testPalindrome(a)){
+					String b = sb2.deleteCharAt(end_i - i).toString();
+					if (testPalindrome(a)) {
 						return i;
-					}else if(testPalindrome(b)){
-						return end_i-i;
-					}else{
+					} else if (testPalindrome(b)) {
+						return end_i - i;
+					} else {
 						continue;
 					}
 				}
@@ -4904,12 +4999,12 @@ obi OTF
 		}
 
 
-		public boolean testPalindrome(String s){
+		public boolean testPalindrome(String s) {
 			char[] chars = s.toCharArray();
 
-			int end_i=chars.length-1;
-			for(int i=0;i<chars.length;i++){
-				if(chars[i]!=chars[end_i-i]){
+			int end_i = chars.length - 1;
+			for (int i = 0; i < chars.length; i++) {
+				if (chars[i] != chars[end_i - i]) {
 					return false;
 				}
 			}
@@ -4919,30 +5014,30 @@ obi OTF
 
 	}
 
-	public void test1234(){
-		ArrayList<Integer>  a = new ArrayList<>();
+	public void test1234() {
+		ArrayList<Integer> a = new ArrayList<>();
 		Integer r = a.stream().reduce(Integer::min).get();
 
-		for(int i=0;i<a.size();i++){
-			if(a.get(i)==2){
+		for (int i = 0; i < a.size(); i++) {
+			if (a.get(i) == 2) {
 				a.remove(i);
 			}
 		}
 
 	}
 
-	public void buildMinHeap(){
-		int[] input = {4,3,7,1,2,9};
-		ArrayList<Integer>  heap = new ArrayList<>();
+	public void buildMinHeap() {
+		int[] input = {4, 3, 7, 1, 2, 9};
+		ArrayList<Integer> heap = new ArrayList<>();
 
-		int counter=0;
-		for(int i:input){
-			if(heap.size()==0) heap.add(0,input[i]);
-			else{
+		int counter = 0;
+		for (int i : input) {
+			if (heap.size() == 0) heap.add(0, input[i]);
+			else {
 				int root = heap.get(0);
-				if(root>input[i]){
-					heap.add(heap.size()-1,root);
-					heap.add(0,input[i]);
+				if (root > input[i]) {
+					heap.add(heap.size() - 1, root);
+					heap.add(0, input[i]);
 				}
 			}
 
@@ -4950,9 +5045,262 @@ obi OTF
 
 
 	}
+
+	public int myFibonacci(int a) {
+		if (a <= 0) return 0;
+		else if (a == 1) return 1;
+		else {
+			int b = myFibonacci(a - 1) + myFibonacci(a - 2);
+			return b;
+		}
+	}
+
+	public int myFibonacciMemoization(int[] arr, int a) {
+		int r;
+		if (a <= 0) return 0;
+		else if (a == 1) return 1;
+		else if (arr[a - 1] != 0) return arr[a - 1];
+		else {
+			int b = myFibonacciMemoization(arr, a - 1) + myFibonacciMemoization(arr, a - 2);
+			arr[a - 1] = b;
+			return b;
+		}
+	}
+
+	/*
+			{1,2,4}  r=2
+	 */
+	public long countTriplet(List<Long> arr, int r) {
+		int n = 0;
+		long count = 0L;
+
+		int a = n;
+		int b = n + 1;
+		int c = n + 2;
+
+		if (arr.get(a) * 2 == arr.get(b) && arr.get(b) * r == arr.get(c)) {
+			return count + 1;
+		} else {
+			return 0;
+		}
+	}
+
+	public long countTriplet2(List<Long> arr, int r) {
+		int[] a = new int[]{1,2,2,4};
+
+//		traverseArray(a,1);
+
+		return 1;
+	}
+	/*
+		1*2 =>2
+		2*2 =>4
+		1,2,4
+
+		0-> 0
+		2-> 1
+		4-> 2,2
+
+		4->
+		4 * 2 8
+
+		1,2,2,4
+		1  0
+		2  1,2
+		4  1
+		1 -> 2
+
+		1 3 9 9 27 81  r=3
+
+		1 -> 0   1
+		3 -> 1   1
+		9 -> 2,3 2
+		27-> 4   1
+		81-> 5   1
+
+		9 -> 2,3
+		27-> 1
+		81-> 1
+
+
+	 */
+	public long CounterTripletHashMapWay(List<Long> arr, int r){
+		HashMap<Long,List<Long>> hashMap = new HashMap<>();
+		for(int i = 0;i<arr.size();i++) {
+			long targetKey = arr.get(i) * r;
+			List<Long> aaa = hashMap.get(targetKey);
+			if(aaa==null){
+				ArrayList<Long> l = new ArrayList<Long>();
+				l.add(new Long(i));
+				hashMap.put(targetKey, l);
+			}else {
+				aaa.add(new Long(i));
+			}
+		}
+		long sum=0;
+		hashMap.keySet().stream().forEach(k->System.out.println("key: "+k+" "+hashMap.get(k)+"-> size: "+hashMap.get(k).size()));
+		Long[] keyArr = new Long[hashMap.keySet().size()];
+		Long[] keyArr1 = hashMap.keySet().toArray(keyArr);
+		List<Long> sortedList = Arrays.stream(keyArr1).sorted().collect(toList());
+
+		for(int p = 0;p<sortedList.size();p=p+3){
+			Long key= sortedList.get(p);
+			List<Long> a = hashMap.get(key);
+			List<Long> b = hashMap.get(key*r);
+			List<Long> c = hashMap.get(key*r*r);
+			sum = sum + (a.size()*b.size()*c.size());
+		}
+		Stack<Integer> s1 = new Stack<>();
+		ArrayList<Integer> a= new ArrayList<>();
+		List<Integer> aa = a.stream().sorted().collect(Collectors.toList());
+
+//		for(int j=0;j<arr.size();j++){
+//			//long p = arr.get(j)*r;
+//			//int num1 = hashMap.get(p)!=null?hashMap.get(p).size():0;
+//			long a = arr.get(j)*r;
+//			int num2 = hashMap.get(a)!=null?hashMap.get(a).size():0;
+//			long b = a * r;
+//			int num3 = hashMap.get(b)!=null?hashMap.get(b).size():0;
+//
+//			sum = sum + (1*num2*num3);
+//		}
+
+		return sum;
+	}
+
+//	public void traverseArray(int[] arr,int i,int j){
+//		if(i<=0||j<=0) return;
+//
+//			int a = i==0?i:i-1;
+//			int b = j==0?i:j-1;
+//
+//			traverseArray(arr,a,b);
+//			System.out.println("i am here: " + arr[a]+" "+arr[b]);
+////		}
+////			return i-1;
+////		}
+////		return -1;
+//		a+0  a+0  a+0
+//		a+1, a+2, a+3
+//		a+2, a+3
+//
+//		int n=4
+//
+//		n-1  n-1  n-1  n-2 n-2 n-3
+//		n-2  n-2  n-3  n-3 n-4
+//		n-3  n-4  n-4 	x   x
+//		arr[n-1] + a[n-2] + a[n-3]
+//
+//
+//	}
+	class Solution123{
+		class Node{
+			int data;
+			Node left;
+			Node right;
+		}
+
+
+		public void inOrder(Node root) {
+			if (root == null) return;
+			inOrder(root.left);
+			System.out.print(root.data + " ");
+			inOrder(root.right);
+		}
+
+	}
+
+	public void createTree(){
+		Solution123 ss = new Solution123();
+			Queue<Integer> q = new LinkedList<>();
+
+
+	}
+
+	/*
+	 fewest number of changes of coin change to make up the number;
+	 	coins{1,2}
+			target amt 0, 1,   2,           3
+			{}         0  0    0            0
+			{1}        0  {1}  {1,1}        {1,1,1}
+			{1,2}         {1}  {{1,1},{2}}  {{1,1,1},{1,2}}
+
+			 {1,2,5}  ->  5
+			              0    1   2           3              4                            5
+					{}    {}  {}   {}          {}            {}                            {}
+					{1}   0   {1}  {1,1}       {1,1,1}       {1,1,1,1}                     {1,1,1,1,1}
+					{1,2} 0   {1}  {{1,1},{2}} {1,1,1},{1,2} {1,1,1,1},{1,2,1},{2,2}       {1,1,1,1,1}, {1,2,1,1},{1,2,2}
+					{1,2,3}   {1}  {{1,1},{2}} {1,1,1},{1,2} {1,1,1,1},{1,2,1},{2,2},{1,3} {1,1,1,1,1}, {1,2,1,1},{1,2,2},{1,1,3},{2,3}
+
+
+					 for each new coin in all availabe coins loop
+					 target[targetamt+1];
+					 		for target loop target.size
+					 		if(each coin == each target) then
+					 		   put in bucket[i]
+					 		else if each coin < each target and then
+					 		   	 append 1 + bucket[i-1]
+
+					 		   each coin+bucket[i-1]
+
+					 		     5                   5           5
+					 		  1  4                 2 3 ->      3  2
+					 		     1 3  ->  1,1,3     2 1 ->       3 -1 ->out
+					 		       1 2 ->              2 -1 ->out
+					 		         1 1 ->
+					 		           1 0 ->exit
+
+
+				subtractcoin(target,coin, string stringCoin)
+				 result = target-coin;
+				 if(result<=0) return;
+				 if(result is one of available coins)
+				 	add so-far-numbers to bucket
+				 	return subtract(result,coin,stringCoin)
+				 else
+				 	return subtract(result,coin,stringCoin)
+
+
+				for i in coins loop
+
+					subtractcoin(target,coins[i],
+
+				end loop
+
+		 */
+
+	public int CoinChange(int[] availableCoins, int targetAmount){
+		int[] targetAmounts = new int[targetAmount+1];
+//		int[] dp = new int[amount+1];
+		Arrays.fill(targetAmounts,targetAmount+1);
+		targetAmounts[0]=0;
+
+		for(int eachSmallerTargetAmount=0;eachSmallerTargetAmount<=targetAmount;eachSmallerTargetAmount++){
+
+			Arrays.stream(targetAmounts).forEach(a->System.out.print(a+" "));
+			System.out.println("");
+			System.out.println("i = "+eachSmallerTargetAmount);
+			for(int eachAvailableCoin=0;eachAvailableCoin<availableCoins.length;eachAvailableCoin++){
+				System.out.println("j = "+eachAvailableCoin);
+				System.out.println("is currently selected coin smaller than or equal to current target amount? "+availableCoins[eachAvailableCoin]+" : "+eachSmallerTargetAmount);
+
+				if(availableCoins[eachAvailableCoin]<=eachSmallerTargetAmount){
+					System.out.println("Yes");
+					System.out.println("which is smaller, number of coins for current targetAmount or number of coins for the new target amount?");
+					System.out.println("targetAmounts["+eachSmallerTargetAmount+"] "+":"+targetAmounts[eachSmallerTargetAmount]+", 1+targetAmounts["+eachSmallerTargetAmount+":"+eachSmallerTargetAmount+"-availableCoins["+eachAvailableCoin+"]:"+availableCoins[eachAvailableCoin]+"] = "+(1+targetAmounts[eachSmallerTargetAmount-availableCoins[eachAvailableCoin]])+"  ");
+					targetAmounts[eachSmallerTargetAmount]=Math.min(targetAmounts[eachSmallerTargetAmount],1+targetAmounts[eachSmallerTargetAmount-availableCoins[eachAvailableCoin]]);
+					System.out.println("dp["+eachSmallerTargetAmount+"]: "+targetAmounts[eachSmallerTargetAmount]);
+				}else{
+//					System.out.println("No we cannot use "+eachPossibleNumberOfCoins+" coins to make "+);
+					System.out.println("No");
+				}
+			}
+			System.out.println("-------------------------------------");
+		}
+		return targetAmounts[targetAmount]>targetAmount?-1:targetAmounts[targetAmount];
+	}
+
 }
-
-
 
 
 

@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collector;
@@ -1443,13 +1445,17 @@ int aa;
 		heap.add(0,2);
 		heap.add(1,999);
 		int index = heap.indexOf(999);
-		System.out.println("index:"+ index);
+//		System.out.println("index:"+ index);
+		heap.clear();
+		System.out.println("size after clear: "+heap.size());
+
 		Integer ii = heap.stream().reduce(Integer::min).get();
 		System.out.println(ii);
 		heap.remove(0);
 		System.out.println(heap.get(0));
 		Integer ii2 = heap.stream().reduce(Integer::min).get();
 		System.out.println(ii2);
+
 
 //		Integer ii3 = heap.stream().filter(t==999).collect(toList()).size();
 //		heap.stream().forEach(System.out::println);
@@ -1468,4 +1474,122 @@ int aa;
 
 	}
 
+	@Test
+	public void testMyFibonacci(){
+		SolutionApplication  a = new SolutionApplication();
+		int[] arr = new int[5];
+		System.out.println(arr[1]);
+		System.out.println(a.myFibonacci(5));
+
+		System.out.println();
+		int[] arr2 = new int[6];
+		System.out.println(a.myFibonacci(6));
+
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		System.out.println(sdf1.format(timestamp));
+
+		int target = 78;
+		int[] arr3 = new int[target];
+		System.out.println(a.myFibonacciMemoization(arr3,target));
+		Timestamp timestamp2 = new Timestamp(System.currentTimeMillis());
+		System.out.println(sdf1.format(timestamp2));
+
+		Timestamp timestamp3 = new Timestamp(System.currentTimeMillis());
+		System.out.println(sdf1.format(timestamp3));
+
+		System.out.println(a.myFibonacci(target));
+		Timestamp timestamp4 = new Timestamp(System.currentTimeMillis());
+		System.out.println(sdf1.format(timestamp4));
+
+	}
+
+	@Test
+	public void testCountTriplet(){
+		SolutionApplication a = new SolutionApplication();
+		Long[] arr = {1L,2L,4L};
+		List<Long> arrList = Arrays.asList(arr);
+		long aaa  = a.countTriplet(arrList,2);
+		System.out.println(aaa);
+	}
+
+	@Test
+	public void testTraverseArray(){
+		SolutionApplication a= new SolutionApplication();
+		int[] aa = {1,2,3,4,5};
+//		a.traverseArray(aa,5,4);
+	}
+
+	@Test
+	public void testCounterTripletHashMapWay(){
+		SolutionApplication a= new SolutionApplication();
+		ArrayList<Long> list = new ArrayList<>();
+		list.add(1L);
+		list.add(2L);
+		list.add(2L);
+		list.add(4L);
+
+
+		long r= a.CounterTripletHashMapWay(list,2);
+		System.out.println(r);
+
+		ArrayList<Long> list2 = new ArrayList<>();
+		list2.add(1L);
+		list2.add(3L);
+		list2.add(9L);
+		list2.add(9L);
+		list2.add(27L);
+		list2.add(81L);
+
+		r= a.CounterTripletHashMapWay(list2,3);
+		System.out.println(r);
+
+	}
+
+	@Test
+	public void testMyQuickSort2(){
+		SolutionApplication a= new SolutionApplication();
+		SolutionApplication.MyQuickSort2 myQuickSort2 =  a.getMyQuickSort2();
+		int[] arr = {5,2,8,4,3,7,6,1,9};
+		myQuickSort2.quicksort(arr,0,arr.length-1, arr.length/2);
+		Arrays.stream(arr).forEach(k->System.out.println(k+" "));
+	}
+
+	@Test
+	public void testSwapNode2(){
+		ArrayList<List<Integer>> a = new ArrayList<>();
+
+		ArrayList<Integer> b= new ArrayList<>();
+
+//		b.
+//		2 3   p=1 d=1 [1]       [2] [3]
+//		4 -1  p=2 d=2 [2]       [4] [0]
+//		5 -1  p=3 d=2 [3]       [5] [0]
+//		6 -1  p=4 d=3 [4]       [6] [0]
+//		7 8   p=5 d=3 [5]       [7] [8]
+//				-1 9  p=6 d=4 [6]       [0] [9]
+//				-1 -1 p=7 d=4 [7]       [0] [0]
+//		10 11 p=8 d=4 [8]       [10][11]
+//				-1 -1         [9]
+//				-1 -1         [10]
+//				-1 -1
+	}
+
+	@Test
+	public void testCoinChange(){
+		SolutionApplication a = new SolutionApplication();
+		int[] coins = {1,2,5};
+		int r = a.CoinChange(coins,11);
+		System.out.println("r: "+r);
+
+	}
+
+	@Test
+	public void testMyCoinChange(){
+		MyCoinChangeSolution myCoinChangeSolution = new MyCoinChangeSolution();
+		int[] coins = {1,2,5,10};
+		myCoinChangeSolution.findWaysToSumCoins(coins,12);
+		System.out.println(0%4);
+
+	}
 }
