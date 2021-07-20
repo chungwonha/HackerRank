@@ -5276,12 +5276,13 @@ obi OTF
 		targetAmounts[0]=0;
 
 		for(int eachSmallerTargetAmount=0;eachSmallerTargetAmount<=targetAmount;eachSmallerTargetAmount++){
-
+			Arrays.stream(availableCoins).forEach(c->System.out.print(c+" "));
+			System.out.println("");
 			Arrays.stream(targetAmounts).forEach(a->System.out.print(a+" "));
 			System.out.println("");
 			System.out.println("i = "+eachSmallerTargetAmount);
 			for(int eachAvailableCoin=0;eachAvailableCoin<availableCoins.length;eachAvailableCoin++){
-				System.out.println("j = "+eachAvailableCoin);
+				System.out.println("j = "+eachAvailableCoin+" selected coin: "+availableCoins[eachAvailableCoin]);
 				System.out.println("is currently selected coin smaller than or equal to current target amount? "+availableCoins[eachAvailableCoin]+" : "+eachSmallerTargetAmount);
 
 				if(availableCoins[eachAvailableCoin]<=eachSmallerTargetAmount){
@@ -5300,6 +5301,40 @@ obi OTF
 		return targetAmounts[targetAmount]>targetAmount?-1:targetAmounts[targetAmount];
 	}
 
+	public int CoinChange2(int[] availableCoins, int targetAmount){
+		int[] targetAmounts = new int[targetAmount+1];
+//		int[] dp = new int[amount+1];
+		Arrays.fill(targetAmounts,targetAmount+1);
+		targetAmounts[0]=0;
+
+		for(int eachSmallerTargetAmount=0;eachSmallerTargetAmount<=targetAmount;eachSmallerTargetAmount++){
+			Arrays.stream(availableCoins).forEach(c->System.out.print(c+" "));
+			System.out.println("");
+			Arrays.stream(targetAmounts).forEach(a->System.out.print(a+" "));
+			System.out.println("");
+			System.out.println("i = "+eachSmallerTargetAmount);
+			for(int eachAvailableCoin=0;eachAvailableCoin<availableCoins.length;eachAvailableCoin++){
+				System.out.println("j = "+eachAvailableCoin+" selected coin: "+availableCoins[eachAvailableCoin]);
+				System.out.println("is currently selected coin smaller than or equal to current target amount? "+availableCoins[eachAvailableCoin]+" : "+eachSmallerTargetAmount);
+
+				if(availableCoins[eachAvailableCoin]<=eachSmallerTargetAmount){
+					System.out.println("Yes");
+//					System.out.println("which is smaller, number of coins for current targetAmount or number of coins for the new target amount?");
+//					System.out.println("targetAmounts["+eachSmallerTargetAmount+"] "+":"+targetAmounts[eachSmallerTargetAmount]+", 1+targetAmounts["+eachSmallerTargetAmount+":"+eachSmallerTargetAmount+"-availableCoins["+eachAvailableCoin+"]:"+availableCoins[eachAvailableCoin]+"] = "+(1+targetAmounts[eachSmallerTargetAmount-availableCoins[eachAvailableCoin]])+"  ");
+//					targetAmounts[eachSmallerTargetAmount]=Math.min(targetAmounts[eachSmallerTargetAmount],1+targetAmounts[eachSmallerTargetAmount-availableCoins[eachAvailableCoin]]);
+					targetAmounts[eachSmallerTargetAmount] = 1+targetAmounts[eachSmallerTargetAmount-availableCoins[eachAvailableCoin]];
+					System.out.println("dp["+eachSmallerTargetAmount+"]: "+targetAmounts[eachSmallerTargetAmount]);
+				}else{
+//					System.out.println("No we cannot use "+eachPossibleNumberOfCoins+" coins to make "+);
+					System.out.println("No");
+				}
+			}
+			System.out.println("-------------------------------------");
+		}
+		Arrays.stream(targetAmounts).forEach(a->System.out.print(a+" "));
+
+		return targetAmounts[targetAmount]>targetAmount?-1:targetAmounts[targetAmount];
+	}
 }
 
 

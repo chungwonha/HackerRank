@@ -1585,6 +1585,15 @@ int aa;
 	}
 
 	@Test
+	public void testCoinChange2(){
+		SolutionApplication a = new SolutionApplication();
+		int[] coins = {8,3,1,2};
+		int r = a.CoinChange2(coins,3);
+		System.out.println("r: "+r);
+
+	}
+
+	@Test
 	public void testMyCoinChange(){
 		MyCoinChangeSolution myCoinChangeSolution = new MyCoinChangeSolution();
 		int[] coins = {1,2,5,10};
