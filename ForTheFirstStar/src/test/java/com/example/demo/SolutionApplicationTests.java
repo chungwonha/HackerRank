@@ -1599,6 +1599,9 @@ int aa;
 		int[] coins = {1,2,5,10};
 		myCoinChangeSolution.findWaysToSumCoins(coins,12);
 		System.out.println(0%4);
+		String s = "abcde";
+		System.out.println(s.substring(2,5));
+
 
 	}
 }
